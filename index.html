@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KineMentor - A Digital Biomechanics Simulator developed by SUPSI</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+<body>
+    <div class="header">
+        <h1><span style="font-family: SUPSIFedraMedium;">Kine</span>Mentor</h1>
+        <p class="creditsSupsi">A didactic tool by:</p>
+        <img src="assets/images/logo-SUPSI-it_bianco.png" alt="SUPSI-White-Logo" class="supsiLogo">
+        <p class="infoButton">info</p>
+    </div>
+    
+    <div class="toolStart">
+        <p>Insert the data</p>
+        <div class="dataInput">
+            <h2>SEX:</h2>
+            <button id="femaleBtn">FEMALE</button>
+            <button id="maleBtn">MALE</button>
+        </div>
+        <div class="dataInput">
+            <h2>WEIGHT:</h2>
+            <input type="number" min="20" max="500" id="weightInput" placeholder="ENTER THE WEIGHT IN KG">
+        </div>
+        <div class="dataInput">
+            <h2>HEIGHT:</h2>
+            <input type="number" min="80" max="200" id="heightInput" placeholder="ENTER THE HEIGHT IN CM">
+        </div>
+        <button id="submitBtn">START THE APPLICATION</button>
+    </div>
+    <image src="assets/images/heightPeople.svg" class="heightGraph"></image>
+    <image src="assets/images/man.svg" class="manFigure">
+</body>
+<script>
+    var maleBtn = document.getElementById("maleBtn");
+    var femaleBtn = document.getElementById("femaleBtn");
+    localStorage.setItem("sex", "none");
+
+    var submitBtn = document.getElementById("submitBtn");
+
+    var maleBtnWidth = document.getElementById('maleBtn').getBoundingClientRect().width;
+    var femaleBtnWidth = document.getElementById('femaleBtn').getBoundingClientRect().width;
+
+    inputWidth = maleBtnWidth + femaleBtnWidth + 5;
+
+    document.getElementById('weightInput').style.width = inputWidth + 'px';
+    document.getElementById('heightInput').style.width = inputWidth + 'px';
+
+    maleBtn.addEventListener("click", function() {
+        if (localStorage.getItem("sex") == "male"){
+            maleBtn.classList.remove("clicked");
+            localStorage.setItem("sex", "none");
+        } else {
+            maleBtn.classList.add("clicked");
+            femaleBtn.classList.remove("clicked");
+            localStorage.setItem("sex", "male");
+        }
+    });
+
+    femaleBtn.addEventListener("click", function() {
+        if (localStorage.getItem("sex") == "female"){
+            femaleBtn.classList.remove("clicked");
+            localStorage.setItem("sex", "none");
+        } else {
+            femaleBtn.classList.add("clicked");
+            maleBtn.classList.remove("clicked");
+            localStorage.setItem("sex", "female");
+        }
+    });
+
+    submitBtn.addEventListener("click", function() {
+        var weight = document.getElementById("weightInput").value;
+        var height = document.getElementById("heightInput").value;
+
+        if (weight == "" || height == "" || localStorage.getItem("sex") == "none"){
+            alert("Please fill all the fields");
+            return;
+        } else {
+            console.log("Weight: " + weight);
+            console.log("Height: " + height);
+            localStorage.setItem("weight", weight);
+            localStorage.setItem("height", height);
+            window.location.href = "tool/index.html";
+        }
+    });
+</script>
+</html>

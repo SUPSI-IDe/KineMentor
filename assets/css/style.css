@@ -1,0 +1,177 @@
+/* -------------------> HEADER AND RELATED CONTENT STYLE <------------------- */
+.header{
+    background-color: var(--secondaryBackgroundColor);
+    position: relative;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+}
+
+.header h1{
+    font-family: SUPSIFedraLight;
+    font-weight: 300;
+    margin: 10px 48px; 
+}
+
+.toolBody .header{
+    color: var(--mainTextColor);
+}
+
+.creditsSupsi{
+    font-family: SUPSIFedraBook;
+    font-size: 0.4em;
+    margin: 30px 0px;
+}
+
+.supsiLogo{
+    max-width: 100px;
+    height: 100%;
+    margin: 30px 5px;
+}
+
+.infoButton{
+    margin-left: auto;
+    margin-right: 48px;
+}
+/* -------------------> END HEADER AND RELATED CONTENT STYLE <------------------- */
+
+/* -------------------> TOOL HOMEPAGE STYLE <------------------- */
+
+.toolStart{
+    display: flex;
+    flex-direction: column;
+    margin: 20px 48px;
+}
+
+.toolStart p{
+    font-family: SUPSIFedraBook;
+    font-weight: 300;
+    font-size: 0.6em;
+    margin-top: 50px;
+}
+
+.dataInput{
+    display: inline-flex;
+    align-items: center;
+}
+
+.dataInput h2{
+    font-family: SUPSIFedraLight;
+    font-weight: 300;
+    font-size: 3.3em;
+    margin: 15px 0px;
+    width: 20vw;
+}
+
+button{
+    font-family: SUPSIFedraBook;
+    font-weight: 300;
+    font-size: 1.7em;
+    margin: 0px 5px;
+    padding: 0px 1.2em;
+    background-color: var(--backgroundColor);
+    color: white;
+    border: 3px solid var(--mainTextColor);
+    border-radius: 65px;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: var(--mainTextColor);
+    color: var(--backgroundColor);
+}
+
+.clicked{
+    background-color: var(--mainTextColor);
+    color: var(--backgroundColor);
+}
+.clicked button:hover{
+    background-color: var(--backgroundColor);
+    color: var(--mainTextColor);
+} 
+
+input{
+    background-color: var(--backgroundColor);
+    border: 1px solid var(--mainTextColor);
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    color: var(--mainTextColor);
+    opacity: 0.2;
+    height: auto;
+    font-size: 1.15em;
+    text-align: center;
+}
+
+input::placeholder{
+    color: var(--mainTextColor);
+    font-size: 1.15em;
+    text-align: center;
+}
+
+#submitBtn{
+    position: fixed;
+    bottom: 100px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+    opacity: 1;
+}
+
+input[type="number"]:invalid {
+    text-decoration: line-through;
+}
+
+.heightGraph{
+    position: fixed;
+    bottom: 30px;
+    right: 48px;
+    height: 80vh;
+    margin: 0;
+}
+
+.manFigure{
+    position: fixed;
+    bottom: 30px;
+    right: 48px;
+    height: 60vh;
+    margin: 0;
+}
+
+/* -------------------> END TOOL HOMEPAGE STYLE <------------------- */
+
+/* -------------------> TOOL PAGE STYLE <------------------- */
+
+.patientData{
+    display: flex;
+    background-color: var(--backgroundColor);
+    color: var(--mainTextColor);
+    padding: 10px 48px;
+}
+
+.patientData .userChoice{
+    margin-left: auto;
+    margin-right: 0;
+}
+
+#backBtn{
+    cursor: pointer;
+}
+
+/* -------------------> END TOOL PAGE STYLE <------------------- */

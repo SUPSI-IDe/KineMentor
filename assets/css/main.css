@@ -1,0 +1,82 @@
+/* -------------------> VARIABLEs <------------------- */
+:root{
+    --mainTextColor: #ffffff;
+    --backgroundColor: #0D4BF4;
+    --secondaryBackgroundColor: #162A43;
+}
+
+/* -------------------> FONT <------------------- */
+@font-face {
+    font-family: SUPSIFedraDemi;
+    src: url("../font/SUPSIFSan-Demi.otf") format("opentype");
+    font-display: swap;
+}
+@font-face {
+    font-family: SUPSIFedraDemiItalic;
+    src: url("../font/SUPSIFSan-DemiItalic.otf") format("opentype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: SUPSIFedraBold;
+    src: url("../font/SUPSIFSan-Bold.otf") format("opentype");
+    font-display: swap;
+}
+@font-face {
+    font-family: SUPSIFedraBoldItalic;
+    src: url("../font/SUPSIFSan-BoldItalic.otf") format("opentype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: SUPSIFedraBook;
+    src: url("../font/SUPSIFSan-Book.otf") format("opentype");
+    font-display: swap;
+}
+@font-face {
+    font-family: SUPSIFedraBookItalic;
+    src: url("../font/SUPSIFSan-BookItalic.otf") format("opentype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: SUPSIFedraLight;
+    src: url("../font/SUPSIFSan-Light.otf") format("opentype");
+    font-display: swap;
+}
+@font-face {
+    font-family: SUPSIFedraLightItalic;
+    src: url("../font/SUPSIFSan-LightItalic.otf") format("opentype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: SUPSIFedraMedium;
+    src: url("../font/SUPSIFSan-Medium.otf") format("opentype");
+    font-display: swap;
+}
+@font-face {
+    font-family: SUPSIFedraMediumItalic;
+    src: url("../font/SUPSIFSan-MediumItalic.otf") format("opentype");
+    font-display: swap;
+}
+
+/* -------------------> MAIN STYLE <------------------- */
+body{
+    background-color: var(--backgroundColor);
+    font-family: "SUPSIFedraDemi", "Helvetica", sans-serif;
+    font-size: 30px;
+    color: var(--mainTextColor);
+    margin: 0;
+}
+
+@media (max-width: 1600px) {
+    body{
+        font-size: 20px;
+    }
+}
+
+.toolBody{
+    background-color: var(--mainTextColor);
+    color: var(--backgroundColor);
+}
