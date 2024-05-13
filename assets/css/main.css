@@ -64,6 +64,7 @@
 }
 
 /* -------------------> MAIN STYLE <------------------- */
+html, body {margin: 0; height: 100%; overflow: hidden}
 body{
     background-color: var(--backgroundColor);
     font-family: "SUPSIFedraDemi", "Helvetica", sans-serif;

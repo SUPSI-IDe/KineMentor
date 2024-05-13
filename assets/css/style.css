@@ -290,6 +290,11 @@ input[type="number"]:invalid {
     .supsiLogo{
         display: none;
     }
+
+    .toolStart p{
+        margin-top: 20px;
+        font-size: 1em;
+    }
     
     .dataInput {
         align-items: flex-start;
@@ -303,8 +308,8 @@ input[type="number"]:invalid {
 
     button{
         padding: 0px 5px;
-        padding-top: 3px;
-        padding-bottom: 3px;
+        padding-top: 5px;
+        padding-bottom: 5px;
         margin-left: 0;
     }
 
@@ -315,14 +320,15 @@ input[type="number"]:invalid {
     }
 
     .checkBlue {
-        width: 5vw;
-        height: 5vw;
+        width: 4vw;
+        height: 4vw;
     }
 
     .checkWhite {
-        width: 5vw;
-        height: 5vw;
-        left: 30%;
+        width: 4vw;
+        height: 4vw;
+        left: 40%;
+        top: 5px;
     }
 
     input{
@@ -332,6 +338,7 @@ input[type="number"]:invalid {
         border-right: 0;
         font-size: 1.8em;
         text-align: left;
+        width: 60vw !important;
     }
 
     input::placeholder{
@@ -344,13 +351,16 @@ input[type="number"]:invalid {
     }
 
     .unit{
+        padding-block-start: 0.2em;
+        padding-block-end: 0.3em;
+        padding-inline-start: 0.5em;
         left: 20%;
     }
 
     .imagesContainer{
         width: 110vw;
-        height: 80vh;
-        right: -85vw;
+        height: 78vh;
+        right: -80vw;
         top: 10vh;
         z-index: 0;
     }
@@ -371,6 +381,7 @@ input[type="number"]:invalid {
         font-size: 1.2em;
         bottom: 2vh;
         padding: 8px 30px;
+        z-index: 99;
     }
 }
 
