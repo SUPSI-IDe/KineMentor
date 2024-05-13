@@ -148,3 +148,15 @@ window.addEventListener("resize", function() {
     document.getElementById('weightInput').style.width = 'calc(' + inputWidth + 'px' + ' + 2vw)';
     document.getElementById('heightInput').style.width = 'calc(' + inputWidth + 'px' + ' + 2vw)';
 });
+
+var infoBtn = document.getElementById("infoBtn");
+infoBtn.addEventListener("click", function() {
+    var infoScreen = document.querySelector(".infoScreen");
+    infoScreen.style.display = "block";
+});
+
+var closeBtn = document.getElementById("closeBtn");
+closeBtn.addEventListener("click", function() {
+    var infoScreen = document.querySelector(".infoScreen");
+    infoScreen.style.display = "none";
+});
