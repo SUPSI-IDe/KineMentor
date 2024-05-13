@@ -65,13 +65,14 @@
 }
 
 /* -------------------> MAIN STYLE <------------------- */
-html, body {margin: 0; height: 100%; overflow: hidden}
-body{
+html, body{
     background-color: var(--backgroundColor);
     font-family: "SUPSIFedraDemi", "Helvetica", sans-serif;
     font-size: 1.3vw;
     color: var(--mainTextColor);
     margin: 0;
+    height: 100%;
+    overflow: hidden
 }
 
 .toolBody{
@@ -85,7 +86,7 @@ body{
     }
 }
 
-@media (max-width: 425px){
+@media (max-width: 500px){
     :root{
         --yMargin: 5px;
         --xMargin: 24px;

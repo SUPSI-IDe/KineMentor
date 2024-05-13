@@ -50,6 +50,8 @@
     z-index: 100;
     background-color: var(--infoBackgroundColor);
     padding: var(--yMargin) var(--xMargin);
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
 }
 
 .infoHeader{
@@ -94,6 +96,7 @@
     display: flex;
     flex-direction: column;
     margin: var(--yMargin) var(--xMargin);
+    height: 90vh;
 }
 
 .toolStart p{
@@ -202,6 +205,7 @@ input::placeholder{
 
 label{
     position: relative;
+    z-index: 10;
 }
 
 .placeholder{
@@ -221,9 +225,10 @@ label{
 }
 
 #submitBtn{
-    position: fixed;
-    bottom: 5vh;
     font-size: 1.8em;
+    height: auto;
+    width: 50vw;
+    margin-top: 10vh;
 }
 
 input::-webkit-outer-spin-button,
@@ -334,7 +339,7 @@ input[type="number"]:invalid {
 
 /* -------------------> MOBILE BREAKPOINT <------------------- */
 
-@media (max-width: 425px){
+@media (max-width: 500px){
     .creditsSupsi{
         display: none;
     }
@@ -433,6 +438,7 @@ input[type="number"]:invalid {
         bottom: 2vh;
         padding: 8px 30px;
         z-index: 99;
+        width: 80vw;
     }
 }
 
