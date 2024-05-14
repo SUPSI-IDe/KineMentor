@@ -228,7 +228,7 @@ label{
     font-size: 1.8em;
     height: auto;
     width: 50vw;
-    margin-top: 10vh;
+    margin-top: 45vh;
 }
 
 input::-webkit-outer-spin-button,
@@ -439,6 +439,7 @@ input[type="number"]:invalid {
         padding: 8px 30px;
         z-index: 99;
         width: 80vw;
+        margin-top: 10vh;
     }
 }
 
