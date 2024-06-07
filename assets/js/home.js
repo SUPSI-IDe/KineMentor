@@ -120,8 +120,8 @@ heightInput.addEventListener("change", function() {
     localStorage.setItem("height", height);
     console.log("Height: " + height);
 
-    var figureHeight = document.getElementById("figure");
-    figureHeight.style.backgroundSize = "100% " + (height/2) + "%";
+    //var figureHeight = document.getElementById("figure");
+    //figureHeight.style.backgroundSize = "100% " + (height/2) + "%";
 });
 
 submitBtn.addEventListener("click", function() {

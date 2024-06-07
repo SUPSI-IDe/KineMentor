@@ -71,8 +71,8 @@ html, body{
     font-size: 1.3vw;
     color: var(--mainTextColor);
     margin: 0;
-    height: 100%;
-    overflow: hidden
+    /*height: 100%;
+    overflow: hidden;*/
 }
 
 .toolBody{

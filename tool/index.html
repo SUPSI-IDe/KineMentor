@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,17 +12,20 @@
     <meta name="description" content="KineMentor is a didactic tool to test different body exercises and see differences in the human body.">
     <meta name="keywords" content="KineMentor, SUPSI, DEASS, DACD, Laboratorio di Ricerca in Riabilitazione, Istituto Design, Marco Barbero, Corrado Cescon, Stefano Vercelli, Max Fonseca, Matteo Subet">
     <meta name="author" content="SUPSI DEASS - Laboratorio di Ricerca in Riabilitazione, SUPSI DACD - Istituto Design">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="toolBody">
-    <div class="infoScreen">
+    <div class="infoScreen" style="display: none;">
         <div class="infoHeader">
             <h2>What is KineMentor?</h2>
             <p id="closeBtn">close</p>
         </div>
-        <p>KineMentor is a didactic tool to test different bosy exercices and see differences in the human body.</p>
+        <p>KineMentor is a didactic tool to test different body exercises and see differences in the human body.</p>
         <br />
         <h2>About</h2>
-        <p>The tool is financiated by <a href="https://www.swissuniversities.ch">swissuniversities</a>.</p>
+        <p>The tool is financed by <a href="https://www.swissuniversities.ch">swissuniversities</a>.</p>
         <br />
         <h2>People</h2>
         <p>SUPSI DEASS - Laboratorio di Ricerca in Riabilitazione</p>
@@ -43,6 +46,37 @@
         <p id="backBtn">← Change data</p>
         <p class="userChoice"><span id="sex">Not set</span>, <span id="weight">00</span> kg, <span id="height">000</span> cm</p>
     </div>
+    <div class="controls">
+        <label>Barbell Weight (kg): <span id="barbellWeight">val</span></label>
+        <button id="increaseBarbellWeight">+</button>
+        <button id="decreaseBarbellWeight">-</button>
+        <br />
+        <label>Barbell Position (cm): <span id="barbellPosition">val</span></label>
+        <button id="increaseBarbellPosition">+</button>
+        <button id="decreaseBarbellPosition">-</button>
+        <br />
+        <label>Hip Range (°): <span id="hipRange"></span></label>
+        <div id="hipRangeSlider"></div>
+        <br />
+        <label>Knee Range (°): <span id="kneeRange"></span></label>
+        <div id="kneeRangeSlider"></div>
+        <br />
+        <label>Ankle Range (°): <span id="ankleRange"></span></label>
+        <div id="ankleRangeSlider"></div>
+        <br />
+        <label>Reps Per Minute: <span id="repsPerMinute">val</span></label>
+        <button id="increaseRepsPerMinute">+</button>
+        <button id="decreaseRepsPerMinute">-</button>
+        <label for="variableSelect">Select Angle:</label>
+        <select id="variableSelect">
+            <option value="Hip Angle">Hip Angle</option>
+            <option value="Knee Angle">Knee Angle</option>
+            <option value="Ankle Angle">Ankle Angle</option>
+        </select>
+    </div>
+    <div id="output"></div>
+    <canvas id="humanFigureCanvas" width="600" height="400"></canvas>
+    <canvas id="chartCanvas" width="600" height="400"></canvas>
 </body>
 <script>
     var sexInfo = document.getElementById("sex");
@@ -73,4 +107,5 @@
         infoScreen.style.display = "none";
     });
 </script>
+<script src="../assets/js/tool.js"></script>
 </html>
