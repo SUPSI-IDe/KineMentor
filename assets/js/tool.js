@@ -629,7 +629,7 @@ function drawHumanFigure(ctx, hipAngle, kneeAngle, ankleAngle, height, barbellWe
     // Normalizza la dimensione del peso
     const minWeight = 1; // Valore minimo per la normalizzazione
     const maxWeight = 20; // Valore massimo per la normalizzazione
-    const normalizedRadius = 12 + 8 * ((barbellWeight - minWeight) / (maxWeight - minWeight)); // Scala il raggio tra 5 e 20
+    const normalizedRadius = 18 + 8 * ((barbellWeight - minWeight) / (maxWeight - minWeight)); // Scala il raggio tra 5 e 20
 
     // Disegna la linea del piede
     ctx.beginPath();
@@ -666,28 +666,28 @@ function drawHumanFigure(ctx, hipAngle, kneeAngle, ankleAngle, height, barbellWe
     // Disegna il braccio superiore
     ctx.beginPath();
     ctx.moveTo(hipX, hipY);
-    ctx.lineTo(hipX + (barbellY/2), hipY + 50);
+    ctx.lineTo(hipX + (barbellY/2) + 20, hipY + 60);
     ctx.strokeStyle = 'black';
     ctx.lineWidth = 10;
     ctx.stroke();
 
     // Disegna il braccio inferiore
     ctx.beginPath();
-    ctx.moveTo(hipX + (barbellY/2), hipY + 50);
-    ctx.lineTo(hipX + barbellY, hipY);
+    ctx.moveTo(hipX + (barbellY/2) + 20, hipY + 60);
+    ctx.lineTo(hipX + barbellY + 20, hipY);
     ctx.strokeStyle = 'black';
     ctx.lineWidth = 10;
     ctx.stroke();
 
     // Disegna il peso
     ctx.beginPath();
-    ctx.arc(hipX + barbellY, hipY, normalizedRadius, 0, 2 * Math.PI);
+    ctx.arc(hipX + barbellY + 20, hipY, normalizedRadius, 0, 2 * Math.PI);
     ctx.fillStyle = 'black';
     ctx.fill();
 
     // Disegna la testa
     ctx.beginPath();
-    ctx.arc(hipX + 5, hipY - 40, 24, 0, 2 * Math.PI);
+    ctx.arc(hipX + 20, hipY - 50, 24, 0, 2 * Math.PI);
     ctx.fillStyle = 'black';
     ctx.fill();
 
@@ -720,6 +720,27 @@ function drawHumanFigure(ctx, hipAngle, kneeAngle, ankleAngle, height, barbellWe
     ctx.font = "15px sans-serif";
     ctx.textAlign = "center";
     ctx.fillText(`${hipAngle.toFixed(0)}°`, kneeX, kneeY + 5);
+
+    // Disegna angolo spalla
+    ctx.beginPath();
+    ctx.arc(hipX, hipY, 20, 0, 2 * Math.PI);
+    ctx.fillStyle = '#0D4BF4';
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(hipX, hipY, 5, 0, 2 * Math.PI);
+    ctx.fillStyle = 'white';
+    ctx.fill();
+
+    // Disegna angolo gomito
+    ctx.beginPath();
+    ctx.arc(hipX + (barbellY/2) + 20, hipY + 60, 20, 0, 2 * Math.PI);
+    ctx.fillStyle = '#0D4BF4';
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(hipX + (barbellY/2) + 20, hipY + 60, 5, 0, 2 * Math.PI);
+    ctx.fillStyle = 'white';
+    ctx.fill();
+
 }
 
 updateUI();

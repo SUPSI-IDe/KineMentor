@@ -240,7 +240,7 @@ button:hover{
 }
 
 .dataCalc{
-    display: block;
+    display: none;
     position: absolute;
     top: 170px;
     right: 280px;
