@@ -199,14 +199,14 @@ button:hover{
 .graphs{
     display: flex;
     padding-left: calc(var(--xMargin)-20px);
-    max-height: 28vh;
+    min-height: 28vh;
 }
 
 .graphs .chartVariable{
     border: 0;
     font-size: .7rem;
     color: var(--backgroundColor);
-    margin: var(--yMargin) 0;
+    margin: var(--yMargin) 0 0 0;
     width: max-content;
 }
 
@@ -223,6 +223,11 @@ button:hover{
     order: 999; /* Place the singleChart at the bottom */
 }
 
+.graphUnit{
+    margin:0 0 0 10px !important;
+    font-size: .5rem !important;
+}
+
 .result{
     width: 40%;
     height: 100%;
@@ -235,7 +240,7 @@ button:hover{
 }
 
 .dataCalc{
-    display: none;
+    display: block;
     position: absolute;
     top: 170px;
     right: 280px;

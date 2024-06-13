@@ -54,9 +54,9 @@
                 <div class="sectionMov">
                     <h3>Squat</h3>
                     <div class="buttons">
-                        <button id="increaseRepsPerMinute">+</button>
-                        <button id="playPause">></button>
                         <button id="decreaseRepsPerMinute">-</button>
+                        <button id="playPause">></button>
+                        <button id="increaseRepsPerMinute">+</button>
                     </div>
                     <label class="repsInfo"><span id="repsPerMinute">val</span> reps per minute</label>
                 </div>
@@ -106,18 +106,21 @@
                             <option value="Knee Angle">Knee Angle</option>
                             <option value="Ankle Angle">Ankle Angle</option>
                         </select>
+                        <label class="graphUnit chartVariable">Expressed in Degrees</label>
                         <canvas class="singleChart" id="chartAngleCanvas" width="300" height="200"></canvas>
                     </div>
                     <div class="chart">
                         <select class="chartVariable" id="variableForceSelect">
-                            <option value="Hip Force">Hip Force</option>
-                            <option value="Knee Force">Knee Force</option>
-                            <option value="Ankle Force">Ankle Force</option>
+                            <option value="Hip Torque">Hip Torque</option>
+                            <option value="Knee Torque">Knee Torque</option>
+                            <option value="Ankle Torque">Ankle Torque</option>
                         </select>
+                        <label class="graphUnit chartVariable">Expressed in Nm</label>
                         <canvas class="singleChart" id="chartForceCanvas" width="300" height="200"></canvas>
                     </div>
                     <div class="chart">
                         <label class="chartVariable">Center of Mass</label>
+                        <label class="graphUnit chartVariable">Expressed in Cm</label>
                         <canvas class="singleChart" id="chartCOMCanvas" width="300" height="200"></canvas>
                     </div>
                 </div>

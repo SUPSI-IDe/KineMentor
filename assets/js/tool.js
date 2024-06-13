@@ -270,14 +270,14 @@ function calculateSquatParameters(sex, height, weight, barbellWeight, barbellPos
         }]
     };
 
-    // Dati per il grafico per il COM
+    // COM graph data
     const comData = {
-        labels: Array.from({ length: 300 }, (_, i) => (i / 10).toFixed(1)), // Crea 300 etichette vuote
+        labels: ['Start', 'End'],
         datasets: [{
-            data: Array(300).fill(null), // Inizializza con 300 punti null
+            data: [{ x: 0, y: comTotalY }, { x: 1, y: comTotalY }], // Static line data
             borderColor: '#0D4BF4',
-            borderWidth: 3, // Spessore della linea
-            tension: 2, // Tensione della linea per curve lisce
+            borderWidth: 3, // Line thickness
+            tension: 0.1, // Line tension for smooth curves
             fill: false,
             pointRadius: 0, // Rimuove i punti dal grafico
             showLine: true // Mostra la linea
@@ -379,8 +379,8 @@ function calculateSquatParameters(sex, height, weight, barbellWeight, barbellPos
                     }
                 },
                 y: {
-                    min: -30000,
-                    max: 30000,
+                    min: -40000,
+                    max: 40000,
                     title: {
                         display: false,
                         text: 'val'
@@ -428,17 +428,19 @@ function calculateSquatParameters(sex, height, weight, barbellWeight, barbellPos
             animation: false,
             scales: {
                 x: {
+                    min: -1,
+                    max: 2,
                     title: {
                         display: true,
-                        text: 'Time',
+                        text: 'Static Line',
                         color: '#0D4BF4'
                     },
                     ticks: {
-                        display: false // Nascondi i numeri sull'asse x
+                        display: false // Hide x-axis numbers
                     },
                     grid: {
-                        display: false, // Nascondi le linee di griglia dell'asse x
-                        drawBorder: true // Mostra solo il bordo esterno
+                        display: false, // Hide x-axis grid lines
+                        drawBorder: true // Show only the outer border
                     },
                     border: {
                         color: '#0D4BF4',
@@ -450,15 +452,15 @@ function calculateSquatParameters(sex, height, weight, barbellWeight, barbellPos
                     max: 20,
                     title: {
                         display: false,
-                        text: 'val'
+                        text: 'COM (cm)'
                     },
                     ticks: {
-                        display: true, // Nascondi i numeri sull'asse y
+                        display: true, // Show y-axis numbers
                         color: '#0D4BF4'
                     },
                     grid: {
-                        display: false, // Nascondi le linee di griglia dell'asse y
-                        drawBorder: true, // Mostra solo il bordo esterno
+                        display: false, // Hide y-axis grid lines
+                        drawBorder: true, // Show only the outer border
                         color: '#0D4BF4'
                     },
                     border: {
@@ -472,7 +474,7 @@ function calculateSquatParameters(sex, height, weight, barbellWeight, barbellPos
                     display: false
                 },
                 tooltip: {
-                    enabled: false // Disabilita l'interazione al mouse over
+                    enabled: false // Disable mouse over interaction
                 }
             }
         }
@@ -560,14 +562,14 @@ function calculateSquatParameters(sex, height, weight, barbellWeight, barbellPos
         const selectedForceVariable = document.getElementById('variableForceSelect').value;
         let selectedForceValue;
         switch (selectedForceVariable) {
-            case 'Hip Angle':
-                selectedForceValue = hipAngle;
+            case 'Hip Torque':
+                selectedForceValue = hipTorque;
                 break;
-            case 'Knee Angle':
-                selectedForceValue = kneeAngle;
+            case 'Knee Torque':
+                selectedForceValue = kneeTorque;
                 break;
-            case 'Ankle Angle':
-                selectedForceValue = ankleAngle;
+            case 'Ankle Torque':
+                selectedForceValue = ankleTorque;
                 break;
         }
 
@@ -578,9 +580,12 @@ function calculateSquatParameters(sex, height, weight, barbellWeight, barbellPos
         chartForce.update();
 
         // Aggiorna il grafico con il nuovo valore per il centro di massa
-        comData.datasets[0].data.push(comTotalY);
-        comData.datasets[0].data.shift(); // Rimuove il primo elemento per mantenere la lunghezza costante
-        chartForce.update();
+        comData.datasets[0].data[0].y = comTotalY;
+        comData.datasets[0].data[1].y = comTotalY;
+
+        console.log(comData.datasets[0].data[0].x);
+        console.log(comData.datasets[0].data[1].x);
+        chartCOM.update();
 
         // Chiama la funzione per disegnare la figura umana
         drawHumanFigure(humanFigureCtx, hipAngle, kneeAngle, ankleAngle, parseInt(localStorage.getItem("height")), barbellWeight, barbellPosition, comTotalY);
@@ -601,10 +606,13 @@ function drawHumanFigure(ctx, hipAngle, kneeAngle, ankleAngle, height, barbellWe
     const startY = ctx.canvas.height - 10; // Inizia leggermente sopra il centro del canvas
 
     // Coordinate iniziali del piede
-    const footX = startX - 60;
+    const footX = startX - 20;
     const footY = startY - 20;
     const personHeight = ctx.canvas.height / 1.3;
-    const barbellY = barbellPosition * 2.5;
+    var barbellY = barbellPosition * 3;
+    const minBarbellY = -5 * 3;
+    const maxBarbellY = 40 * 3;
+    barbellY = Math.min(maxBarbellY, Math.max(minBarbellY, barbellY));
 
     // Calcola le coordinate della caviglia
     const ankleX = footX + (personHeight / 4) * Math.sin((90 - ankleAngle) * Math.PI / 180);
@@ -658,14 +666,14 @@ function drawHumanFigure(ctx, hipAngle, kneeAngle, ankleAngle, height, barbellWe
     // Disegna il braccio superiore
     ctx.beginPath();
     ctx.moveTo(hipX, hipY);
-    ctx.lineTo(hipX + (barbellY/2), hipY + 20);
+    ctx.lineTo(hipX + (barbellY/2), hipY + 50);
     ctx.strokeStyle = 'black';
     ctx.lineWidth = 10;
     ctx.stroke();
 
     // Disegna il braccio inferiore
     ctx.beginPath();
-    ctx.moveTo(hipX + (barbellY/2), hipY + 20);
+    ctx.moveTo(hipX + (barbellY/2), hipY + 50);
     ctx.lineTo(hipX + barbellY, hipY);
     ctx.strokeStyle = 'black';
     ctx.lineWidth = 10;
