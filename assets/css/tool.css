@@ -1,0 +1,243 @@
+.exerciseSection{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100vw;
+}
+
+.options{
+    border-right: 3px solid var(--backgroundColor);
+    width: calc(60% - 3px);
+}
+
+.movement{
+    padding: 0 var(--xMargin);
+    border-bottom: 2px solid var(--backgroundColor);
+    padding-bottom: 20px;
+}
+
+.movement p{
+    font-size: 0.8rem;
+    margin: var(--yMargin) 0;
+}
+
+.sectionMov{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.movement h3{
+    font-size: 50px;
+    font-weight: lighter;
+    text-transform: uppercase;
+    margin: 0;
+    width: 50%;
+}
+
+.buttons{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+button{
+    width: 5vh;
+    height: 5vh;
+    margin: 0 10px;
+    padding: 0;
+    border: 3px solid var(--backgroundColor);
+    background-color: white;
+    color: var(--backgroundColor);
+    font-weight: bold;
+}
+
+button:hover{
+    background-color: var(--backgroundColor);
+    color: white;
+}
+
+.repsInfo{
+    width: 50%;
+    margin-left: auto;
+    margin-right: 0;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.wePos{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: var(--xMargin);
+    border-bottom: 2px solid var(--backgroundColor);
+    height: 6.5vh;
+}
+
+.wePos label{
+    font-size: 1.2rem;
+    font-weight: bold;
+    width: 50%;
+}
+
+.wePos .btns{
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    font-size: 1.2rem;
+    line-height: 10px;
+    padding-right: var(--xMargin);
+}
+
+.btns p{
+    font-size: 2rem;
+}
+
+.btns button{
+    margin: auto 0;
+}
+
+.angleRange{
+    display: flex;
+    justify-content: space-between;
+    padding-left: var(--xMargin);
+    border-bottom: 2px solid var(--backgroundColor);
+    height: 7vh;
+}
+
+.angleRange .textAngle {
+    display: flex;
+    font-size: 1.2rem;
+    font-weight: bold;
+    width: 30%;   
+    border-right: 2px solid var(--backgroundColor);
+}
+
+.textAngle label{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.angleRange .slider{
+    width: 45%;
+    margin-right: 20px;
+    margin-top: auto;
+    margin-bottom: 5px;
+    background-color: white;
+    border-radius: 0px;
+    border: 0px;
+    box-shadow: none;
+    border: 0;
+    margin-left: auto;
+}
+
+.slider .noUi-connect {
+    background: #0d4bf48d;
+}
+
+.slider .noUi-marker {
+    background: var(--backgroundColor);
+}
+
+.slider .noUi-handle{
+    width: 4px !important;
+    height: 25px !important;
+    right: -2px !important;
+    top: -7px !important;
+    border: 2px solid var(--backgroundColor);
+    background-color: var(--backgroundColor);
+    box-shadow: none;
+}
+
+.slider .noUi-handle:after{
+    display: none !important;
+}
+
+.slider .noUi-handle:before{
+    display: none !important;
+}
+
+.slider .noUi-tooltip{
+    border-radius: 10px;
+    border: 0px;
+    background-color: var(--backgroundColor);
+    font-size: 0.8rem;
+    color: white;
+    bottom: 100% !important;
+}
+
+.slider .noUi-pips.noUi-pips-horizontal{
+    rotate: 180deg;
+    top: -52px;
+    color: var(--backgroundColor);
+}
+
+.slider .noUi-value.noUi-value-horizontal.noUi-value-large{
+    display: none;
+}
+
+.infoBtn{
+    display: block;
+    background-color: var(--backgroundColor);
+    width: 30px;
+    height: 100%;
+    border-radius: 0px;
+    margin: 0;
+    padding: 5px;
+    font-size: 0.8rem;
+    color: white;
+    transform: rotate(-180deg);
+    writing-mode: vertical-rl;
+}
+
+.infoBtn:hover{
+    background-color: var(--mainTextColor);
+    color: var(--backgroundColor);
+}
+
+.graphs{
+    display: flex;
+    padding-left: calc(var(--xMargin)-20px);
+    max-height: 28vh;
+}
+
+.graphs .chartVariable{
+    border: 0;
+    font-size: .7rem;
+    color: var(--backgroundColor);
+    margin: var(--yMargin) 0;
+    width: max-content;
+}
+
+.graphs .chart{
+    display: grid;
+    margin-left: 20px;
+}
+
+.graphs .singleChart{
+    height: 20vh !important;
+    width: auto !important;
+    margin-top: auto;
+    margin-bottom: 1vh;
+    order: 999; /* Place the singleChart at the bottom */
+}
+
+.result{
+    width: 40%;
+    height: 100%;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.result #humanFigureCanvas{
+    width: 99%;
+}
+
+.dataCalc{
+    display: none;
+    position: absolute;
+    top: 170px;
+    right: 280px;
+    opacity: 30%;
+}

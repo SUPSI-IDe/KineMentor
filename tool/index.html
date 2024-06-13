@@ -6,6 +6,7 @@
     <title>KineMentor - A Digital Biomechanics Simulator developed by SUPSI</title>
     <link rel="stylesheet" type="text/css" href="../assets/css/main.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/tool.css">
     <link rel="icon" type="image/x-icon" href="../assets/images/icons/icon.ico">
     <link rel="manifest" href="../manifest.json">
     <meta name="theme-color" content="#0D4BF4">
@@ -46,37 +47,87 @@
         <p id="backBtn">← Change data</p>
         <p class="userChoice"><span id="sex">Not set</span>, <span id="weight">00</span> kg, <span id="height">000</span> cm</p>
     </div>
-    <div class="controls">
-        <label>Barbell Weight (kg): <span id="barbellWeight">val</span></label>
-        <button id="increaseBarbellWeight">+</button>
-        <button id="decreaseBarbellWeight">-</button>
-        <br />
-        <label>Barbell Position (cm): <span id="barbellPosition">val</span></label>
-        <button id="increaseBarbellPosition">+</button>
-        <button id="decreaseBarbellPosition">-</button>
-        <br />
-        <label>Hip Range (°): <span id="hipRange"></span></label>
-        <div id="hipRangeSlider"></div>
-        <br />
-        <label>Knee Range (°): <span id="kneeRange"></span></label>
-        <div id="kneeRangeSlider"></div>
-        <br />
-        <label>Ankle Range (°): <span id="ankleRange"></span></label>
-        <div id="ankleRangeSlider"></div>
-        <br />
-        <label>Reps Per Minute: <span id="repsPerMinute">val</span></label>
-        <button id="increaseRepsPerMinute">+</button>
-        <button id="decreaseRepsPerMinute">-</button>
-        <label for="variableSelect">Select Angle:</label>
-        <select id="variableSelect">
-            <option value="Hip Angle">Hip Angle</option>
-            <option value="Knee Angle">Knee Angle</option>
-            <option value="Ankle Angle">Ankle Angle</option>
-        </select>
+    <div class="exerciseSection">
+        <div class="options">
+            <div class="movement">
+                <p>Movement</p>
+                <div class="sectionMov">
+                    <h3>Squat</h3>
+                    <div class="buttons">
+                        <button id="increaseRepsPerMinute">+</button>
+                        <button id="playPause">></button>
+                        <button id="decreaseRepsPerMinute">-</button>
+                    </div>
+                    <label class="repsInfo"><span id="repsPerMinute">val</span> reps per minute</label>
+                </div>
+            </div>
+            <div class="controls">
+                <div class="wePos">
+                    <label>Barbell Weight</label>
+                    <div class="btns">
+                        <button id="decreaseBarbellWeight">-</button>
+                        <p><span id="barbellWeight">val</span> kg</p>
+                        <button id="increaseBarbellWeight">+</button>
+                    </div>
+                </div>
+                <div class ="wePos">
+                    <label>Barbell Position</label>
+                    <div class="btns">
+                        <button id="decreaseBarbellPosition">-</button>
+                        <p><span id="barbellPosition">val</span> cm</p>
+                        <button id="increaseBarbellPosition">+</button>
+                    </div>
+                </div>
+                <div class="angleRange">
+                    <div class="textAngle">
+                        <label>Hip Range (°): <span id="hipRange"></span></label>
+                    </div>
+                    <div class ="slider" id="hipRangeSlider"></div>
+                    <button class="infoBtn">info</button>
+                </div>
+                <div class="angleRange">
+                    <div class="textAngle">
+                        <label>Knee Range (°): <span id="kneeRange"></span></label>
+                    </div>
+                    <div class ="slider" id="kneeRangeSlider"></div>
+                    <button class="infoBtn">info</button>
+                </div>
+                <div class="angleRange">
+                    <div class="textAngle">
+                        <label>Ankle Range (°): <span id="ankleRange"></span></label>
+                    </div>
+                    <div class ="slider" id="ankleRangeSlider"></div>
+                    <button class="infoBtn">info</button>
+                </div>
+                <div class="graphs">
+                    <div class="chart">
+                        <select class="chartVariable" id="variableAngleSelect">
+                            <option value="Hip Angle">Hip Angle</option>
+                            <option value="Knee Angle">Knee Angle</option>
+                            <option value="Ankle Angle">Ankle Angle</option>
+                        </select>
+                        <canvas class="singleChart" id="chartAngleCanvas" width="300" height="200"></canvas>
+                    </div>
+                    <div class="chart">
+                        <select class="chartVariable" id="variableForceSelect">
+                            <option value="Hip Force">Hip Force</option>
+                            <option value="Knee Force">Knee Force</option>
+                            <option value="Ankle Force">Ankle Force</option>
+                        </select>
+                        <canvas class="singleChart" id="chartForceCanvas" width="300" height="200"></canvas>
+                    </div>
+                    <div class="chart">
+                        <label class="chartVariable">Center of Mass</label>
+                        <canvas class="singleChart" id="chartCOMCanvas" width="300" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="result">
+            <canvas id="humanFigureCanvas" height="500" width="500"></canvas>
+            <div class="dataCalc" id="output"></div>
+        </div>
     </div>
-    <div id="output"></div>
-    <canvas id="humanFigureCanvas" width="600" height="400"></canvas>
-    <canvas id="chartCanvas" width="600" height="400"></canvas>
 </body>
 <script>
     var sexInfo = document.getElementById("sex");
