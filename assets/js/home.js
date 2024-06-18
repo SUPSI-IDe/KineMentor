@@ -135,7 +135,7 @@ submitBtn.addEventListener("click", function() {
         console.log("Sex: " + localStorage.getItem("sex"));
         console.log("Weight: " + localStorage.getItem("weight"));
         console.log("Height: " + localStorage.getItem("height"));
-        window.location.href = "tool/index.html";
+        window.location.href = "tool/";
     }
 });
 
