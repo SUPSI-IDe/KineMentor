@@ -76,6 +76,8 @@ html, body{
 }
 
 .toolBody{
+    display: flex;
+    flex-direction: column;
     background-color: var(--mainTextColor);
     color: var(--backgroundColor);
 }

@@ -19,6 +19,13 @@ var backBtn = document.getElementById("backBtn");
 var infoBtn = document.getElementById("infoBtn");
 var closeBtn = document.getElementById("closeBtn");
 
+var hipInfo = document.getElementById("infoRange1Btn");
+var kneeInfo = document.getElementById("infoRange2Btn");
+var ankleInfo = document.getElementById("infoRange3Btn");
+var closeInfoRange1 = document.getElementById("closeInfoRangeBtn1");
+var closeInfoRange2 = document.getElementById("closeInfoRangeBtn2");
+var closeInfoRange3 = document.getElementById("closeInfoRangeBtn3");
+
 // Event listeners for the buttons on the header
 backBtn.addEventListener("click", function() {
     localStorage.setItem("sex", "none");
@@ -79,6 +86,49 @@ document.getElementById("increaseRepsPerMinute").addEventListener("click", funct
 document.getElementById("decreaseRepsPerMinute").addEventListener("click", function() {
     if (repsPerMinute > 1) repsPerMinute--;
     updateAndRecalculate();
+});
+
+// Event listeners for the info buttons on range sliders
+hipInfo.addEventListener("click", function() {
+    var infoScreen = document.getElementById("infoRange1");
+    infoScreen.style.visibility = "visible";
+    var blurScreen = document.getElementsByClassName("blurBackgroundInfo");
+    blurScreen[0].style.visibility = "visible";
+});
+
+kneeInfo.addEventListener("click", function() {
+    var infoScreen = document.getElementById("infoRange2");
+    infoScreen.style.visibility = "visible";
+    var blurScreen = document.getElementsByClassName("blurBackgroundInfo");
+    blurScreen[0].style.visibility = "visible";
+});
+
+ankleInfo.addEventListener("click", function() {
+    var infoScreen = document.getElementById("infoRange3");
+    infoScreen.style.visibility = "visible";
+    var blurScreen = document.getElementsByClassName("blurBackgroundInfo");
+    blurScreen[0].style.visibility = "visible";
+});
+
+closeInfoRange1.addEventListener("click", function() {
+    var infoScreen = document.getElementById("infoRange1");
+    var blurScreen = document.getElementsByClassName("blurBackgroundInfo");
+    blurScreen[0].style.visibility = "hidden";
+    infoScreen.style.visibility = "hidden";
+});
+
+closeInfoRange2.addEventListener("click", function() {
+    var infoScreen = document.getElementById("infoRange2");
+    var blurScreen = document.getElementsByClassName("blurBackgroundInfo");
+    blurScreen[0].style.visibility = "hidden";
+    infoScreen.style.visibility = "hidden";
+});
+
+closeInfoRange3.addEventListener("click", function() {
+    var infoScreen = document.getElementById("infoRange3");
+    var blurScreen = document.getElementsByClassName("blurBackgroundInfo");
+    blurScreen[0].style.visibility = "hidden";
+    infoScreen.style.visibility = "hidden";
 });
 
 // Event listener for the variable select dropdown for the chart
@@ -583,8 +633,6 @@ function calculateSquatParameters(sex, height, weight, barbellWeight, barbellPos
         comData.datasets[0].data[0].y = comTotalY;
         comData.datasets[0].data[1].y = comTotalY;
 
-        console.log(comData.datasets[0].data[0].x);
-        console.log(comData.datasets[0].data[1].x);
         chartCOM.update();
 
         // Chiama la funzione per disegnare la figura umana
@@ -687,57 +735,58 @@ function drawHumanFigure(ctx, hipAngle, kneeAngle, ankleAngle, height, barbellWe
 
     // Disegna la testa
     ctx.beginPath();
-    ctx.arc(hipX + 20, hipY - 50, 24, 0, 2 * Math.PI);
+    window.innerWidth  < 800 ? ctx.arc(hipX + 30, hipY - 60, 30, 0, 2 * Math.PI) : ctx.arc(hipX + 20, hipY - 50, 24, 0, 2 * Math.PI);
     ctx.fillStyle = 'black';
     ctx.fill();
 
     // Disegna angolo caviglia
     ctx.beginPath();
-    ctx.arc(footX, footY, 20, 0, 2 * Math.PI);
+    window.innerWidth  < 800 ? ctx.arc(footX, footY, 30, 0, 2 * Math.PI) : ctx.arc(footX, footY, 20, 0, 2 * Math.PI);
     ctx.fillStyle = '#0D4BF4';
     ctx.fill();
     ctx.fillStyle = 'white';
-    ctx.font = "15px sans-serif";
+    window.innerWidth  < 800 ? ctx.font = "25px sans-serif" : ctx.font = "15px sans-serif";
     ctx.textAlign = "center";
     ctx.fillText(`${ankleAngle.toFixed(0)}°`, footX, footY + 5);
 
     // Disegna angolo ginocchio
     ctx.beginPath();
-    ctx.arc(ankleX, ankleY, 20, 0, 2 * Math.PI);
+    window.innerWidth  < 800 ? ctx.arc(ankleX, ankleY, 30, 0, 2 * Math.PI) : ctx.arc(ankleX, ankleY, 20, 0, 2 * Math.PI);
     ctx.fillStyle = '#0D4BF4';
     ctx.fill();
     ctx.fillStyle = 'white';
-    ctx.font = "15px sans-serif";
+    window.innerWidth  < 800 ? ctx.font = "25px sans-serif" : ctx.font = "15px sans-serif";
     ctx.textAlign = "center";
     ctx.fillText(`${kneeAngle.toFixed(0)}°`, ankleX, ankleY + 5);
 
     // Disegna angolo ginocchio
     ctx.beginPath();
-    ctx.arc(kneeX, kneeY, 20, 0, 2 * Math.PI);
+    window.innerWidth  < 800 ? ctx.arc(kneeX, kneeY, 30, 0, 2 * Math.PI) : ctx.arc(kneeX, kneeY, 20, 0, 2 * Math.PI);
     ctx.fillStyle = '#0D4BF4';
     ctx.fill();
     ctx.fillStyle = 'white';
-    ctx.font = "15px sans-serif";
+    window.innerWidth  < 800 ? ctx.font = "25px sans-serif" : ctx.font = "15px sans-serif";
     ctx.textAlign = "center";
     ctx.fillText(`${hipAngle.toFixed(0)}°`, kneeX, kneeY + 5);
 
     // Disegna angolo spalla
     ctx.beginPath();
-    ctx.arc(hipX, hipY, 20, 0, 2 * Math.PI);
+    window.innerWidth  < 800 ? ctx.arc(hipX, hipY, 30, 0, 2 * Math.PI) : ctx.arc(hipX, hipY, 20, 0, 2 * Math.PI);
     ctx.fillStyle = '#0D4BF4';
     ctx.fill();
     ctx.beginPath();
-    ctx.arc(hipX, hipY, 5, 0, 2 * Math.PI);
+    window.innerWidth  < 800 ? ctx.arc(hipX, hipY, 10, 0, 2 * Math.PI) : ctx.arc(hipX, hipY, 5, 0, 2 * Math.PI);
     ctx.fillStyle = 'white';
     ctx.fill();
 
     // Disegna angolo gomito
     ctx.beginPath();
     ctx.arc(hipX + (barbellY/2) + 20, hipY + 60, 20, 0, 2 * Math.PI);
+    window.innerWidth  < 800 ? ctx.arc(hipX + (barbellY/2) + 20, hipY + 60, 30, 0, 2 * Math.PI) : ctx.arc(hipX + (barbellY/2) + 20, hipY + 60, 20, 0, 2 * Math.PI);
     ctx.fillStyle = '#0D4BF4';
     ctx.fill();
     ctx.beginPath();
-    ctx.arc(hipX + (barbellY/2) + 20, hipY + 60, 5, 0, 2 * Math.PI);
+    window.innerWidth  < 800 ? ctx.arc(hipX + (barbellY/2) + 20, hipY + 60, 10, 0, 2 * Math.PI) : ctx.arc(hipX + (barbellY/2) + 20, hipY + 60, 5, 0, 2 * Math.PI);
     ctx.fillStyle = 'white';
     ctx.fill();
 

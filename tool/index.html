@@ -47,6 +47,28 @@
         <p id="backBtn">← Change data</p>
         <p class="userChoice"><span id="sex">Not set</span>, <span id="weight">00</span> kg, <span id="height">000</span> cm</p>
     </div>
+    <div class="blurBackgroundInfo"></div>
+    <div class="infoRange" id="infoRange1">
+        <div class="headerRange">
+            <h4>What is Hip Range?</h4>
+            <p id="closeInfoRangeBtn1">close</p>
+        </div>
+        <p>The hip range is the angle between the thigh and the torso. It is important to keep this angle constant during the squat exercise to avoid injuries.</p>
+    </div>
+    <div class="infoRange" id="infoRange2">
+        <div class="headerRange">
+            <h4>What is Knee Range?</h4>
+            <p id="closeInfoRangeBtn2">close</p>
+        </div>
+        <p>The Knee Range is the angle between the thigh and the leg. It is important to keep this angle constant during the squat exercise to avoid injuries.</p>
+    </div>
+    <div class="infoRange" id="infoRange3">
+        <div class="headerRange">
+            <h4>What is Ankle Range?</h4>
+            <p id="closeInfoRangeBtn3">close</p>
+        </div>
+        <p>The Ankle Range is the angle between the foot and the leg. It is important to keep this angle constant during the squat exercise to avoid injuries.</p>
+    </div>
     <div class="exerciseSection">
         <div class="options">
             <div class="movement">
@@ -83,21 +105,21 @@
                         <label>Hip Range (°): <span id="hipRange"></span></label>
                     </div>
                     <div class ="slider" id="hipRangeSlider"></div>
-                    <button class="infoBtn">info</button>
+                    <button class="infoBtn" id="infoRange1Btn">info</button>
                 </div>
                 <div class="angleRange">
                     <div class="textAngle">
                         <label>Knee Range (°): <span id="kneeRange"></span></label>
                     </div>
                     <div class ="slider" id="kneeRangeSlider"></div>
-                    <button class="infoBtn">info</button>
+                    <button class="infoBtn" id="infoRange2Btn">info</button>
                 </div>
                 <div class="angleRange">
                     <div class="textAngle">
                         <label>Ankle Range (°): <span id="ankleRange"></span></label>
                     </div>
                     <div class ="slider" id="ankleRangeSlider"></div>
-                    <button class="infoBtn">info</button>
+                    <button class="infoBtn" id="infoRange3Btn">info</button>
                 </div>
                 <div class="graphs">
                     <div class="chart">
@@ -119,7 +141,7 @@
                         <canvas class="singleChart" id="chartForceCanvas" width="300" height="200"></canvas>
                     </div>
                     <div class="chart">
-                        <label class="chartVariable">Center of Mass</label>
+                        <label class="chartVariable" style="padding-top: .7vh;">Center of Mass</label>
                         <label class="graphUnit chartVariable">Expressed in Cm</label>
                         <canvas class="singleChart" id="chartCOMCanvas" width="300" height="200"></canvas>
                     </div>
