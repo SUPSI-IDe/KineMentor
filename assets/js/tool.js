@@ -520,7 +520,7 @@ function calculateSquatParameters(sex, height, weight, barbellWeight, barbellPos
                     max: 2,
                     title: {
                         display: true,
-                        text: 'Static Line',
+                        text: ' ',
                         color: '#0D4BF4'
                     },
                     ticks: {
