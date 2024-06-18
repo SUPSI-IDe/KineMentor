@@ -1,5 +1,4 @@
 // Retrieve elements from the HTML
-
 var sexInfo = document.getElementById("sex");
 var weightInfo = document.getElementById("weight");
 var heightInfo = document.getElementById("height");
@@ -25,6 +24,12 @@ var ankleInfo = document.getElementById("infoRange3Btn");
 var closeInfoRange1 = document.getElementById("closeInfoRangeBtn1");
 var closeInfoRange2 = document.getElementById("closeInfoRangeBtn2");
 var closeInfoRange3 = document.getElementById("closeInfoRangeBtn3");
+
+var playPauseBtn = document.getElementById("playPause");
+
+// State variables
+var isPlaying = true;
+var startTime = null;
 
 // Event listeners for the buttons on the header
 backBtn.addEventListener("click", function() {
@@ -60,31 +65,37 @@ var chartCOM;
 // Event listeners for the buttons to increase or decrease the values
 document.getElementById("increaseBarbellWeight").addEventListener("click", function() {
     if (barbellWeight < 20) barbellWeight++;
+    pause(); // Stop animation when updating values
     updateAndRecalculate();
 });
 
 document.getElementById("decreaseBarbellWeight").addEventListener("click", function() {
     if (barbellWeight > 1) barbellWeight--;
+    pause(); // Stop animation when updating values
     updateAndRecalculate();
 });
 
 document.getElementById("increaseBarbellPosition").addEventListener("click", function() {
     if (barbellPosition < 40) barbellPosition += 5;
+    pause(); // Stop animation when updating values
     updateAndRecalculate();
 });
 
 document.getElementById("decreaseBarbellPosition").addEventListener("click", function() {
     if (barbellPosition > -5) barbellPosition -= 5;
+    pause(); // Stop animation when updating values
     updateAndRecalculate();
 });
 
 document.getElementById("increaseRepsPerMinute").addEventListener("click", function() {
     if (repsPerMinute < 30) repsPerMinute++;
+    pause(); // Stop animation when updating values
     updateAndRecalculate();
 });
 
 document.getElementById("decreaseRepsPerMinute").addEventListener("click", function() {
     if (repsPerMinute > 1) repsPerMinute--;
+    pause(); // Stop animation when updating values
     updateAndRecalculate();
 });
 
@@ -141,6 +152,11 @@ document.getElementById('variableForceSelect').addEventListener('change', functi
     updateAndRecalculate();
 });
 
+// Event listener for play/pause button
+playPauseBtn.addEventListener("click", function() {
+    togglePlayPause();
+});
+
 // Create sliders for the hip, knee and ankle angles
 noUiSlider.create(hipRangeSlider, {
     start: hipRange,
@@ -165,6 +181,7 @@ noUiSlider.create(hipRangeSlider, {
     }
 }).on('update', function(values, handle) {
     hipRange = values.map(v => Math.round(v));
+    pause(); // Stop animation when updating values
     updateAndRecalculate();
 });
 
@@ -191,6 +208,7 @@ noUiSlider.create(kneeRangeSlider, {
     }
 }).on('update', function(values, handle) {
     kneeRange = values.map(v => Math.round(v));
+    pause(); // Stop animation when updating values
     updateAndRecalculate();
 });
 
@@ -217,6 +235,7 @@ noUiSlider.create(ankleRangeSlider, {
     }
 }).on('update', function(values, handle) {
     ankleRange = values.map(v => Math.round(v));
+    pause(); // Stop animation when updating values
     updateAndRecalculate();
 });
 
@@ -227,20 +246,39 @@ function updateUI() {
     document.getElementById("repsPerMinute").textContent = repsPerMinute;
 }
 
+// Function to toggle play/pause state
+function togglePlayPause() {
+    isPlaying = !isPlaying;
+    if (isPlaying) {
+        playPauseBtn.textContent = "||"; // Change button text to pause symbol
+        startTime = performance.now(); // Set the start time to now
+        updateAndRecalculate();
+    } else {
+        playPauseBtn.textContent = ">"; // Change button text to play symbol
+    }
+}
+
+function pause() {
+    isPlaying = false;
+    playPauseBtn.textContent = ">"; // Change button text to play symbol
+}
+
 // Function to update the UI and recalculate the squat parameters
 function updateAndRecalculate() {
     updateUI();
-    calculateSquatParameters(
-        localStorage.getItem("sex"),
-        parseInt(localStorage.getItem("height")),
-        parseInt(localStorage.getItem("weight")),
-        barbellWeight,
-        barbellPosition,
-        hipRange,
-        kneeRange,
-        ankleRange,
-        repsPerMinute
-    );
+    if (isPlaying) {
+        calculateSquatParameters(
+            localStorage.getItem("sex"),
+            parseInt(localStorage.getItem("height")),
+            parseInt(localStorage.getItem("weight")),
+            barbellWeight,
+            barbellPosition,
+            hipRange,
+            kneeRange,
+            ankleRange,
+            repsPerMinute
+        );
+    }
 }
 
 // Function to calculate the squat parameters
@@ -290,7 +328,7 @@ function calculateSquatParameters(sex, height, weight, barbellWeight, barbellPos
 
     // Tempo di una ripetizione
     const repTime = 60 / repsPerMinute; // Tempo di una ripetizione in secondi
-    let startTime = null;
+    let initialTimestamp = startTime;
 
     // Dati per il grafico per gli angoli
     const angleData = {
@@ -548,8 +586,10 @@ function calculateSquatParameters(sex, height, weight, barbellWeight, barbellPos
 
     // Funzione di aggiornamento
     function updateParameters(timestamp) {
-        if (!startTime) startTime = timestamp;
-        const elapsedTime = (timestamp - startTime) / 1000; // Tempo trascorso in secondi
+        if (!isPlaying) return; // Stop the animation if not playing
+
+        if (!initialTimestamp) initialTimestamp = timestamp;
+        const elapsedTime = (timestamp - initialTimestamp) / 1000; // Tempo trascorso in secondi
 
         // Calcolo del fattore di interpolazione basato sul tempo trascorso
         const cycleTime = elapsedTime % repTime; // Tempo all'interno di una ripetizione
@@ -786,6 +826,7 @@ function drawHumanFigure(ctx, hipAngle, kneeAngle, ankleAngle, height, barbellWe
     ctx.fillStyle = '#0D4BF4';
     ctx.fill();
     ctx.beginPath();
+    console.log(window.innerWidth);
     window.innerWidth  < 800 ? ctx.arc(hipX + (barbellY/2) + 20, hipY + 60, 10, 0, 2 * Math.PI) : ctx.arc(hipX + (barbellY/2) + 20, hipY + 60, 5, 0, 2 * Math.PI);
     ctx.fillStyle = 'white';
     ctx.fill();
@@ -794,3 +835,4 @@ function drawHumanFigure(ctx, hipAngle, kneeAngle, ankleAngle, height, barbellWe
 
 updateUI();
 updateAndRecalculate();
+togglePlayPause(); // Start the animation by default
