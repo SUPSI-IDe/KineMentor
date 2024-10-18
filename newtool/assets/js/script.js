@@ -113,6 +113,10 @@ aggiornamentoFunzioniSchermo();
     document.getElementById("barbellWeight").textContent = pesoManubrio;
     document.getElementById("barbellPosition").textContent = posizioneManubrio;
     document.getElementById("repsPerMinute").textContent = ripetizioniSquat;
+    // Recupero ID slider per la regolazione dei vincoli articolari
+    var hipRangeSlider = document.getElementById('hipRangeSlider');
+    var kneeRangeSlider = document.getElementById('kneeRangeSlider');
+    var ankleRangeSlider = document.getElementById('ankleRangeSlider');
 
     // Aumento o diminuzione peso manubrio
         document.getElementById("increaseBarbellWeight").addEventListener("click", function() {
@@ -152,8 +156,89 @@ aggiornamentoFunzioniSchermo();
         document.getElementById("decreaseRepsPerMinute").addEventListener("click", function() {
             if (ripetizioniSquat > 5) ripetizioniSquat-=5;
             document.getElementById("repsPerMinute").textContent = ripetizioniSquat;
-            clearInterval(animazione);
-            startInterval();
+            //clearInterval(animazione);
+            //startInterval();
+        });
+
+    // Slider per la regolazione dei vincoli dell'anca
+        noUiSlider.create(hipRangeSlider, {
+            start: [minAnca, maxAnca],
+            connect: true,
+            range: {
+                'min': minAnca,
+                'max': maxAnca
+            },
+            step: 1,
+            tooltips: [true, true],
+            format: {
+                to: function (value) {
+                    return Math.round(value);
+                },
+                from: function (value) {
+                    return Number(value);
+                }
+            },
+            pips: {
+                mode: 'values',
+                values: [30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180]
+            }
+        }).on('update', function(values) {
+            minAnca = values[0];
+            maxAnca = values[1];
+        });
+
+    // Slider per la regolazione dei vincoli del ginocchio
+        noUiSlider.create(kneeRangeSlider, {
+            start: [minGinocchio, maxGinocchio],
+            connect: true,
+            range: {
+                'min': minGinocchio,
+                'max': maxGinocchio
+            },
+            step: 1,
+            tooltips: [true, true],
+            format: {
+                to: function (value) {
+                    return Math.round(value);
+                },
+                from: function (value) {
+                    return Number(value);
+                }
+            },
+            pips: {
+                mode: 'values',
+                values: [60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180]
+            }
+        }).on('update', function(values) {
+            minGinocchio = values[0];
+            maxGinocchio = values[1];
+        });
+
+    // Slider per la regolazione dei vincoli della caviglia
+        noUiSlider.create(ankleRangeSlider, {
+            start: [minCaviglia, maxCaviglia],
+            connect: true,
+            range: {
+                'min': minCaviglia,
+                'max': maxCaviglia
+            },
+            step: 1,
+            tooltips: [true, true],
+            format: {
+                to: function (value) {
+                    return Math.round(value);
+                },
+                from: function (value) {
+                    return Number(value);
+                }
+            },
+            pips: {
+                mode: 'values',
+                values: [66, 70, 80, 90]
+            }
+        }).on('update', function(values) {
+            minCaviglia = values[0];
+            maxCaviglia = values[1];
         });
 
 // ---------------------------- END AGGIORANAMENTO INFO DA USER INTERFACE ----------------------------
