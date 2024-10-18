@@ -274,11 +274,11 @@ button:hover{
 }
 
 .dataCalc{
-    display: none;
     position: absolute;
     top: 170px;
-    right: 280px;
-    opacity: 30%;
+    right: 310px;
+    opacity: 80%;
+    color: black;
 }
 
 /* -------------------> START MOBILE BREAKPOINT <------------------- */

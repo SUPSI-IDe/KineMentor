@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KineMentor - A Digital Biomechanics Simulator developed by SUPSI</title>
+    <link rel="stylesheet" type="text/css" href="../assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/tool.css">
+    <link rel="icon" type="image/x-icon" href="../assets/images/icons/icon.ico">
+    <!-- <link rel="manifest" href="../manifest.json"> -->
+    <meta name="theme-color" content="#0D4BF4">
+    <meta name="description" content="KineMentor is a didactic tool to test different body exercises and see differences in the human body.">
+    <meta name="keywords" content="KineMentor, SUPSI, DEASS, DACD, Laboratorio di Ricerca in Riabilitazione, Istituto Design, Marco Barbero, Corrado Cescon, Stefano Vercelli, Max Fonseca, Matteo Subet">
+    <meta name="author" content="SUPSI DEASS - Laboratorio di Ricerca in Riabilitazione, SUPSI DACD - Istituto Design">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="toolBody">
+    <div class="infoScreen" style="display: none;">
+        <div class="infoHeader">
+            <h2>What is KineMentor?</h2>
+            <p id="closeBtn">close</p>
+        </div>
+        <p>KineMentor is a didactic tool to test different body exercises and see differences in the human body.</p>
+        <br />
+        <h2>About</h2>
+        <p>The tool is financed by <a href="https://www.swissuniversities.ch">swissuniversities</a>.</p>
+        <br />
+        <h2>People</h2>
+        <p>SUPSI DEASS - Laboratory of Research and Rehabilitation</p>
+        <p style="margin-left: 30px;">Marco Barbero - Project Responsible</p>
+        <p style="margin-left: 30px;">Corrado Cescon - Project Collaborator</p>
+        <p style="margin-left: 30px;">Stefano Vercelli - Project Collaborator</p>
+        <p>SUPSI DACD - Institute of Design</p>
+        <p style="margin-left: 30px;">Max Fonseca - Graphic Designer</p>
+        <p style="margin-left: 30px;">Matteo Subet - Interaction Designer and Developer</p>
+    </div>
+    <div class="header">
+        <h1><span style="font-family: SUPSIFedraBold;">Kine</span>Mentor</h1>
+        <p class="creditsSupsi">A didactic tool by:</p>
+        <img src="../assets/images/logo-SUPSI-it_bianco.png" alt="SUPSI-White-Logo" class="supsiLogo">
+        <p class="infoButton" id="infoBtn">info</p>
+    </div>
+    <div class="patientData">
+        <p id="backBtn">← Change data</p>
+        <p class="userChoice"><span id="sex">Not set</span>, <span id="weight">00</span> kg, <span id="height">000</span> cm</p>
+    </div>
+    <div class="blurBackgroundInfo"></div>
+    <div class="infoRange" id="infoRange1">
+        <div class="headerRange">
+            <h4>What is Hip Range?</h4>
+            <p id="closeInfoRangeBtn1">close</p>
+        </div>
+        <p>The hip range is the angle between the thigh and the torso. It is important to keep this angle constant during the squat exercise to avoid injuries.</p>
+    </div>
+    <div class="infoRange" id="infoRange2">
+        <div class="headerRange">
+            <h4>What is Knee Range?</h4>
+            <p id="closeInfoRangeBtn2">close</p>
+        </div>
+        <p>The Knee Range is the angle between the thigh and the leg. It is important to keep this angle constant during the squat exercise to avoid injuries.</p>
+    </div>
+    <div class="infoRange" id="infoRange3">
+        <div class="headerRange">
+            <h4>What is Ankle Range?</h4>
+            <p id="closeInfoRangeBtn3">close</p>
+        </div>
+        <p>The Ankle Range is the angle between the foot and the leg. It is important to keep this angle constant during the squat exercise to avoid injuries.</p>
+    </div>
+    <div class="exerciseSection">
+        <div class="options">
+            <div class="movement">
+                <p>Movement</p>
+                <div class="sectionMov">
+                    <h3>Squat</h3>
+                    <div class="buttons">
+                        <button id="decreaseRepsPerMinute">-</button>
+                        <button id="playPause">></button>
+                        <button id="increaseRepsPerMinute">+</button>
+                    </div>
+                    <label class="repsInfo"><span id="repsPerMinute">val</span> reps per minute</label>
+                </div>
+            </div>
+            <div class="controls">
+                <div class="wePos">
+                    <label>Barbell Weight</label>
+                    <div class="btns">
+                        <button id="decreaseBarbellWeight">-</button>
+                        <p><span id="barbellWeight">val</span> kg</p>
+                        <button id="increaseBarbellWeight">+</button>
+                    </div>
+                </div>
+                <div class ="wePos">
+                    <label>Barbell Position</label>
+                    <div class="btns">
+                        <button id="decreaseBarbellPosition">-</button>
+                        <p><span id="barbellPosition">val</span> cm</p>
+                        <button id="increaseBarbellPosition">+</button>
+                    </div>
+                </div>
+                <div class="angleRange">
+                    <div class="textAngle">
+                        <label>Hip Range (°): <span id="hipRange"></span></label>
+                    </div>
+                    <div class ="slider" id="hipRangeSlider"></div>
+                    <button class="infoBtn" id="infoRange1Btn">info</button>
+                </div>
+                <div class="angleRange">
+                    <div class="textAngle">
+                        <label>Knee Range (°): <span id="kneeRange"></span></label>
+                    </div>
+                    <div class ="slider" id="kneeRangeSlider"></div>
+                    <button class="infoBtn" id="infoRange2Btn">info</button>
+                </div>
+                <div class="angleRange">
+                    <div class="textAngle">
+                        <label>Ankle Range (°): <span id="ankleRange"></span></label>
+                    </div>
+                    <div class ="slider" id="ankleRangeSlider"></div>
+                    <button class="infoBtn" id="infoRange3Btn">info</button>
+                </div>
+                <div class="graphs">
+                    <div class="chart">
+                        <select class="chartVariable" id="variableAngleSelect">
+                            <option value="Hip Angle">Hip Angle</option>
+                            <option value="Knee Angle">Knee Angle</option>
+                            <option value="Ankle Angle">Ankle Angle</option>
+                        </select>
+                        <label class="graphUnit chartVariable">Expressed in Degrees</label>
+                        <canvas class="singleChart" id="chartAngleCanvas" width="300" height="200"></canvas>
+                    </div>
+                    <div class="chart">
+                        <select class="chartVariable" id="variableForceSelect">
+                            <option value="Hip Torque">Hip Torque</option>
+                            <option value="Knee Torque">Knee Torque</option>
+                            <option value="Ankle Torque">Ankle Torque</option>
+                        </select>
+                        <label class="graphUnit chartVariable">Expressed in Nm</label>
+                        <canvas class="singleChart" id="chartForceCanvas" width="300" height="200"></canvas>
+                    </div>
+                    <div class="chart">
+                        <label class="chartVariable" style="padding-top: .7vh;">Center of Mass</label>
+                        <label class="graphUnit chartVariable">Expressed in Cm</label>
+                        <canvas class="singleChart" id="chartCOMCanvas" width="300" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="result">
+            <canvas id="humanFigureCanvas" height="500" width="500"></canvas>
+            <div class="dataCalc" id="output"></div>
+        </div>
+    </div>
+</body>
+<script type="module" src="assets/js/script.js"></script>
+</html>

@@ -568,6 +568,17 @@ function calculateSquatParameters(sex, height, weight, barbellWeight, barbellPos
         }
     };
 
+    var mioArray = [];
+    console.log(mioArray);
+
+    for (var i=0; i<32; i++){
+        for (var j=0; j<150; j++){
+            mioArray.push(Math.random(2,5));
+        }
+    }
+    console.log(Math.min.apply(Math, mioArray));
+    console.log(mioArray.indexOf(Math.min.apply(Math, mioArray)));
+
     // Creazione del grafico per la forza
     if (chartCOM) {
         chartCOM.destroy(); // Distruggi il grafico esistente
@@ -826,7 +837,7 @@ function drawHumanFigure(ctx, hipAngle, kneeAngle, ankleAngle, height, barbellWe
     ctx.fillStyle = '#0D4BF4';
     ctx.fill();
     ctx.beginPath();
-    console.log(window.innerWidth);
+    //console.log(window.innerWidth);
     window.innerWidth  < 800 ? ctx.arc(hipX + (barbellY/2) + 20, hipY + 60, 10, 0, 2 * Math.PI) : ctx.arc(hipX + (barbellY/2) + 20, hipY + 60, 5, 0, 2 * Math.PI);
     ctx.fillStyle = 'white';
     ctx.fill();
