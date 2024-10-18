@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KineMentor - A Digital Biomechanics Simulator developed by SUPSI</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="icon" type="image/x-icon" href="assets/images/icons/icon.ico">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0D4BF4">
+    <meta name="description" content="KineMentor is a didactic tool to test different body exercises and see differences in the human body.">
+    <meta name="keywords" content="KineMentor, SUPSI, DEASS, DACD, Laboratorio di Ricerca in Riabilitazione, Istituto Design, Marco Barbero, Corrado Cescon, Stefano Vercelli, Max Fonseca, Matteo Subet">
+    <meta name="author" content="SUPSI DEASS - Laboratorio di Ricerca in Riabilitazione, SUPSI DACD - Istituto Design">
+</head>
+<body>
+    <div class="infoScreen">
+        <div class="infoHeader">
+            <h2>What is KineMentor?</h2>
+            <p id="closeBtn">close</p>
+        </div>
+        <p>KineMentor is a didactic tool to test different bosy exercices and see differences in the human body.</p>
+        <br />
+        <h2>About</h2>
+        <p>The tool is financiated by <a href="https://www.swissuniversities.ch">swissuniversities</a>.</p>
+        <br />
+        <h2>People</h2>
+        <p>SUPSI DEASS - Laboratory of Research and Rehabilitation</p>
+        <p style="margin-left: 30px;">Marco Barbero - Project Responsible</p>
+        <p style="margin-left: 30px;">Corrado Cescon - Project Collaborator</p>
+        <p style="margin-left: 30px;">Stefano Vercelli - Project Collaborator</p>
+        <p>SUPSI DACD - Institute of Design</p>
+        <p style="margin-left: 30px;">Max Fonseca - Graphic Designer</p>
+        <p style="margin-left: 30px;">Matteo Subet - Interaction Designer and Developer</p>
+    </div>
+    <div class="header">
+        <h1><span style="font-family: SUPSIFedraMedium;">Kine</span>Mentor</h1>
+        <p class="creditsSupsi">A didactic tool by:</p>
+        <img src="assets/images/logo-SUPSI-it_bianco.png" alt="SUPSI-White-Logo" class="supsiLogo">
+        <p class="infoButton" id="infoBtn">info</p>
+    </div>
+    
+    <div class="toolStart">
+        <p>Insert the data</p>
+        <div class="dataInput">
+            <h2>SEX:</h2>
+            <div>
+                <button id="femaleBtn" class="sexBtn clicked">FEMALE <div class="checkBlue" id="femaleCheck"></div></button>
+                <button id="maleBtn" class="sexBtn">MALE <div class="checkBlue" id="maleCheck"></div></button>
+            </div>
+        </div>
+        <div class="dataInput">
+            <h2>HEIGHT:</h2>
+            <label>
+                <span class="placeholder" id="cmPlaceholder">ENTER THE<br>HEIGHT IN CM</span>
+                <input type="number" min="140" max="200" id="heightInput" placeholder="ENTER THE HEIGHT IN CM">
+                <span class="unit" id="centimeter">cm</span>
+                <span class="checkWhite" id="checkCm"></span>
+            </label>
+        </div>
+        <div class="dataInput">
+            <h2>WEIGHT:</h2>
+            <label>
+                <span class="placeholder" id="kgPlaceholder">ENTER THE<br>WEIGHT IN KG</span>
+                <input type="number" min="40" max="130" id="weightInput" placeholder="ENTER THE WEIGHT IN KG">
+                <span class="unit" id="chilos">kg</span>
+                <span class="checkWhite" id="checkKg"></span>
+            </label>
+        </div>
+        <button id="submitBtn">START THE APPLICATION</button>
+    </div>
+    <div class="imagesContainer">
+        <div class="baseRuler">
+            <div class="figureWoman" id="figure"></div>
+        </div>
+    </div>
+</body>
+<script src="assets/js/home.js"></script>
+</html>
