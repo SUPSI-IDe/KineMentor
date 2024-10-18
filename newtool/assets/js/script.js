@@ -54,7 +54,7 @@ var umano = {
     //Centro di massa
     centroDiMassa: Infinity
 };
-var ripetizioniSquat = 120;
+var ripetizioniSquat = 20;
 var pesoManubrio = 5;
 var posizioneManubrio = 20;
 var minCaviglia = 66;
@@ -144,13 +144,13 @@ aggiornamentoFunzioniSchermo();
 
     // Aumento o diminuzione ripetizioni squat
         document.getElementById("increaseRepsPerMinute").addEventListener("click", function() {
-            if (ripetizioniSquat < 30) ripetizioniSquat++;
+            if (ripetizioniSquat < 120) ripetizioniSquat+=5;
             document.getElementById("repsPerMinute").textContent = ripetizioniSquat;
             clearInterval(animazione);
             startInterval();
         });
         document.getElementById("decreaseRepsPerMinute").addEventListener("click", function() {
-            if (ripetizioniSquat > 1) ripetizioniSquat--;
+            if (ripetizioniSquat > 5) ripetizioniSquat-=5;
             document.getElementById("repsPerMinute").textContent = ripetizioniSquat;
             clearInterval(animazione);
             startInterval();
