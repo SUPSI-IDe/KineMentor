@@ -72,10 +72,26 @@ header img{
 
 #closingBtn{
     position: absolute;
-    top: 1vh;
-    right: 3vw;
-    font-size: 2em;
+    top: 1.5vh;
+    right: 2.8125rem;
+    font-size: 1.5em;
+    text-decoration: underline;
     cursor: pointer;
+}
+
+.information{
+    padding: 2.8125rem;
+}
+
+.information p{
+    font-family: "SUPSIFedraLight", sans-serif;
+    font-size: 1.5em;
+    margin-top: 2vh;
+    width: 60%;
+}
+
+.information h2{
+    margin-top: 5vh;
 }
 
 /* -------------------> SETUP <------------------- */
@@ -282,12 +298,20 @@ input:not(:placeholder-shown) ~ .unit{
         display: none;
     }
 
+    .information p{
+        width: 100%;
+    }
+
     #aboutBtn{
         display: inline-block;
     }
 
     header{
         padding: 0.5rem 1.5rem;
+    }
+
+    #closingBtn{
+        right: 1.5rem;
     }
 
     .setTitle{
