@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
     <title>KineMentor - A Digital Biomechanics Simulator developed by SUPSI</title>
+    <link rel="icon" href="assets/images/icons/icon-192x192.png" type="image/png">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="assets/css/font.css">
+    <script src="assets/js/baseScript.js" defer></script>
 </head>
 <body>
     <header>
@@ -17,12 +21,12 @@
     <div class="setup">
         <div class ="settings">
             <p class="setTitle">
-                Insert data:
+                Insert the data
             </p>
             <div class="input">
                 <h2>SEX:</h2>
-                <button>FEMALE</button>
-                <button>MALE</button>
+                <button id="femaleBtn" onclick="sexSelection(this)">FEMALE</button>
+                <button id="maleBtn" onclick="sexSelection(this)">MALE</button>
             </div>
             <div class="input">
                 <h2>HEIGHT:</h2>
@@ -47,6 +51,9 @@
             <img src="assets/images/man.svg" alt="humanMan" id="humanMan">
             <img src="assets/images/woman.svg" alt="humanWoman" id="humanWoman">
         </div> 
+    </div>
+    <div class="about">
+        <p id="closingBtn">X</p>
     </div>
 </body>
 </html>

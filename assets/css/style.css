@@ -22,11 +22,14 @@ header{
     display: flex;
     background-color: var(--blackBlue);
     padding: 0.5rem 2.8125rem;
+    z-index: 2;
 }
 
 header h1{
     font-family: "SUPSIFedraMedium", serif;
     margin-right: 15vw;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 header h1 span{
@@ -34,7 +37,7 @@ header h1 span{
 }
 
 header div p{
-    font-size: 0.6rem;
+    font-size: 0.6em;
     text-align: left;
 }
 
@@ -51,8 +54,27 @@ header img{
     margin-right: 0;
     margin-top: auto;
     margin-bottom: auto;
-    font-size: 1.5rem;
+    font-size: 1.5em;
     text-decoration: underline;
+    cursor: pointer;
+}
+
+/* -------------------> ABOUT <------------------- */
+.about{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--blackBlue);
+}
+
+#closingBtn{
+    position: absolute;
+    top: 1vh;
+    right: 3vw;
+    font-size: 2em;
     cursor: pointer;
 }
 
@@ -70,14 +92,14 @@ header img{
 }
 
 .setTitle{
-    font-size: 0.8rem;
+    font-size: 1em;
     margin-top: 5vh;
 }
 
 .settings .input h2{
     display: inline-block;
-    font-size: 4rem;
-    margin-top: 4vh;
+    font-size: 4em;
+    margin-top: 2vh;
 }
 
 .inputSide{
@@ -97,7 +119,7 @@ header img{
     border-radius: 4rem;
     background-color: transparent;
     color: white;
-    font-size: 2rem;
+    font-size: 2em;
     margin-left: 20px;
 }
 
@@ -107,8 +129,13 @@ header img{
     cursor: pointer;
 }
 
+.btnClicked{
+    background-color: white !important;
+    color: var(--lightBlue) !important;
+}
+
 .settings input{
-    font-size: 2rem;
+    font-size: 2em;
     background-color: transparent;
     border: none;
     border-bottom: 2px solid white;
@@ -171,9 +198,9 @@ input:not(:placeholder-shown) ~ .unit{
 }
 
 #startBtn{
-    margin-top: 25vh;
+    margin-top: 40vh;
     display: block;
-    font-size: 2rem;
+    font-size: 2em;
     border: white 2px solid;
     border-radius: 4rem;
     cursor: pointer;
@@ -200,16 +227,154 @@ input:not(:placeholder-shown) ~ .unit{
     position: absolute;
     height: 85vh;
     width: auto;
+    z-index: 1;
 }
 
 #humanMan{
     display: none;
     position: relative;
-    right: -8vw;
+    right: -4vw;
 }
 
 #humanWoman{
     display: none;
     position: relative;
-    right: -10vw;
+    right: -4vw;
+}
+
+/* -------------------> TABLET <------------------- */
+@media (max-width: 1200px) {
+    body{
+        font-size: 12px;
+    }
+
+    .setTitle{
+        font-size: 1.5em;
+    }
+
+    #humanMan{
+        right: 5vw;
+    }
+    
+    #humanWoman{
+        right: 3vw;
+    }
+}
+
+@media (max-width: 1200px) and (orientation: landscape) {
+    #humanMan{
+        right: -2vw;
+    }
+    
+    #humanWoman{
+        right: -3vw;
+    }
+}
+
+
+/* -------------------> MOBILE <------------------- */
+@media (max-width: 750px) {
+    body{
+        font-size: 14px;
+    }
+
+    header p, header img{
+        display: none;
+    }
+
+    #aboutBtn{
+        display: inline-block;
+    }
+
+    header{
+        padding: 0.5rem 1.5rem;
+    }
+
+    .setTitle{
+        margin-top: 3vh;
+    }
+
+    .settings{
+        padding: 0.5rem 1.5rem;
+    }
+
+    .settings .input h2{
+        display: block;
+        margin-top: 2vh;
+        font-size: 3em;
+    }
+
+    .settings .input button:first-of-type {
+        margin-left: 0vw;
+    }
+
+    .settings .input button{
+        padding: 0.3rem 1.8rem;
+        font-size: 1.4em;
+        margin-top: 1vh;
+    }
+
+    .settings .input input{
+        margin-top: 1vh;
+        margin-left: 0;
+        width: 70vw;
+        font-size: 1.4em;
+    }
+
+    .settings .input input::placeholder{
+        text-align: left;
+    }
+
+    #startBtn{
+        margin-top: 8vh;
+        font-size: 1.4em;
+        padding: 0.5rem 1.5rem;
+    }
+
+    .result img{
+        height: 75vh;
+    }
+
+    input:not(:placeholder-shown) + .additionalPlaceholder {
+        display: none;
+    }
+
+    #humanMan{
+        right: 10vw;
+    }
+    
+    #humanWoman{
+        right: 5vw;
+    }
+}
+
+@media (max-width: 750px) and (orientation: landscape) {
+    body{
+        font-size: 10px;
+    }
+
+    .result img{
+        margin-top: 2vh;
+        height: 73vh;
+    }
+
+    .settings .input button{
+        margin-top: 3vh;
+    }
+
+    .settings .input input{
+        width: 45vw;
+    }
+
+    input:not(:placeholder-shown) + .additionalPlaceholder {
+        display: none;
+    }
+
+    #humanMan{
+        right: -3vw;
+    }
+    
+    #humanWoman{
+        right: -4vw;
+    }
 }
