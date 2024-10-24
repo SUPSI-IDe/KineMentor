@@ -1,55 +1,55 @@
 /* -------------------> FONT <------------------- */
 @font-face {
     font-family: SUPSIFedraDemi;
-    src: url("../../../assets/font/SUPSIFSan-Demi.otf") format("opentype");
+    src: url("../font/SUPSIFSan-Demi.otf") format("opentype");
     font-display: swap;
 }
 @font-face {
     font-family: SUPSIFedraDemiItalic;
-    src: url("../../../assets/font/SUPSIFSan-DemiItalic.otf") format("opentype");
+    src: url("../font/SUPSIFSan-DemiItalic.otf") format("opentype");
     font-display: swap;
 }
 
 @font-face {
     font-family: SUPSIFedraBold;
-    src: url("../../../assets/font/SUPSIFSan-Bold.otf") format("opentype");
+    src: url("../font/SUPSIFSan-Bold.otf") format("opentype");
     font-display: swap;
 }
 @font-face {
     font-family: SUPSIFedraBoldItalic;
-    src: url("../../../assets/font/SUPSIFSan-BoldItalic.otf") format("opentype");
+    src: url("../font/SUPSIFSan-BoldItalic.otf") format("opentype");
     font-display: swap;
 }
 
 @font-face {
     font-family: SUPSIFedraBook;
-    src: url("../../../assets/font/SUPSIFSan-Book.otf") format("opentype");
+    src: url("../font/SUPSIFSan-Book.otf") format("opentype");
     font-display: swap;
 }
 @font-face {
     font-family: SUPSIFedraBookItalic;
-    src: url("../../../assets/font/SUPSIFSan-BookItalic.otf") format("opentype");
+    src: url("../font/SUPSIFSan-BookItalic.otf") format("opentype");
     font-display: swap;
 }
 
 @font-face {
     font-family: SUPSIFedraLight;
-    src: url("../../../assets/font/SUPSIFSan-Light.otf") format("opentype");
+    src: url("../font/SUPSIFSan-Light.otf") format("opentype");
     font-display: swap;
 }
 @font-face {
     font-family: SUPSIFedraLightItalic;
-    src: url("../../../assets/font/SUPSIFSan-LightItalic.otf") format("opentype");
+    src: url("../font/SUPSIFSan-LightItalic.otf") format("opentype");
     font-display: swap;
 }
 
 @font-face {
     font-family: SUPSIFedraMedium;
-    src: url("../../../assets/font/SUPSIFSan-Medium.otf") format("opentype");
+    src: url("../font/SUPSIFSan-Medium.otf") format("opentype");
     font-display: swap;
 }
 @font-face {
     font-family: SUPSIFedraMediumItalic;
-    src: url("../../../assets/font/SUPSIFSan-MediumItalic.otf") format("opentype");
+    src: url("../font/SUPSIFSan-MediumItalic.otf") format("opentype");
     font-display: swap;
 }
