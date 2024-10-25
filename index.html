@@ -1,9 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
     <title>KineMentor - A Digital Biomechanics Simulator developed by SUPSI</title>
+    <meta property="og:title" content="KineMentor - A Digital Biomechanics Simulator developed by SUPSI">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/images/openGraphImage.png">
+    <meta property="og:description" content="KineMentor is a digital biomechanics simulator developed by the University of Applied Sciences and Arts of Southern Switzerland (SUPSI)." />
     <link rel="icon" href="assets/images/icons/icon-192x192.png" type="image/png">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="assets/css/font.css">
@@ -38,9 +42,12 @@
             </div>
             <div class="input">
                 <h2>WEIGHT:</h2>
-                <input type="number" min="40" max="130" id="weightInput" placeholder="ENTER THE HEIGHT IN KG">
-                <p class="additionalPlaceholder">ENTER THE<br>WEIGHT IN KG</p>
-                <p class="unit">KG</p>
+                <div style="display: inline-block;">
+                    <input type="number" min="40" max="130" id="weightInput" placeholder="ENTER THE HEIGHT IN KG">
+                    <p class="additionalPlaceholder">ENTER THE<br>WEIGHT IN KG</p>
+                    <p class="unit">KG</p>
+                    <p id="bmiResult"><span id="bmiName">Overweight</span> BMI <span id="bmiNr">19.2</span></p>
+                </div>
             </div>
             <div id="startBtn">
                 <p>START THE APPLICATION</p>

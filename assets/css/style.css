@@ -115,7 +115,6 @@ header img{
 .settings .input h2{
     display: inline-block;
     font-size: 4em;
-    margin-top: 2vh;
 }
 
 .inputSide{
@@ -137,6 +136,8 @@ header img{
     color: white;
     font-size: 2em;
     margin-left: 20px;
+    height: fit-content;
+    margin-top: 2vh;
 }
 
 .settings .input button:hover{
@@ -150,6 +151,11 @@ header img{
     color: var(--lightBlue) !important;
 }
 
+.input{
+    display: flex;
+    margin-top: 2vh;
+}
+
 .settings input{
     font-size: 2em;
     background-color: transparent;
@@ -160,6 +166,7 @@ header img{
     width: 35vw;
     margin-left: 5vw;
     opacity: 0.4;
+    margin-top: 2.5vh;
 }
 
 .settings input::placeholder{
@@ -213,8 +220,23 @@ input:not(:placeholder-shown) ~ .unit{
     left: -12vw;
 }
 
+#bmiResult{
+    display: none;
+    margin-left: 5vw;
+    margin-top: 2vh;
+    width: 35vw;
+    font-size: 1em;
+    border-bottom: 2px solid white;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+#bmiName{
+    font-size: 2rem;
+}
+
 #startBtn{
-    margin-top: 40vh;
+    margin-top: 30vh;
     display: block;
     font-size: 2em;
     border: white 2px solid;
@@ -322,6 +344,10 @@ input:not(:placeholder-shown) ~ .unit{
         padding: 0.5rem 1.5rem;
     }
 
+    .input{
+        display: block;
+    }
+
     .settings .input h2{
         display: block;
         margin-top: 2vh;
@@ -349,8 +375,13 @@ input:not(:placeholder-shown) ~ .unit{
         text-align: left;
     }
 
+    #bmiResult{
+        width: 70vw;
+        margin-left: 0;
+    }
+
     #startBtn{
-        margin-top: 8vh;
+        margin-top: 10vh;
         font-size: 1.4em;
         padding: 0.5rem 1.5rem;
     }
