@@ -22,6 +22,10 @@ body{
     flex-direction: column;
     /*overflow: hidden;*/
     flex-wrap: nowrap;
+    -webkit-user-select:none;
+    -moz-user-select:-moz-none;
+    -ms-user-select:none;
+    user-select:none
 }
 
 /* -------------------> HEADER <------------------- */

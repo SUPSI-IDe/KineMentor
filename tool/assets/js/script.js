@@ -266,8 +266,8 @@ aggiornamentoFunzioniSchermo();
             if (ripetizioniSquat > 5) ripetizioniSquat-=5;
             document.getElementById("repNumber").textContent = ripetizioniSquat;
             document.getElementById("repNumberMobile").textContent = ripetizioniSquat;
-            //clearInterval(animazione);
-            //startInterval();
+            clearInterval(animazione);
+            startInterval();
         });
 
     // Slider per la regolazione dei vincoli dell'anca
@@ -474,6 +474,19 @@ aggiornamentoFunzioniSchermo();
         });
 
 // ---------------------------- END AGGIORANAMENTO INFO DA USER INTERFACE ----------------------------
+
+// ---------------------------- BOTTONE PLAY/PAUSA ----------------------------
+
+        let bottonePausa = document.getElementById("pauseBtn");
+        let counterBtn = 0;
+
+        bottonePausa.addEventListener("click", function() {
+            counterBtn++;
+            if (counterBtn % 2 == 0) {startInterval();} else {clearInterval(animazione);}
+        });
+
+// ---------------------------- END BOTTONE PLAY/PAUSA ----------------------------
+
 
 // ---------------------------- DISEGNO OMINO ----------------------------
 function disegnaOmino(ctx, umano) {
