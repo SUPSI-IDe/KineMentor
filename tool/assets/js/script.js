@@ -478,11 +478,18 @@ aggiornamentoFunzioniSchermo();
 // ---------------------------- BOTTONE PLAY/PAUSA ----------------------------
 
         let bottonePausa = document.getElementById("pauseBtn");
-        let counterBtn = 0;
+        let bottonePlay = document.getElementById("playBtn");
 
         bottonePausa.addEventListener("click", function() {
-            counterBtn++;
-            if (counterBtn % 2 == 0) {startInterval();} else {clearInterval(animazione);}
+            clearInterval(animazione);
+            bottonePausa.style.display = "none";
+            bottonePlay.style.display = "block";
+        });
+
+        bottonePlay.addEventListener("click", function() {
+            startInterval();
+            bottonePausa.style.display = "block";
+            bottonePlay.style.display = "none";
         });
 
 // ---------------------------- END BOTTONE PLAY/PAUSA ----------------------------

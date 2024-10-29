@@ -209,6 +209,14 @@ header img{
     cursor: pointer;
 }
 
+#playBtn{
+    display: none;
+}
+
+#pauseBtn{
+    display: block;
+}
+
 .rowTitle{
     width: 50%;
     padding: 1rem 2.8125rem;
