@@ -379,6 +379,7 @@ input:not(:placeholder-shown) ~ .unit{
     #bmiResult{
         width: 70vw;
         margin-left: 0;
+        font-size: 10px;
     }
 
     #startBtn{

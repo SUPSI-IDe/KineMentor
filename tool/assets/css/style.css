@@ -670,7 +670,8 @@ input[type="checkbox"]:checked + label::after {
     }
 
     .result canvas{
-        width: 80%;
+        height: 80%;
+        width: auto;
     }
 
     .comViz{
@@ -822,8 +823,15 @@ input[type="checkbox"]:checked + label::after {
     }
 }
 
+/* @media (max-width: 750px){
+    .result canvas{
+        width: 80%;
+    }
+} */
+
 @media (max-width: 750px) and (orientation: landscape) {
-    /* body{
-        font-size: 10px;
-    } */
+    .result canvas{
+        height: 70%;
+        width: auto;
+    }
 }
