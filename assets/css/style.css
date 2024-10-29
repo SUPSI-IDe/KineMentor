@@ -138,6 +138,7 @@ header img{
     margin-left: 20px;
     height: fit-content;
     margin-top: 2vh;
+    text-transform: uppercase;
 }
 
 .settings .input button:hover{

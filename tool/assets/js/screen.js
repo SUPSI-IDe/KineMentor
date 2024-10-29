@@ -2,32 +2,31 @@
 
 export function aggiornamentoFunzioniSchermo () {
     // Definizioni variabili da recuperare dal localStorage
-        var sexInfo = document.getElementById("sex");
-        var weightInfo = document.getElementById("weight");
-        var heightInfo = document.getElementById("height");
+        const sexInfo = document.getElementById("sexInfo");
+        const weightInfo = document.getElementById("weightInfo");
+        const heightInfo = document.getElementById("heightInfo");
+        const bmiInfo = document.getElementById("bmiInfo");
 
         sexInfo.innerHTML = localStorage.getItem("sex");
         weightInfo.innerHTML = localStorage.getItem("weight");
-        heightInfo.innerHTML = localStorage.getItem("height");
+        heightInfo.innerHTML = (localStorage.getItem("height")/100).toFixed(2);
+        bmiInfo.innerHTML = localStorage.getItem("bmi");
 
     // Definizione variabili e funzioni bottoni back, info e close
-        var backBtn = document.getElementById("backBtn");
+        var backBtn = document.getElementById("editBtn");
         backBtn.addEventListener("click", function() {
             localStorage.setItem("sex", "none");
+            localStorage.setItem("height", "00");
             localStorage.setItem("weight", "00");
-            localStorage.setItem("height", "000");
+            localStorage.setItem("bmi", "none");
             window.location.href = "../index.html";
         });
 
-        var infoBtn = document.getElementById("infoBtn");
-        infoBtn.addEventListener("click", function() {
-            var infoScreen = document.querySelector(".infoScreen");
-            infoScreen.style.display = "block";
+        document.getElementById('closingBtn').addEventListener('click', function() {
+            document.getElementsByClassName("about")[0].style.display = "none";
         });
-
-        var closeBtn = document.getElementById("closeBtn");
-        closeBtn.addEventListener("click", function() {
-            var infoScreen = document.querySelector(".infoScreen");
-            infoScreen.style.display = "none";
+        
+        document.getElementById('aboutBtn').addEventListener('click', function() {
+            document.getElementsByClassName("about")[0].style.display = "block";
         });
 }

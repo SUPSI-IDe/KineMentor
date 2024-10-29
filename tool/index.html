@@ -12,6 +12,9 @@
     <link rel="icon" href="../assets/images/icons/icon-192x192.png" type="image/png">
     <link rel="stylesheet" type="text/css" href="../assets/css/font.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <script src="assets/js/nouislider.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/css/nouislider.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <header>
@@ -25,7 +28,7 @@
     <div class="data">
         <p id="editBtn">← Edit data</p>
         <div class="incomingData">
-            <p><span id="sexInfo">Male</span>, <span id="heightInfo">1.80</span> m, <span id="weightInfo">90</span> kg, <span id="bmiInfo">Normal weigth</span></p>
+            <p><span id="sexInfo">Nd</span>, <span id="heightInfo">Nd</span> m, <span id="weightInfo">Nd</span> kg, <span id="bmiInfo">Nd</span></p>
             <div id="infoBtn">i</div>
         </div>
     </div>
@@ -87,7 +90,7 @@
                 <div class="hipConstraints">
                     <p class="rowTitle">Hip joint range</p>
                     <div class="controls">
-                        <div id="hipSlider"></div>
+                        <div class="slider" id="hipSlider"></div>
                         <div class="infoSliderBtn" id="hipInfo">
                             <p>info</p>
                         </div>
@@ -96,7 +99,7 @@
                 <div class="kneeConstraints">
                     <p class="rowTitle">Knee joint range</p>
                     <div class="controls">
-                        <div id="kneeSlider"></div>
+                        <div class="slider" id="kneeSlider"></div>
                         <div class="infoSliderBtn" id="kneeInfo">
                             <p>info</p>
                         </div>
@@ -105,7 +108,7 @@
                 <div class="ankleConstraints">
                     <p class="rowTitle">Ankle joint range</p>
                     <div class="controls">
-                        <div id="ankleSlider"></div>
+                        <div class="slider" id="ankleSlider"></div>
                         <div class="infoSliderBtn" id="ankleInfo">
                             <p>info</p>
                         </div>
@@ -138,7 +141,8 @@
             </div>
         </div>
         <div class="result">
-            <div id="cavas"></div>
+            <div id="cavas">
+            </div>
             <div class="comViz">
                 <input type="checkbox" id="comAlert">
                     <label for="comAlert">Centre of mass alert</label>
@@ -173,35 +177,35 @@
             <div id="repetitionsMobile" class="settingActive">
                 <p class="rowTitle">Repetitions</p>
                 <div class="controls">
-                    <p class="calcSimbol min" id="repMinus">-</p>
+                    <p class="calcSimbol min" id="repMinusMobile">-</p>
                     <div class="selectedVal">
-                        <p class="controlVal" id="repNumber">10</p>
+                        <p class="controlVal" id="repNumberMobile">10</p>
                         <p class="numberUnit">/minute</p>
                     </div>
-                    <p class="calcSimbol plus" id="repPlus">+</p>
+                    <p class="calcSimbol plus" id="repPlusMobile">+</p>
                 </div>
             </div>
             <div id="dumbellMobile" class="settingInactive">
                 <div class="dumbellWeight">
                     <p class="rowTitle">Dumbell weight</p>
                     <div class="controls">
-                        <p class="calcSimbol min" id="weightMinus">-</p>
+                        <p class="calcSimbol min" id="weightMinusMobile">-</p>
                         <div class="selectedVal">
-                            <p class="controlVal" id="weightNumber">10</p>
+                            <p class="controlVal" id="weightNumberMobile">10</p>
                             <p class="numberUnit">kg</p>
                         </div>
-                        <p class="calcSimbol plus" id="weightPlus">+</p>
+                        <p class="calcSimbol plus" id="weightPlusMobile">+</p>
                     </div>
                 </div>
                 <div class="dumbellPosition">
                     <p class="rowTitle">Dumbell position</p>
                     <div class="controls">
-                        <p class="calcSimbol min" id="posMinus">-</p>
+                        <p class="calcSimbol min" id="posMinusMobile">-</p>
                         <div class="selectedVal">
-                            <p class="controlVal" id="posNumber">10</p>
+                            <p class="controlVal" id="posNumberMobile">10</p>
                             <p class="numberUnit">cm</p>
                         </div>
-                        <p class="calcSimbol plus" id="posPlus">+</p>
+                        <p class="calcSimbol plus" id="posPlusMobile">+</p>
                     </div>
                 </div>
             </div>
@@ -209,7 +213,7 @@
                 <div class="hipConstraints">
                     <p class="rowTitle">Hip joint range</p>
                     <div class="controls">
-                        <div id="hipSlider"></div>
+                        <div class="slider sliderMobile" id="hipSliderMobile"></div>
                         <div class="infoSliderBtn" id="hipInfo">
                             <p>info</p>
                         </div>
@@ -218,7 +222,7 @@
                 <div class="kneeConstraints">
                     <p class="rowTitle">Knee joint range</p>
                     <div class="controls">
-                        <div id="kneeSlider"></div>
+                        <div class="slider sliderMobile" id="kneeSliderMobile"></div>
                         <div class="infoSliderBtn" id="kneeInfo">
                             <p>info</p>
                         </div>
@@ -227,7 +231,7 @@
                 <div class="ankleConstraints">
                     <p class="rowTitle">Ankle joint range</p>
                     <div class="controls">
-                        <div id="ankleSlider"></div>
+                        <div class="slider sliderMobile" id="ankleSliderMobile"></div>
                         <div class="infoSliderBtn" id="ankleInfo">
                             <p>info</p>
                         </div>
@@ -286,4 +290,5 @@
         </div>
     </div>
 </body>
+<script type="module" src="assets/js/script.js"></script>
 </html>
