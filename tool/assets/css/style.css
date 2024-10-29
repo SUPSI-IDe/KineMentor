@@ -12,7 +12,7 @@
 
 body{
     font-family: "SUPSIFedraDemi", serif;
-    font-size: 16px;
+    font-size: 14px;
     background-color: white;
     color: var(--lightBlue);
     display: flex;
@@ -145,10 +145,13 @@ header img{
 #infoBtn{
     border: 3px solid white;
     border-radius: 50%;
-    padding: .2rem .75rem;
+    padding: .2rem 0;
     margin-left: auto;
     margin-right: 0;
     display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    text-align: center;
 }
 
 #infoBtn:hover{
@@ -159,6 +162,7 @@ header img{
 
 /* -------------------> TOOL <------------------- */
 .tool{
+    display: flex;
     flex-grow: 1;
 }
 
@@ -172,9 +176,9 @@ header img{
     display: flex;
     width: 100%;
     overflow: hidden;
-    height: calc(100% / 13 * 3);
+    height: calc(calc(100% / 13) * 3);
     border-bottom: 2px solid var(--lightBlue);
-    padding: 0.5rem 2.8125rem;
+    padding: 0.5rem 0 0.5rem 2.8125rem;
     box-sizing: border-box;
 }
 
@@ -192,8 +196,7 @@ header img{
 .movement svg{
     margin-left: auto;
     margin-right: 0;
-    width: 9rem;
-    height: 9rem;
+    height: 100%;
 }
 
 .movement svg:hover{
@@ -204,20 +207,21 @@ header img{
     width: 50%;
     padding: 1rem 2.8125rem;
     box-sizing: border-box;
-    border-right: 2px solid var(--lightBlue);
     font-family: "SUPSIFedraLight", sans-serif;
     font-size: 1.5em;
+    align-self: center;
 }
 
 .repetitions{
     display: flex;
     width: 100%;
     overflow: hidden;
-    height: calc(100% / 13 * 1);
+    height: calc(calc(100% / 13) * 1);
     border-bottom: 2px solid var(--lightBlue);
 }
 
 .controls{
+    border-left: 2px solid var(--lightBlue);
     display: flex;
     width: 50%;
     align-items: center;
@@ -231,8 +235,11 @@ header img{
     font-size: 1.5em;
     border: 2px solid var(--lightBlue);
     border-radius: 50%;
-    padding: 0.25rem 0.75rem;
-    height: fit-content;
+    padding: 0.25rem 0;
+    line-height: 1;
+    height: 1.5em;
+    width: 1.5em;
+    text-align: center;
 }
 
 .plus{
@@ -259,19 +266,17 @@ header img{
 
 .controlVal{
     font-size: 2.5em;
-    margin-left: 4rem;
 }
 
 .numberUnit{
     text-transform: uppercase;
-    font-size: 1em;
-    margin-right: 4rem;
+    font-size: .9em;
 }
 
 .dumbell{
     width: 100%;
     overflow: hidden;
-    height: calc(100% / 13 * 2);
+    height: calc(calc(100% / 13) * 2);
     border-bottom: 2px solid var(--lightBlue);
 }
 
@@ -291,7 +296,7 @@ header img{
 .jointConstraints{
     width: 100%;
     overflow: hidden;
-    height: calc(100% / 13 * 3);
+    height: calc(calc(100% / 13) * 3);
     border-bottom: 2px solid var(--lightBlue);
 }
 
@@ -341,14 +346,13 @@ header img{
     display: flex;
     width: 100%;
     overflow: hidden;
-    height: calc(100% / 13 * 4);
+    height: calc(calc(100% / 13) * 4);
     box-sizing: border-box;
 }
 
 .monitorGraph{
     box-sizing: border-box;
     width: 50%;
-    border-right: 2px solid var(--lightBlue);
 }
 
 .monitorGraph p{
@@ -360,26 +364,26 @@ header img{
     display: inline-flex;
     box-sizing: border-box;
     width: 100%;
-    padding: 0.5rem 2.8125rem;
+    padding: 0.5rem 0 0.5rem 2.8125rem;
     border-bottom: 1px solid var(--lightBlue);
 }
 
-.graphCheck input[type="checkbox"]{
+input[type="checkbox"]{
     display: none;
 }
 
-.graphCheck label:first-of-type{
-    margin-right: 2em;
+label:first-of-type{
+    margin-right: 1em;
 }
 
-.graphCheck label {
+label {
     position: relative;
     padding-left: 25px;
     cursor: pointer;
     user-select: none;
 }
 
-.graphCheck label::before {
+label::before {
     content: "";
     position: absolute;
     left: 0;
@@ -390,12 +394,12 @@ header img{
     background-color: white;
 }
 
-.graphCheck input[type="checkbox"]:checked + label::before {
+input[type="checkbox"]:checked + label::before {
     background-color: var(--lightBlue);
     border-color: var(--lightBlue);
 }
 
-.graphCheck label::after {
+label::after {
     content: "";
     position: absolute;
     left: 5px;
@@ -408,13 +412,82 @@ header img{
     opacity: 0;
 }
 
-.graphCheck input[type="checkbox"]:checked + label::after {
+input[type="checkbox"]:checked + label::after {
     opacity: 1;
 }
 
 .displayGraph{
+    border-left: 2px solid var(--lightBlue);
     width: 50%;
-    height: 100px;
+}
+
+.result{
+    display: flex;
+    width: 50%;
+    height: 100%;
+}
+
+.comViz{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 3%;
+    background-color: var(--lightBlue);
+    color: white;
+    align-self: flex-end;
+}
+
+.comViz label{
+    margin-left: 1rem;
+    padding-left: 40px;
+}
+
+.comViz label::before {
+    border: 2px solid white;
+    background-color: var(--lightBlue);
+}
+
+.comViz input[type="checkbox"]:checked + label::before {
+    background-color: white;
+    border-color: white;
+}
+
+.comViz label::after {
+    border: solid var(--lightBlue);
+    border-width: 0 2px 2px 0;
+}
+
+.comBar{
+    display: flex;
+    align-items: center;
+    width: 20%;
+    height: 100%;
+    border: dashed white;
+    border-width: 0 2px 0 2px;
+    margin-left: 1cap;
+}
+
+#comBall{
+    width: 1.2rem;
+    height: 1.2rem;
+    background-color: #BFFF00;
+    border-radius: 50%;
+    margin-left: calc(50% - calc(1.5rem / 2));
+}
+
+.mobileSettings{
+    display: none;
+}
+
+/* -------------------> LARGE SCREENS <------------------- */
+@media (min-width: 2000px) {
+    body{
+        font-size: 22px;
+    }
+
+    .movement svg{
+        height: 10vw;
+    }
 }
 
 /* -------------------> TABLET <------------------- */
@@ -422,12 +495,16 @@ header img{
     body{
         font-size: 12px;
     }
+
+    .movement svg{
+        height: 10vw;
+    }
 }
 
 /* -------------------> MOBILE <------------------- */
-@media (max-width: 750px) {
+@media (max-width: 1000px) {
     body{
-        font-size: 14px;
+        font-size: 10px;
     }
 
     header p, header img{
@@ -436,6 +513,10 @@ header img{
 
     .information p{
         width: 100%;
+    }
+
+    #infoBtn{
+        display: none;
     }
 
     #aboutBtn{
@@ -449,10 +530,195 @@ header img{
     #closingBtn{
         right: 1.5rem;
     }
+
+    .data{
+        padding: 0.5rem 1.5rem;
+    }
+
+    .incomingData p{
+        text-decoration: underline;
+    }
+    
+    .tool{
+        flex-direction: column;
+        flex-grow: 0;
+    }
+    .settings{
+        width: 100%;
+        border-right: none;
+        height: fit-content;
+    }
+
+    .movement{
+        height: fit-content;
+        padding: 0.5rem 1.5rem;
+    }
+
+    .movement p{
+        display: none;
+    }
+
+    .movement svg{
+        height: 6em;
+    }
+
+    .repetitions{
+        display: none;
+    }
+
+    .dumbell{
+        display: none;
+    }
+
+    .jointConstraints{
+        display: none;
+    }
+
+    .graph{
+        display: none;
+    }
+
+    .result{
+        width: 100%;
+        height: 60vh;
+    }
+
+    .comViz{
+        height: 8%;
+        font-size: 1.5em;
+    }
+
+    .mobileSettings{
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+    .mobileSettings .navBar{
+        display: flex;
+        width: 100%;
+        height: 10vh;
+        border-bottom: 2px solid var(--lightBlue);
+    }
+
+    .navBar button{
+        width: calc(100% / 4);
+        height: 100%;
+        border-radius: 0;
+        border-right: 2px solid;
+        border-color: var(--lightBlue);
+        background-color: white;
+        color: var(--lightBlue);
+    }
+
+    .navBar button:last-of-type{
+        border-right: none;
+    }
+
+    .active svg.iconBtn {
+        fill: white;
+    }
+
+    svg.iconBtn {
+        width: 10em;
+        height: 10em;
+        fill: var(--lightBlue);
+    }
+
+    #repBtn svg.iconBtn{
+        width: 6em;
+        height: 6em;
+    }
+
+    .navBar .active{
+        background-color: var(--lightBlue);
+        border: 2px solid var(--lightBlue);
+    }
+
+    .rowTitle{
+        width: 100%;
+        padding: 0.5rem 1.5rem 0 1.5rem;
+        text-align: center;
+        font-family: "SUPSIFedraMedium", sans-serif;
+    }
+
+    .controls{
+        border: 0;
+        width: 100%;
+        padding: 0 1.5rem;
+        font-size: 1.5em;
+    }
+
+    .min {
+        margin-left: 0;
+    }
+
+    .plus {
+        margin-right: 0;
+    }
+
+    .mobileSettings .settingActive{
+        display: block;
+        font-size: 1.2em;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .mobileSettings .settingInactive{
+        display: none;
+    }
+
+    #dumbellMobile .dumbellWeight{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    #dumbellMobile .dumbellPosition{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    #jointConstraintsMobile .hipConstraints{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: max-content;
+    }
+
+    #jointConstraintsMobile .kneeConstraints{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: max-content;
+    }
+
+    #jointConstraintsMobile .ankleConstraints{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: max-content;
+    }
+
+    .controls .infoSliderBtn{
+        height: 10vh;
+    }
+
+    .monitorGraph{
+        width: 100%;
+        font-size: 1.4em;
+    }
+
+    .displayGraph{
+        width: 100%;
+        border: 0;
+    }
 }
 
 @media (max-width: 750px) and (orientation: landscape) {
-    body{
+    /* body{
         font-size: 10px;
-    }
+    } */
 }

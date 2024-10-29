@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Simulator - KineMentor</title>
     <meta property="og:title" content="KineMentor - A Digital Biomechanics Simulator developed by SUPSI">
     <meta property="og:type" content="website">
@@ -139,6 +139,125 @@
         </div>
         <div class="result">
             <div id="cavas"></div>
+            <div class="comViz">
+                <input type="checkbox" id="comAlert">
+                    <label for="comAlert">Centre of mass alert</label>
+                <div class="comBar">
+                    <div id="comBall"></div>
+                </div>
+            </div>
+        </div>
+        <div class="mobileSettings">
+            <div class="navBar">
+                <button class="active" id="repBtn">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="iconBtn" width="40" height="32" viewBox="0 0 40 32">
+                        <path d="M16.35 23.75C17.1167 24.5167 18.225 24.875 19.675 24.825C21.125 24.775 22.1833 24.2333 22.85 23.2L33.65 6.25L16.9 17.2C15.9 17.8667 15.3667 18.9333 15.3 20.4C15.2333 21.8667 15.5833 22.9833 16.35 23.75ZM19.9 0.0499992C21.8 0.0499992 23.7833 0.358333 25.85 0.974999C27.9167 1.59167 29.9 2.65 31.8 4.15L29.2 6C27.7 5 26.0917 4.25833 24.375 3.775C22.6583 3.29167 21.1663 3.05 19.899 3.05C15.2167 3.05 11.2295 4.72033 7.9375 8.061C4.64583 11.4013 3 15.4473 3 20.199C3 21.6997 3.20833 23.2167 3.625 24.75C4.04167 26.2833 4.63333 27.7 5.4 29H34.35C35.0833 27.8 35.6667 26.4 36.1 24.8C36.5333 23.2 36.75 21.6333 36.75 20.1C36.75 18.7 36.5417 17.1917 36.125 15.575C35.7083 13.9583 34.9667 12.4667 33.9 11.1L35.85 8.5C37.1167 10.3667 38.0667 12.2417 38.7 14.125C39.3333 16.0083 39.6833 17.9 39.75 19.8C39.8167 21.8 39.6167 23.6833 39.15 25.45C38.6833 27.2167 38 28.85 37.1 30.35C36.7 31.1167 36.275 31.5833 35.825 31.75C35.375 31.9167 34.8167 32 34.15 32H5.6C5.03333 32 4.475 31.8583 3.925 31.575C3.375 31.2917 2.96667 30.8833 2.7 30.35C1.83333 28.75 1.16667 27.125 0.7 25.475C0.233333 23.825 0 22.0667 0 20.2C0 17.4333 0.525 14.825 1.575 12.375C2.625 9.925 4.05 7.79167 5.85 5.975C7.65 4.15833 9.76133 2.71667 12.184 1.65C14.6067 0.583333 17.1787 0.0499992 19.9 0.0499992Z"/>
+                      </svg>
+                </button>
+                <button id="dumbellBtn">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="iconBtn" width="92" height="68" viewBox="0 0 92 68">
+                          <path d="M62.3 24.75L60.2 22.65L62.45 20.4L54.6 12.55L52.35 14.8L50.2 12.65L51.7 11.1C52.4667 10.3333 53.4167 9.95833 54.55 9.975C55.6834 9.99167 56.6334 10.3833 57.4 11.15L63.85 17.6C64.6167 18.3667 65 19.3083 65 20.425C65 21.5417 64.6167 22.4833 63.85 23.25L62.3 24.75ZM38.3 48.8C37.5334 49.5667 36.5917 49.95 35.475 49.95C34.3584 49.95 33.4167 49.5667 32.65 48.8L25.5 41.65C24.9334 41.0707 24.65 40.3592 24.65 39.5155C24.65 38.6718 24.9334 37.9667 25.5 37.4L27.7 35.2L29.85 37.3L27.6 39.55L35.45 47.4L37.7 45.15L39.8 47.3L38.3 48.8ZM58.15 33.4L62.4 29.15L45.85 12.6L41.6 16.85L58.15 33.4ZM44.15 47.4L48.45 43.1L31.9 26.55L27.6 30.85L44.15 47.4ZM44.6 35L50.05 29.55L45.45 24.95L40 30.4L44.6 35ZM46.25 49.5C45.6857 50.0667 44.9862 50.35 44.1515 50.35C43.3172 50.35 42.6167 50.0667 42.05 49.5L25.5 32.95C24.9334 32.3857 24.65 31.6862 24.65 30.8515C24.65 30.0172 24.9334 29.3167 25.5 28.75L29.75 24.45C30.3294 23.8833 31.0409 23.6 31.8845 23.6C32.7282 23.6 33.4334 23.8833 34 24.45L37.85 28.3L43.35 22.8L39.5 18.95C38.9334 18.3857 38.65 17.6862 38.65 16.8515C38.65 16.0172 38.9334 15.3167 39.5 14.75L43.75 10.45C44.3294 9.88333 45.0409 9.6 45.8845 9.6C46.7282 9.6 47.4334 9.88333 48 10.45L64.55 27C65.1167 27.5793 65.4 28.2908 65.4 29.1345C65.4 29.9782 65.1167 30.6833 64.55 31.25L60.25 35.5C59.6857 36.0667 58.9862 36.35 58.1515 36.35C57.3172 36.35 56.6167 36.0667 56.05 35.5L52.2 31.65L46.7 37.15L50.55 41C51.1167 41.5793 51.4 42.2908 51.4 43.1345C51.4 43.9782 51.1167 44.6833 50.55 45.25L46.25 49.5Z"/>
+                      </svg>
+                </button>
+                <button id="jointBtn">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="iconBtn" width="92" height="68" viewBox="0 0 92 68">
+                          <path d="M36.75 51C36.2167 49.4333 35.8167 47.8917 35.55 46.375C35.2834 44.8583 35.1167 43.425 35.05 42.075C34.9834 40.725 34.975 39.4833 35.025 38.35C35.075 37.2167 35.15 36.25 35.25 35.45C34.5167 35.2833 33.6584 35.0667 32.675 34.8C31.6917 34.5333 30.65 34.175 29.55 33.725C28.45 33.275 27.325 32.7333 26.175 32.1C25.025 31.4667 23.9 30.7167 22.8 29.85L24.7 27.25C25.4667 27.95 26.2834 28.5833 27.15 29.15C28.0167 29.7167 28.925 30.2167 29.875 30.65C30.825 31.0833 31.7917 31.4583 32.775 31.775C33.7584 32.0917 34.7334 32.3333 35.7 32.5C36.5 32.6667 37.1417 33.0667 37.625 33.7C38.1084 34.3333 38.3 35.05 38.2 35.85C38.0334 37.05 37.9417 38.2833 37.925 39.55C37.9084 40.8167 37.9667 42.1 38.1 43.4C38.2334 44.7 38.45 45.9917 38.75 47.275C39.05 48.5583 39.4334 49.8 39.9 51H36.75ZM55 51H52V29.85C52 28.05 51.525 26.4167 50.575 24.95C49.625 23.4833 48.35 22.3667 46.75 21.6L33.1 15.55L35 12.95L48 18.9C50.1334 19.8667 51.8334 21.3333 53.1 23.3C54.3667 25.2667 55 27.45 55 29.85V51ZM44.25 44.95C44.5167 44.95 44.7584 44.8833 44.975 44.75C45.1917 44.6167 45.3667 44.45 45.5 44.25C45.6667 44.45 45.85 44.6167 46.05 44.75C46.25 44.8833 46.4834 44.95 46.75 44.95C47.1834 44.95 47.5417 44.8 47.825 44.5C48.1084 44.2 48.25 43.85 48.25 43.45C48.25 43.0167 48.1084 42.6583 47.825 42.375C47.5417 42.0917 47.1834 41.95 46.75 41.95H46.5V32H46.75C47.1834 32 47.5417 31.85 47.825 31.55C48.1084 31.25 48.25 30.9 48.25 30.5C48.25 30.0667 48.1084 29.7083 47.825 29.425C47.5417 29.1417 47.1834 29 46.75 29C46.4834 29 46.25 29.0583 46.05 29.175C45.85 29.2917 45.6667 29.45 45.5 29.65C45.3667 29.45 45.1917 29.2917 44.975 29.175C44.7584 29.0583 44.5167 29 44.25 29C43.85 29 43.5 29.1417 43.2 29.425C42.9 29.7083 42.75 30.0667 42.75 30.5C42.75 30.9 42.9 31.25 43.2 31.55C43.5 31.85 43.85 32 44.25 32H44.5V41.95H44.25C43.85 41.95 43.5 42.0917 43.2 42.375C42.9 42.6583 42.75 43.0167 42.75 43.45C42.75 43.85 42.9 44.2 43.2 44.5C43.5 44.8 43.85 44.95 44.25 44.95Z"/>
+                      </svg>
+                </button>
+                <button id="graphBtn">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="iconBtn" width="92" height="68" viewBox="0 0 92 68">
+                          <path d="M16 22.5V13C16 12.2 16.3 11.5 16.9 10.9C17.5 10.3 18.2 10 19 10H53C53.8 10 54.5 10.3 55.1 10.9C55.7 11.5 56 12.2 56 13V22.5H53V13H19V22.5H16ZM19 40C18.2 40 17.5 39.7 16.9 39.1C16.3 38.5 16 37.8 16 37V25.5H19V37H53V25.5H56V37C56 37.8 55.7 38.5 55.1 39.1C54.5 39.7 53.8 40 53 40H19ZM14 46V43H58V46H14ZM16 25.5V22.5H28C28.272 22.5 28.5317 22.5667 28.779 22.7C29.0263 22.8333 29.2167 23.0333 29.35 23.3L32.1 28.9L38.65 17.35C38.7833 17.0833 38.975 16.8917 39.225 16.775C39.475 16.6583 39.7353 16.6 40.006 16.6C40.2767 16.6 40.535 16.6583 40.781 16.775C41.027 16.8917 41.2167 17.0833 41.35 17.35L43.8775 22.5H56V25.5H42.95C42.675 25.5 42.4125 25.4333 42.1625 25.3C41.9125 25.1667 41.725 24.9667 41.6 24.7L39.9 21.25L33.35 32.7C33.226 32.9667 33.0398 33.1667 32.7915 33.3C32.5432 33.4333 32.2825 33.5 32.0095 33.5C31.7365 33.5 31.475 33.4333 31.225 33.3C30.975 33.1667 30.7833 32.9667 30.65 32.7L27.05 25.5H16Z"/>
+                      </svg>
+                </button>
+            </div>
+            <div id="repetitionsMobile" class="settingActive">
+                <p class="rowTitle">Repetitions</p>
+                <div class="controls">
+                    <p class="calcSimbol min" id="repMinus">-</p>
+                    <div class="selectedVal">
+                        <p class="controlVal" id="repNumber">10</p>
+                        <p class="numberUnit">/minute</p>
+                    </div>
+                    <p class="calcSimbol plus" id="repPlus">+</p>
+                </div>
+            </div>
+            <div id="dumbellMobile" class="settingInactive">
+                <div class="dumbellWeight">
+                    <p class="rowTitle">Dumbell weight</p>
+                    <div class="controls">
+                        <p class="calcSimbol min" id="weightMinus">-</p>
+                        <div class="selectedVal">
+                            <p class="controlVal" id="weightNumber">10</p>
+                            <p class="numberUnit">kg</p>
+                        </div>
+                        <p class="calcSimbol plus" id="weightPlus">+</p>
+                    </div>
+                </div>
+                <div class="dumbellPosition">
+                    <p class="rowTitle">Dumbell position</p>
+                    <div class="controls">
+                        <p class="calcSimbol min" id="posMinus">-</p>
+                        <div class="selectedVal">
+                            <p class="controlVal" id="posNumber">10</p>
+                            <p class="numberUnit">cm</p>
+                        </div>
+                        <p class="calcSimbol plus" id="posPlus">+</p>
+                    </div>
+                </div>
+            </div>
+            <div id="jointConstraintsMobile" class="settingInactive">
+                <div class="hipConstraints">
+                    <p class="rowTitle">Hip joint range</p>
+                    <div class="controls">
+                        <div id="hipSlider"></div>
+                        <div class="infoSliderBtn" id="hipInfo">
+                            <p>info</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="kneeConstraints">
+                    <p class="rowTitle">Knee joint range</p>
+                    <div class="controls">
+                        <div id="kneeSlider"></div>
+                        <div class="infoSliderBtn" id="kneeInfo">
+                            <p>info</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="ankleConstraints">
+                    <p class="rowTitle">Ankle joint range</p>
+                    <div class="controls">
+                        <div id="ankleSlider"></div>
+                        <div class="infoSliderBtn" id="ankleInfo">
+                            <p>info</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="graphMobile" class="settingInactive">
+                <div class="monitorGraph">
+                    <p>Monitor</p>
+                    <div class="graphCheck">
+                        <input type="checkbox" id="hipAngleMobile">
+                            <label for="hipAngleMobile">Hip angle</label><br>
+                        <input type="checkbox" id="hipTorqueMobile">
+                            <label for="hipTorqueMobile">Hip torque</label><br>
+                    </div>
+                    <div class="graphCheck">
+                        <input type="checkbox" id="kneeAngleMobile">
+                            <label for="kneeAngleMobile">Knee angle</label><br>
+                        <input type="checkbox" id="kneeTorqueMobile">
+                            <label for="kneeTorqueMobile">Knee torque</label><br>
+                    </div>
+                    <div class="graphCheck">
+                        <input type="checkbox" id="ankleAngleMobile">
+                            <label for="ankleAngleMobile">Ankle angle</label><br>
+                        <input type="checkbox" id="ankleTorqueMobile">
+                            <label for="ankleTorqueMobile">Ankle torque</label><br>
+                    </div>
+                </div>
+                <div class="displayGraph"></div>
+            </div>
         </div>
     </div>
     <div class="about">
