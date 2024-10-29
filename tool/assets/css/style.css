@@ -485,8 +485,16 @@ input[type="checkbox"]:checked + label::after {
 
 .result{
     display: flex;
+    flex-direction: column;
     width: 50%;
     height: 100%;
+}
+
+.result canvas{
+    display: flex;
+    width: 60%;
+    height: auto;
+    margin: auto;
 }
 
 .comViz{
@@ -647,6 +655,10 @@ input[type="checkbox"]:checked + label::after {
     .result{
         width: 100%;
         height: 60vh;
+    }
+
+    .result canvas{
+        width: 80%;
     }
 
     .comViz{
