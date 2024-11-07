@@ -329,6 +329,10 @@ input:not(:placeholder-shown) ~ .unit{
         display: inline-block;
     }
 
+    .about{
+        height: max-content;
+    }
+
     header{
         padding: 0.5rem 1.5rem;
     }
