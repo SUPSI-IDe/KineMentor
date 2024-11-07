@@ -38,14 +38,12 @@ document.getElementById('weightInput').addEventListener('change', function() {
 });
 
 document.getElementById('weightInput').addEventListener('input', function() {
-    if (this.value.trim() !== "" && document.getElementById('heightInput').value.trim() !== "") {
-        if (parseInt(document.getElementById('weightInput').value) > parseInt(document.getElementById('weightInput').min) && parseInt(document.getElementById('weightInput').value) < parseInt(document.getElementById('weightInput').max) && parseInt(document.getElementById('heightInput').value) > parseInt(document.getElementById('heightInput').min) && parseInt(document.getElementById('heightInput').value) < parseInt(document.getElementById('heightInput').max)){
-            let bmi = (parseInt(this.value) / Math.pow((parseInt(document.getElementById('heightInput').value) / 100), 2)).toFixed(1);
-            document.getElementById('bmiNr').textContent = bmi;
-            bmi < 18.5 ? document.getElementById('bmiName').textContent = "Underweight" : bmi < 24.9 ? document.getElementById('bmiName').textContent = "Normalweight" : bmi < 29.9 ? document.getElementById('bmiName').textContent = "Overweigth" : document.getElementById('bmiName').textContent = "Obesity";
-            document.getElementById('bmiResult').style.display = "block";
-            localStorage.setItem("bmi", document.getElementById('bmiName').textContent);
-        }
+    if (this.value.trim() !== "" && document.getElementById('heightInput').value.trim() !== "" && parseInt(document.getElementById('weightInput').value) >= parseInt(document.getElementById('weightInput').min) && parseInt(document.getElementById('weightInput').value) <= parseInt(document.getElementById('weightInput').max) && parseInt(document.getElementById('heightInput').value) >= parseInt(document.getElementById('heightInput').min) && parseInt(document.getElementById('heightInput').value) <= parseInt(document.getElementById('heightInput').max)){
+        let bmi = (parseInt(this.value) / Math.pow((parseInt(document.getElementById('heightInput').value) / 100), 2)).toFixed(1);
+        document.getElementById('bmiNr').textContent = bmi;
+        bmi < 18.5 ? document.getElementById('bmiName').textContent = "Underweight" : bmi < 24.9 ? document.getElementById('bmiName').textContent = "Normalweight" : bmi < 29.9 ? document.getElementById('bmiName').textContent = "Overweigth" : document.getElementById('bmiName').textContent = "Obesity";
+        document.getElementById('bmiResult').style.display = "block";
+        localStorage.setItem("bmi", document.getElementById('bmiName').textContent);
     } else {
         document.getElementById('bmiResult').style.display = "none";
         localStorage.setItem("bmi", "none");
@@ -53,14 +51,12 @@ document.getElementById('weightInput').addEventListener('input', function() {
 });
 
 document.getElementById('heightInput').addEventListener('input', function() {
-    if (this.value.trim() !== "" && document.getElementById('heightInput').value.trim() !== "") {
-        if (parseInt(document.getElementById('weightInput').value) > parseInt(document.getElementById('weightInput').min) && parseInt(document.getElementById('weightInput').value) < parseInt(document.getElementById('weightInput').max) && parseInt(document.getElementById('heightInput').value) > parseInt(document.getElementById('heightInput').min) && parseInt(document.getElementById('heightInput').value) < parseInt(document.getElementById('heightInput').max)){
-            let bmi = (parseInt(this.value) / Math.pow((parseInt(document.getElementById('heightInput').value) / 100), 2)).toFixed(1);
-            document.getElementById('bmiNr').textContent = bmi;
-            bmi < 18.5 ? document.getElementById('bmiName').textContent = "Underweight" : bmi < 24.9 ? document.getElementById('bmiName').textContent = "Normal Weight" : bmi < 29.9 ? document.getElementById('bmiName').textContent = "Overweigth" : document.getElementById('bmiName').textContent = "Obesity";
-            document.getElementById('bmiResult').style.display = "block";
-            localStorage.setItem("bmi", document.getElementById('bmiName').textContent);
-        }
+    if (this.value.trim() !== "" && document.getElementById('heightInput').value.trim() !== "" && parseInt(document.getElementById('weightInput').value) >= parseInt(document.getElementById('weightInput').min) && parseInt(document.getElementById('weightInput').value) <= parseInt(document.getElementById('weightInput').max) && parseInt(document.getElementById('heightInput').value) >= parseInt(document.getElementById('heightInput').min) && parseInt(document.getElementById('heightInput').value) <= parseInt(document.getElementById('heightInput').max)){
+        let bmi = (parseInt(this.value) / Math.pow((parseInt(document.getElementById('heightInput').value) / 100), 2)).toFixed(1);
+        document.getElementById('bmiNr').textContent = bmi;
+        bmi < 18.5 ? document.getElementById('bmiName').textContent = "Underweight" : bmi < 24.9 ? document.getElementById('bmiName').textContent = "Normal Weight" : bmi < 29.9 ? document.getElementById('bmiName').textContent = "Overweigth" : document.getElementById('bmiName').textContent = "Obesity";
+        document.getElementById('bmiResult').style.display = "block";
+        localStorage.setItem("bmi", document.getElementById('bmiName').textContent);
     } else {
         document.getElementById('bmiResult').style.display = "none";
         localStorage.setItem("bmi", "none");
