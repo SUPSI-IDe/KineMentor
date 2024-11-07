@@ -681,3 +681,80 @@ function disegnaOmino(ctx, umano) {
     ctx.fillText(`${umano.angoloCaviglia.toFixed(0)}°`, posCaviglia[0], posCaviglia[1] + 5);
 }
 // ---------------------------- END DISEGNO OMINO ----------------------------
+
+// ---------------------------- GRAFICO ----------------------------
+
+const xValues = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
+
+const myChart = new Chart("graph", {
+  type: "line",
+  data: {
+    labels: xValues,
+    datasets: [{
+      label: "Dataset 1",
+      data: [860, 1140, 1060, 1060, 1070, 1110, 1330, 2210, 7830, 2478],
+      borderColor: "red",
+      fill: false,
+      yAxisID: 'y',
+      hidden: false,
+    }, {
+      label: "Dataset 2",
+      data: [1600, 1700, 1700, 1900, 2000, 2700, 4000, 5000, 6000, 7000],
+      borderColor: "green",
+      fill: false,
+      yAxisID: 'y',
+    }, {
+      label: "Dataset 3",
+      data: [300, 700, 2000, 5000, 6000, 4000, 2000, 1000, 200, 100],
+      borderColor: "blue",
+      fill: false,
+      yAxisID: 'y1',
+    }, {
+      label: "Dataset 4",
+      data: [],
+      borderColor: "grey",
+      fill: false,
+      yAxisID: 'y1',
+    }]
+  },
+  options: {
+    interaction: {
+      mode: 'index',
+      intersect: false,
+    },
+    stacked: false,
+    scales: {
+      y: {
+        type: 'linear',
+        display: true,
+        position: 'left',
+        title: {
+          display: true,
+          text: 'Angle (deg°)',
+        }
+      },
+      y1: {
+        type: 'linear',
+        display: true,
+        position: 'right',
+        title: {
+          display: true,
+          text: 'Torque (Nm)',
+        }
+      }
+    },
+    plugins: {
+      legend: {
+        display: false,
+      }
+    }
+  }
+});
+
+function toggleDatasetVisibility() {
+  const dataset = myChart.data.datasets[0];
+  dataset.hidden = !dataset.hidden;
+  myChart.update();
+}
+
+// ---------------------------- END GRAFICO ----------------------------
