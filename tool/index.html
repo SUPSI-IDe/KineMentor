@@ -129,9 +129,9 @@
                 <div class="monitorGraph">
                     <p>Monitor</p>
                     <div class="graphCheck">
-                        <input type="checkbox" id="hipAngle">
+                        <input type="checkbox" id="hipAngle" checked>
                             <label for="hipAngle">Hip angle</label><br>
-                        <input type="checkbox" id="hipTorque">
+                        <input type="checkbox" id="hipTorque" checked>
                             <label for="hipTorque">Hip torque</label><br>
                     </div>
                     <div class="graphCheck">
@@ -253,9 +253,9 @@
                 <div class="monitorGraph">
                     <p>Monitor</p>
                     <div class="graphCheck">
-                        <input type="checkbox" id="hipAngleMobile">
+                        <input type="checkbox" id="hipAngleMobile" checked>
                             <label for="hipAngleMobile">Hip angle</label><br>
-                        <input type="checkbox" id="hipTorqueMobile">
+                        <input type="checkbox" id="hipTorqueMobile" checked>
                             <label for="hipTorqueMobile">Hip torque</label><br>
                     </div>
                     <div class="graphCheck">
@@ -271,7 +271,9 @@
                             <label for="ankleTorqueMobile">Ankle torque</label><br>
                     </div>
                 </div>
-                <div class="displayGraph"></div>
+                <div class="displayGraph">
+                    <canvas id="graphMobileViz" style="width:100%; height: 100%;"></canvas>
+                </div>
             </div>
         </div>
     </div>

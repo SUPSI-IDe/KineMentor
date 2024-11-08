@@ -77,10 +77,18 @@ aggiornamentoFunzioniSchermo();
 
     function startInterval(){
         const intervallo = (60000 / ripetizioniSquat) / (maxGinocchio - minGinocchio);
+        let lastGraphUpdateTime = 0;
         animazione = setInterval(function() {
             try {
                 aggiornamentoAngoli(umano, pesoManubrio, posizioneManubrio, minCaviglia, maxCaviglia, minAnca, maxAnca, minGinocchio, maxGinocchio);
                 disegnaOmino(humanFigureCtx, umano);
+                
+                const now = Date.now();
+                if (now - lastGraphUpdateTime > 100) {
+                    updateGraph(umano.angoloAnca, umano.angoloGinocchio, umano.angoloCaviglia, umano.coppiaAnca, umano.coppiaGinocchio, umano.coppiaCaviglia);
+                    updateGraphMobile(umano.angoloAnca, umano.angoloGinocchio, umano.angoloCaviglia, umano.coppiaAnca, umano.coppiaGinocchio, umano.coppiaCaviglia);
+                    lastGraphUpdateTime = now;
+                }
                 //console.log("Angolo ginocchio: " + umano.angoloGinocchio + " Angolo anca: " + umano.angoloAnca + " Angolo caviglia: " + umano.angoloCaviglia);
             } catch (error) {
                 console.log("Errore: " + error);
@@ -117,15 +125,11 @@ aggiornamentoFunzioniSchermo();
             if (pesoManubrio < 20) pesoManubrio++;
             document.getElementById("weightNumber").textContent = pesoManubrio;
             document.getElementById("weightNumberMobile").textContent = pesoManubrio;
-            clearInterval(animazione);
-            startInterval();
         });
         document.getElementById("weightMinus").addEventListener("click", function() {
             if (pesoManubrio > 1) pesoManubrio--;
             document.getElementById("weightNumber").textContent = pesoManubrio;
             document.getElementById("weightNumberMobile").textContent = pesoManubrio;
-            clearInterval(animazione);
-            startInterval();
         });
 
     // Aumento o diminuzione posizione manubrio
@@ -133,15 +137,11 @@ aggiornamentoFunzioniSchermo();
             if (posizioneManubrio < 40) posizioneManubrio += 5;
             document.getElementById("posNumber").textContent = posizioneManubrio;
             document.getElementById("posNumberMobile").textContent = posizioneManubrio;
-            clearInterval(animazione);
-            startInterval();
         });
         document.getElementById("posMinus").addEventListener("click", function() {
             if (posizioneManubrio > -5) posizioneManubrio -= 5;
             document.getElementById("posNumber").textContent = posizioneManubrio;
             document.getElementById("posNumberMobile").textContent = posizioneManubrio;
-            clearInterval(animazione);
-            startInterval();
         });
 
     // Aumento o diminuzione ripetizioni squat
@@ -149,15 +149,11 @@ aggiornamentoFunzioniSchermo();
             if (ripetizioniSquat < 120) ripetizioniSquat+=5;
             document.getElementById("repNumber").textContent = ripetizioniSquat;
             document.getElementById("repNumberMobile").textContent = ripetizioniSquat;
-            clearInterval(animazione);
-            startInterval();
         });
         document.getElementById("repMinus").addEventListener("click", function() {
             if (ripetizioniSquat > 5) ripetizioniSquat-=5;
             document.getElementById("repNumber").textContent = ripetizioniSquat;
             document.getElementById("repNumberMobile").textContent = ripetizioniSquat;
-            //clearInterval(animazione);
-            //startInterval();
         });
 
     // NavBar interazione bottoni
@@ -227,15 +223,11 @@ aggiornamentoFunzioniSchermo();
             if (pesoManubrio < 20) pesoManubrio++;
             document.getElementById("weightNumber").textContent = pesoManubrio;
             document.getElementById("weightNumberMobile").textContent = pesoManubrio;
-            clearInterval(animazione);
-            startInterval();
         });
         document.getElementById("weightMinusMobile").addEventListener("click", function() {
             if (pesoManubrio > 1) pesoManubrio--;
             document.getElementById("weightNumber").textContent = pesoManubrio;
             document.getElementById("weightNumberMobile").textContent = pesoManubrio;
-            clearInterval(animazione);
-            startInterval();
         });
 
     // Aumento o diminuzione posizione manubrio MOBILE
@@ -243,15 +235,11 @@ aggiornamentoFunzioniSchermo();
             if (posizioneManubrio < 40) posizioneManubrio += 5;
             document.getElementById("posNumber").textContent = posizioneManubrio;
             document.getElementById("posNumberMobile").textContent = posizioneManubrio;
-            clearInterval(animazione);
-            startInterval();
         });
         document.getElementById("posMinusMobile").addEventListener("click", function() {
             if (posizioneManubrio > -5) posizioneManubrio -= 5;
             document.getElementById("posNumber").textContent = posizioneManubrio;
             document.getElementById("posNumberMobile").textContent = posizioneManubrio;
-            clearInterval(animazione);
-            startInterval();
         });
 
     // Aumento o diminuzione ripetizioni squat MOBILE
@@ -259,15 +247,11 @@ aggiornamentoFunzioniSchermo();
             if (ripetizioniSquat < 120) ripetizioniSquat+=5;
             document.getElementById("repNumber").textContent = ripetizioniSquat;
             document.getElementById("repNumberMobile").textContent = ripetizioniSquat;
-            clearInterval(animazione);
-            startInterval();
         });
         document.getElementById("repMinusMobile").addEventListener("click", function() {
             if (ripetizioniSquat > 5) ripetizioniSquat-=5;
             document.getElementById("repNumber").textContent = ripetizioniSquat;
             document.getElementById("repNumberMobile").textContent = ripetizioniSquat;
-            clearInterval(animazione);
-            startInterval();
         });
 
     // Slider per la regolazione dei vincoli dell'anca
@@ -684,40 +668,89 @@ function disegnaOmino(ctx, umano) {
 
 // ---------------------------- GRAFICO ----------------------------
 
-const xValues = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
+const valuesToKeep = 10;
+
+const xValues = Array.from({ length: valuesToKeep }, (_, index) => index + 1);
+
+let hipAngleData = [];
+let kneeAngleData = [];
+let ankleAngleData = [];
+let hipTorqueData = [];
+let kneeTorqueData = [];
+let ankleTorqueData = [];
+
+function updateGraph(hipAngle, kneeAngle, ankleAngle, hipTorque, kneeTorque, ankleTorque) {
+        hipAngleData.push(hipAngle);
+        kneeAngleData.push(kneeAngle);
+        ankleAngleData.push(ankleAngle);
+        hipTorqueData.push(hipTorque);
+        kneeTorqueData.push(kneeTorque);
+        ankleTorqueData.push(ankleTorque);
+
+        if (hipAngleData.length > valuesToKeep) {
+            hipAngleData.shift();
+            kneeAngleData.shift();
+            ankleAngleData.shift();
+            hipTorqueData.shift();
+            kneeTorqueData.shift();
+            ankleTorqueData.shift();
+        }
+
+  myChart.update();
+
+}
 
 const myChart = new Chart("graph", {
   type: "line",
   data: {
     labels: xValues,
     datasets: [{
-      label: "Dataset 1",
-      data: [860, 1140, 1060, 1060, 1070, 1110, 1330, 2210, 7830, 2478],
+      label: "Hip Angle",
+      data: hipAngleData,
       borderColor: "red",
       fill: false,
       yAxisID: 'y',
       hidden: false,
     }, {
-      label: "Dataset 2",
-      data: [1600, 1700, 1700, 1900, 2000, 2700, 4000, 5000, 6000, 7000],
+      label: "Knee Angle",
+      data: kneeAngleData,
       borderColor: "green",
       fill: false,
       yAxisID: 'y',
+      hidden: true,
     }, {
-      label: "Dataset 3",
-      data: [300, 700, 2000, 5000, 6000, 4000, 2000, 1000, 200, 100],
+      label: "Ankle Angle",
+      data: ankleAngleData,
       borderColor: "blue",
       fill: false,
-      yAxisID: 'y1',
+      yAxisID: 'y',
+      hidden: true,
     }, {
-      label: "Dataset 4",
-      data: [],
+      label: "Hip Torque",
+      data: hipTorqueData,
       borderColor: "grey",
       fill: false,
       yAxisID: 'y1',
-    }]
+      hidden: false,
+    }, {
+        label: "Knee Torque",
+        data: kneeTorqueData,
+        borderColor: "yellow",
+        fill: false,
+        yAxisID: 'y1',
+        hidden: true,
+      }, {
+        label: "Ankle Torque",
+        data: ankleTorqueData,
+        borderColor: "violet",
+        fill: false,
+        yAxisID: 'y1',
+        hidden: true,
+      }]
   },
   options: {
+    tension: 0.2,
+    animation: false,
     interaction: {
       mode: 'index',
       intersect: false,
@@ -728,18 +761,33 @@ const myChart = new Chart("graph", {
         type: 'linear',
         display: true,
         position: 'left',
+        min: 20,
+        max: 190,
         title: {
           display: true,
           text: 'Angle (deg°)',
+        },
+        ticks: {
+            stepSize: 10
         }
       },
       y1: {
         type: 'linear',
         display: true,
         position: 'right',
+        min: -250,
+        max: 250,
         title: {
           display: true,
           text: 'Torque (Nm)',
+        },
+        ticks: {
+            stepSize: 30
+        }
+      },
+      x: {
+        ticks: {
+            display: false
         }
       }
     },
@@ -751,10 +799,208 @@ const myChart = new Chart("graph", {
   }
 });
 
-function toggleDatasetVisibility() {
+document.getElementById("hipAngle").addEventListener("click", function() {
   const dataset = myChart.data.datasets[0];
   dataset.hidden = !dataset.hidden;
   myChart.update();
-}
+});
+
+document.getElementById("kneeAngle").addEventListener("click", function() {
+  const dataset = myChart.data.datasets[1];
+  dataset.hidden = !dataset.hidden;
+  myChart.update();
+});
+
+document.getElementById("ankleAngle").addEventListener("click", function() {
+  const dataset = myChart.data.datasets[2];
+  dataset.hidden = !dataset.hidden;
+  myChart.update();
+});
+
+document.getElementById("hipTorque").addEventListener("click", function() {
+  const dataset = myChart.data.datasets[3];
+  dataset.hidden = !dataset.hidden;
+  myChart.update();
+});
+
+document.getElementById("kneeTorque").addEventListener("click", function() {
+  const dataset = myChart.data.datasets[4];
+  dataset.hidden = !dataset.hidden;
+  myChart.update();
+});
+
+document.getElementById("ankleTorque").addEventListener("click", function() {
+  const dataset = myChart.data.datasets[5];
+  dataset.hidden = !dataset.hidden;
+  myChart.update();
+});
 
 // ---------------------------- END GRAFICO ----------------------------
+
+// ---------------------------- GRAFICO MOBILE ----------------------------
+
+const valuesToKeepMobile = 10;
+
+const xValuesMobile = Array.from({ length: valuesToKeepMobile }, (_, index) => index + 1);
+
+let hipAngleDataMobile = [];
+let kneeAngleDataMobile = [];
+let ankleAngleDataMobile = [];
+let hipTorqueDataMobile = [];
+let kneeTorqueDataMobile = [];
+let ankleTorqueDataMobile = [];
+
+function updateGraphMobile(hipAngle, kneeAngle, ankleAngle, hipTorque, kneeTorque, ankleTorque) {
+        hipAngleDataMobile.push(hipAngle);
+        kneeAngleDataMobile.push(kneeAngle);
+        ankleAngleDataMobile.push(ankleAngle);
+        hipTorqueDataMobile.push(hipTorque);
+        kneeTorqueDataMobile.push(kneeTorque);
+        ankleTorqueDataMobile.push(ankleTorque);
+
+        if (hipAngleDataMobile.length > valuesToKeepMobile) {
+            hipAngleDataMobile.shift();
+            kneeAngleDataMobile.shift();
+            ankleAngleDataMobile.shift();
+            hipTorqueDataMobile.shift();
+            kneeTorqueDataMobile.shift();
+            ankleTorqueDataMobile.shift();
+        }
+
+  myChartMobile.update();
+
+}
+
+const myChartMobile = new Chart("graphMobileViz", {
+  type: "line",
+  data: {
+    labels: xValuesMobile,
+    datasets: [{
+      label: "Hip Angle",
+      data: hipAngleDataMobile,
+      borderColor: "red",
+      fill: false,
+      yAxisID: 'y',
+      hidden: false,
+    }, {
+      label: "Knee Angle",
+      data: kneeAngleDataMobile,
+      borderColor: "green",
+      fill: false,
+      yAxisID: 'y',
+      hidden: true,
+    }, {
+      label: "Ankle Angle",
+      data: ankleAngleDataMobile,
+      borderColor: "blue",
+      fill: false,
+      yAxisID: 'y',
+      hidden: true,
+    }, {
+      label: "Hip Torque",
+      data: hipTorqueDataMobile,
+      borderColor: "grey",
+      fill: false,
+      yAxisID: 'y1',
+      hidden: false,
+    }, {
+        label: "Knee Torque",
+        data: kneeTorqueDataMobile,
+        borderColor: "yellow",
+        fill: false,
+        yAxisID: 'y1',
+        hidden: true,
+      }, {
+        label: "Ankle Torque",
+        data: ankleTorqueDataMobile,
+        borderColor: "violet",
+        fill: false,
+        yAxisID: 'y1',
+        hidden: true,
+      }]
+  },
+  options: {
+    tension: 0.2,
+    animation: false,
+    interaction: false,
+    stacked: false,
+    scales: {
+      y: {
+        type: 'linear',
+        display: true,
+        position: 'left',
+        min: 20,
+        max: 190,
+        title: {
+          display: true,
+          text: 'Angle (deg°)',
+        },
+        ticks: {
+            stepSize: 10
+        }
+      },
+      y1: {
+        type: 'linear',
+        display: true,
+        position: 'right',
+        min: -250,
+        max: 250,
+        title: {
+          display: true,
+          text: 'Torque (Nm)',
+        },
+        ticks: {
+            stepSize: 30
+        }
+      },
+      x: {
+        ticks: {
+            display: false
+        }
+      }
+    },
+    plugins: {
+      legend: {
+        display: false,
+      }
+    }
+  }
+});
+
+document.getElementById("hipAngleMobile").addEventListener("click", function() {
+  const dataset = myChartMobile.data.datasets[0];
+  dataset.hidden = !dataset.hidden;
+  myChartMobile.update();
+});
+
+document.getElementById("kneeAngleMobile").addEventListener("click", function() {
+  const dataset = myChartMobile.data.datasets[1];
+  dataset.hidden = !dataset.hidden;
+  myChartMobile.update();
+});
+
+document.getElementById("ankleAngleMobile").addEventListener("click", function() {
+  const dataset = myChartMobile.data.datasets[2];
+  dataset.hidden = !dataset.hidden;
+  myChartMobile.update();
+});
+
+document.getElementById("hipTorqueMobile").addEventListener("click", function() {
+  const dataset = myChartMobile.data.datasets[3];
+  dataset.hidden = !dataset.hidden;
+  myChartMobile.update();
+});
+
+document.getElementById("kneeTorqueMobile").addEventListener("click", function() {
+  const dataset = myChartMobile.data.datasets[4];
+  dataset.hidden = !dataset.hidden;
+  myChartMobile.update();
+});
+
+document.getElementById("ankleTorqueMobile").addEventListener("click", function() {
+  const dataset = myChartMobile.data.datasets[5];
+  dataset.hidden = !dataset.hidden;
+  myChartMobile.update();
+});
+
+// ---------------------------- END GRAFICO MOBILE ----------------------------
