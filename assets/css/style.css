@@ -114,7 +114,9 @@ header img{
 
 .settings .input h2{
     display: inline-block;
-    font-size: 4em;
+    font-size: 5em;
+    font-weight: 100;
+    letter-spacing: -3px;
 }
 
 .inputSide{
@@ -126,19 +128,21 @@ header img{
 }
 
 .settings .input button{
+    font-family: "SUPSIFedraDemi", sans-serif;
+    font-size: 2.4em;
     position: relative;
     bottom: 10px;
     display: inline-block;
-    padding: 0.5rem 2rem;
-    border: white 2px solid;
+    padding: 0.1rem 0rem;
+    border: white 4px solid;
     border-radius: 4rem;
     background-color: transparent;
     color: white;
-    font-size: 2em;
     margin-left: 20px;
     height: fit-content;
     margin-top: 2vh;
     text-transform: uppercase;
+    width: 18vw;
 }
 
 .settings .input button:hover{
@@ -158,13 +162,15 @@ header img{
 }
 
 .settings input{
-    font-size: 2em;
+    font-family: "SUPSIFedraDemi", sans-serif;
+    font-size: 2.4em;
+    font-variant-numeric: lining-nums;
     background-color: transparent;
     border: none;
     border-bottom: 2px solid white;
     color: white;
     text-align: center;
-    width: 35vw;
+    width: 42vw;
     margin-left: 5vw;
     opacity: 0.4;
     margin-top: 2.5vh;
@@ -204,7 +210,7 @@ input:not(:placeholder-shown) {
 input:not(:placeholder-shown) + .additionalPlaceholder{
     display: inline-block;
     position: relative;
-    left: -29vw;
+    left: -42vw;
 }
 
 input:valid + .additionalPlaceholder {
@@ -212,35 +218,51 @@ input:valid + .additionalPlaceholder {
 }
 
 .unit{
+    font-family: "SUPSIFedraDemi", sans-serif;
+    font-size: 2.4em;
+    display: inline-block;
+    position: relative;
+    left: -18vw;
+    font-size: 2em;
+}
+
+input:placeholder-shown ~ .unit{
     display: none;
 }
 
-input:not(:placeholder-shown) ~ .unit{
-    display: inline-block;
-    position: relative;
-    left: -12vw;
+input:invalid ~ .unit{
+    display: none;
 }
 
 #bmiResult{
+    font-family: "SUPSIFedraDemi", sans-serif;
+    font-size: 1.5em;
     display: none;
     margin-left: 5vw;
     margin-top: 2vh;
-    width: 35vw;
-    font-size: 1em;
+    width: 42vw;
     border-bottom: 2px solid white;
     text-align: center;
     text-transform: uppercase;
 }
 
 #bmiName{
-    font-size: 2rem;
+    font-size: 2.4rem;
+    text-transform: capitalize;
+    margin-right: 15px;
+}
+
+#bmiNr{
+    font-size: 1.5rem;
+    font-variant-numeric: lining-nums;
 }
 
 #startBtn{
+    font-family: "SUPSIFedraDemi", sans-serif;
     margin-top: 30vh;
     display: block;
     font-size: 2em;
-    border: white 2px solid;
+    border: white 4px solid;
     border-radius: 4rem;
     cursor: pointer;
     padding: 0.5rem 4rem;
@@ -289,6 +311,10 @@ input:not(:placeholder-shown) ~ .unit{
 
     .setTitle{
         font-size: 1.5em;
+    }
+
+    .settings{
+        font-size: 10px;
     }
 
     #humanMan{
@@ -357,6 +383,7 @@ input:not(:placeholder-shown) ~ .unit{
         display: block;
         margin-top: 2vh;
         font-size: 3em;
+        letter-spacing: -1px;
     }
 
     .settings .input button:first-of-type {
@@ -364,9 +391,11 @@ input:not(:placeholder-shown) ~ .unit{
     }
 
     .settings .input button{
-        padding: 0.3rem 1.8rem;
+        padding: 0.3rem 0rem;
         font-size: 1.4em;
         margin-top: 1vh;
+        width: 32vw;
+        border-width: 2px;
     }
 
     .settings .input input{
@@ -387,9 +416,10 @@ input:not(:placeholder-shown) ~ .unit{
     }
 
     #startBtn{
-        margin-top: 10vh;
+        margin-top: 15vh;
         font-size: 1.4em;
         padding: 0.5rem 1.5rem;
+        border-width: 2px;
     }
 
     .result img{
@@ -421,6 +451,7 @@ input:not(:placeholder-shown) ~ .unit{
 
     .settings .input button{
         margin-top: 3vh;
+        border-width: 2px;
     }
 
     .settings .input input{
