@@ -409,10 +409,24 @@ input:invalid ~ .unit{
         text-align: left;
     }
 
+    .unit{
+        font-size: 1.4em;
+    }
+    
+    #bmiName{
+        font-size: 1.4em;
+        margin-right: 5px;
+    }
+    
+    #bmiNr{
+        font-size: 0.8em;
+    }
+
     #bmiResult{
         width: 70vw;
         margin-left: 0;
-        font-size: 10px;
+
+        font-size: 0.8em;
     }
 
     #startBtn{

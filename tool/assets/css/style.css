@@ -447,7 +447,7 @@ input[type="checkbox"]{
 }
 
 label:first-of-type{
-    margin-right: 1em;
+    width: 45%;
 }
 
 label {
@@ -468,9 +468,66 @@ label::before {
     background-color: white;
 }
 
-input[type="checkbox"]:checked + label::before {
-    background-color: var(--lightBlue);
-    border-color: var(--lightBlue);
+input[id="hipAngle"]:checked + label::before {
+    background-color: #9747FF;
+    border-color: #9747FF;
+}
+
+input[id="hipTorque"]:checked + label::before {
+    background-color: #F25D05;
+    border-color: #F25D05;
+}
+
+input[id="kneeAngle"]:checked + label::before {
+    background-color: #3b94a5;
+    border-color: #3b94a5;
+}
+
+input[id="kneeTorque"]:checked + label::before {
+    background-color: #7AA619;
+    border-color: #7AA619;
+}
+
+input[id="ankleAngle"]:checked + label::before {
+    background-color: #D80F0F;
+    border-color: #D80F0F;
+}
+
+input[id="ankleTorque"]:checked + label::before {
+    background-color: #000000;
+    border-color: #000000;
+}
+
+
+
+input[id="hipAngleMobile"]:checked + label::before {
+    background-color: #9747FF;
+    border-color: #9747FF;
+}
+
+input[id="hipTorqueMobile"]:checked + label::before {
+    background-color: #F25D05;
+    border-color: #F25D05;
+}
+
+input[id="kneeAngleMobile"]:checked + label::before {
+    background-color: #3b94a5;
+    border-color: #3b94a5;
+}
+
+input[id="kneeTorqueMobile"]:checked + label::before {
+    background-color: #7AA619;
+    border-color: #7AA619;
+}
+
+input[id="ankleAngleMobile"]:checked + label::before {
+    background-color: #D80F0F;
+    border-color: #D80F0F;
+}
+
+input[id="ankleTorqueMobile"]:checked + label::before {
+    background-color: #000000;
+    border-color: #000000;
 }
 
 label::after {

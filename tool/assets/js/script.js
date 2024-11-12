@@ -707,42 +707,42 @@ const myChart = new Chart("graph", {
     datasets: [{
       label: "Hip Angle",
       data: hipAngleData,
-      borderColor: "red",
+      borderColor: "#9747FF",
       fill: false,
       yAxisID: 'y',
       hidden: false,
     }, {
       label: "Knee Angle",
       data: kneeAngleData,
-      borderColor: "green",
+      borderColor: "#3b94a5",
       fill: false,
       yAxisID: 'y',
       hidden: true,
     }, {
       label: "Ankle Angle",
       data: ankleAngleData,
-      borderColor: "blue",
+      borderColor: "#D80F0F",
       fill: false,
       yAxisID: 'y',
       hidden: true,
     }, {
       label: "Hip Torque",
       data: hipTorqueData,
-      borderColor: "grey",
+      borderColor: "#F25D05",
       fill: false,
       yAxisID: 'y1',
       hidden: false,
     }, {
         label: "Knee Torque",
         data: kneeTorqueData,
-        borderColor: "yellow",
+        borderColor: "#7AA619",
         fill: false,
         yAxisID: 'y1',
         hidden: true,
       }, {
         label: "Ankle Torque",
         data: ankleTorqueData,
-        borderColor: "violet",
+        borderColor: "#000000",
         fill: false,
         yAxisID: 'y1',
         hidden: true,
@@ -794,7 +794,34 @@ const myChart = new Chart("graph", {
     plugins: {
       legend: {
         display: false,
-      }
+      },
+      tooltip: {
+        callbacks: {
+            labelColor: function(context) {
+                return {
+                    borderColor: context.dataset.borderColor,
+                    backgroundColor: context.dataset.borderColor,
+                    borderWidth: 2.3,
+                };
+            },
+            labelTextColor: function(context) {
+                return context.dataset.borderColor;
+            },
+            title: function() {
+                return ''; // Remove the title of the tooltip
+            },
+            label: function(context) {
+                if (context.dataset.label.includes('Angle')) {
+                    return context.dataset.label + ': ' + context.parsed.y.toFixed(2) + ' °';
+                } else {
+                    return context.dataset.label + ': ' + context.parsed.y.toFixed(2) + ' Nm';
+                }
+            }
+        },
+        bodySpacing: 8,
+        boxPadding: 4,
+        backgroundColor: '#F1F1F1',
+    }
     }
   }
 });
@@ -878,42 +905,42 @@ const myChartMobile = new Chart("graphMobileViz", {
     datasets: [{
       label: "Hip Angle",
       data: hipAngleDataMobile,
-      borderColor: "red",
+      borderColor: "#9747FF",
       fill: false,
       yAxisID: 'y',
       hidden: false,
     }, {
       label: "Knee Angle",
       data: kneeAngleDataMobile,
-      borderColor: "green",
+      borderColor: "#3b94a5",
       fill: false,
       yAxisID: 'y',
       hidden: true,
     }, {
       label: "Ankle Angle",
       data: ankleAngleDataMobile,
-      borderColor: "blue",
+      borderColor: "#D80F0F",
       fill: false,
       yAxisID: 'y',
       hidden: true,
     }, {
       label: "Hip Torque",
       data: hipTorqueDataMobile,
-      borderColor: "grey",
+      borderColor: "#F25D05",
       fill: false,
       yAxisID: 'y1',
       hidden: false,
     }, {
         label: "Knee Torque",
         data: kneeTorqueDataMobile,
-        borderColor: "yellow",
+        borderColor: "#7AA619",
         fill: false,
         yAxisID: 'y1',
         hidden: true,
       }, {
         label: "Ankle Torque",
         data: ankleTorqueDataMobile,
-        borderColor: "violet",
+        borderColor: "#000000",
         fill: false,
         yAxisID: 'y1',
         hidden: true,
@@ -962,6 +989,33 @@ const myChartMobile = new Chart("graphMobileViz", {
     plugins: {
       legend: {
         display: false,
+      },
+      tooltip: {
+        callbacks: {
+            labelColor: function(context) {
+                return {
+                    borderColor: context.dataset.borderColor,
+                    backgroundColor: context.dataset.borderColor,
+                    borderWidth: 2.3,
+                };
+            },
+            labelTextColor: function(context) {
+                return context.dataset.borderColor;
+            },
+            title: function() {
+                return ''; // Remove the title of the tooltip
+            },
+            label: function(context) {
+                if (context.dataset.label.includes('Angle')) {
+                    return context.dataset.label + ': ' + context.parsed.y.toFixed(2) + ' °';
+                } else {
+                    return context.dataset.label + ': ' + context.parsed.y.toFixed(2) + ' Nm';
+                }
+            }
+        },
+        bodySpacing: 8,
+        boxPadding: 4,
+        backgroundColor: '#F1F1F1',
       }
     }
   }
