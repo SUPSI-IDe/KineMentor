@@ -29,4 +29,29 @@ export function aggiornamentoFunzioniSchermo () {
         document.getElementById('aboutBtn').addEventListener('click', function() {
             document.getElementsByClassName("about")[0].style.display = "block";
         });
+
+        document.getElementById('closingBtnInfo').addEventListener('click', function() {
+            document.getElementsByClassName("info")[0].style.display = "none";
+        });
+        
+        document.getElementById('infoBtn').addEventListener('click', function() {
+            document.getElementsByClassName("info")[0].style.display = "block";
+        });
+
+        document.getElementById('incomingData').addEventListener('click', function() {
+            document.getElementsByClassName("info")[0].style.display = "block";
+        });
+
+        if(localStorage.getItem("bmi") == "Underweight") {
+            document.getElementById("uW_info").classList.add("bmiSelected");
+        }
+        if(localStorage.getItem("bmi") == "Normalweight") {
+            document.getElementById("nW_info").classList.add("bmiSelected");
+        }
+        if(localStorage.getItem("bmi") == "Overweigth") {
+            document.getElementById("oW_info").classList.add("bmiSelected");
+        }
+        if(localStorage.getItem("bmi") == "Obesity") {
+            document.getElementById("O_info").classList.add("bmiSelected");
+        }
 }

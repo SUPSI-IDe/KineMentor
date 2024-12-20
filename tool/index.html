@@ -27,7 +27,7 @@
     </header>
     <div class="data">
         <p id="editBtn">← Edit data</p>
-        <div class="incomingData">
+        <div class="incomingData" id="incomingData">
             <p><span id="sexInfo">Nd</span>, <span id="heightInfo">Nd</span> m, <span id="weightInfo">Nd</span> kg, <span id="bmiInfo">Nd</span></p>
             <div id="infoBtn">i</div>
         </div>
@@ -278,28 +278,55 @@
         </div>
     </div>
     <div class="about">
-        <p id="closingBtn">Close</p>
+        <p id="closingBtn">x</p>
         <div class="information">
-            <h2>About KineMentor</h2>
-            <p>
-                KineMentor is a digital biomechanics simulator developed by the University of Applied Sciences and Arts of Southern Switzerland (SUPSI). 
-                The application is designed to help students and professionals in the field of biomechanics to understand the human body's movements and 
-                the forces that act on it.
+            <h2>About</h2>
+            <p class="aboutParagraph">
+                KineMentor is a digital biomechanics simulator developed by the University of Applied Sciences and Arts of Southern Switzerland (SUPSI). The application is designed to help students and professionals in the field of biomechanics to understand the human body's movements and the forces that act on it.
             </p>
-            <h2>Financial</h2>
-            <p>
-                The development of KineMentor was made possible thanks to the financial support of the Swiss National Science Foundation (SNSF) 
-                and the Swiss Innovation Agency (Innosuisse).
+            <div class="infoBody">
+                <div class="infoColumn lineDivider">
+                    <h3>Support</h2>
+                    <p>
+                        The development of KineMentor was made possible thanks to the financial support of the Swiss National Science Foundation (SNSF)  and the Swiss Innovation Agency (Innosuisse).
+                    </p>
+                </div>
+                <div class="infoColumn lineDivider">
+                    <h3>Team</h2>
+                    <div class="columnPlus">
+                        <p>
+                            KineMentor is the product of a collaboration between SUPSI's Rehabilitation Research Laboratory (2rLab) and  Institute of Design (IDe). <br><br>
+                        </p>    
+                        <div class="lineDivider"></div>
+                        <p style="margin-top: 2vh;">
+                            <span style="font-family: 'SUPSIFedraBold', sans-serif;">Marco Barbero</span>, Project Responsible (2rLab)<br>
+                            <span style="font-family: 'SUPSIFedraBold', sans-serif;">Corrado Cescon</span>, Project Collaborator (2rLab)<br>
+                            <span style="font-family: 'SUPSIFedraBold', sans-serif;">Stefano Vercelli</span>, Project Collaborator (2rLab)<br>
+                            <span style="font-family: 'SUPSIFedraBold', sans-serif;">Max Fonseca</span>, Visual Designer (IDe)<br>
+                            <span style="font-family: 'SUPSIFedraBold', sans-serif;">Matteo Subet</span>, Interaction Designer and Developer (IDe)<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="infoRow lineDivider">
+                <h3>License</h3>
+                <p>Except where otherwise noted, content on this site is licensed under a Creative Commons Attribution 4.0 International license.</p>
+            </div>
+        </div>
+    </div>
+    <div class="info">
+        <p id="closingBtnInfo">x</p>
+        <div class="information">
+            <h2>Body Mass Index</h2>
+            <p class="aboutParagraph">
+                BMI (Body Mass Index) is a common method for evaluating an individual's weight status, applicable to both males and females. It is calculated by dividing body weight in kilograms by height in meters squared. A BMI between 18.5 and 24.9 indicates normal weight; higher values suggest overweight or obesity, while values below 18.5 indicate underweight. The table below highlights variables used in BMI calculations and shows how body weight is distributed across different body parts, aiding in understanding the impact of weight distribution on BMI and overall health.
             </p>
-            <h2>People</h2>
-            <p>
-                The KineMentor project was developed by the Rehabilitation Research Laboratory (2rLab) and the Design Institute (IDe) of SUPSI.<br><br>
-                Marco Barbero - 2rLab - Project Responsible<br>
-                Corrado Cescon - 2rLab - Project Collaborator<br>
-                Stefano Vercelli - 2rLab - Project Collaborator<br>
-                Max Fonseca - IDe - Graphic Designer<br>
-                Matteo Subet - IDe - Interaction Designer and Developer<br>
-            </p>
+            <div class="tagsIndex">
+                <div class="bmiTag" id="uW_info"><p>Underweight</p></div>
+                <div class="bmiTag" id="nW_info"><p>Normal Weight</p></div>
+                <div class="bmiTag" id="oW_info"><p>Overweight</p></div>
+                <div class="bmiTag" id="O_info"><p>Obesity</p></div>
+            </div>
         </div>
     </div>
 </body>

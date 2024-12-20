@@ -68,6 +68,10 @@ header img{
     width: 100vw;
     height: 100vh;
     background-color: var(--blackBlue);
+    color: white;
+    z-index: 2;
+    flex-wrap: wrap;
+    font-size: 14px;
 }
 
 #closingBtn{
@@ -75,23 +79,90 @@ header img{
     top: 1.5vh;
     right: 2.8125rem;
     font-size: 1.5em;
-    text-decoration: underline;
     cursor: pointer;
+    border: 1.5px solid white;
+    border-radius: 50%;
+    box-sizing: border-box;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    font-family: "SUPSIFedraLight", sans-serif;
 }
 
 .information{
     padding: 2.8125rem;
 }
 
-.information p{
-    font-family: "SUPSIFedraLight", sans-serif;
-    font-size: 1.5em;
-    margin-top: 2vh;
-    width: 60%;
+.information h2{
+    font-family: "SUPSIFedraBold", sans-serif;
+    font-size: 5em;
+    text-transform: uppercase;
 }
 
-.information h2{
+.aboutParagraph{
+    font-family: "SUPSIFedraBold", sans-serif;
+    font-size: 1.5em;
     margin-top: 5vh;
+    margin-bottom: 15vh;
+}
+
+.infoBody{
+    display: flex;
+    width: 100%;
+    gap: 20px;
+}
+
+.infoColumn{
+    display: flex;
+    box-sizing: border-box;
+    padding-top: 1vh;
+}
+
+.infoColumn h3{
+    display: block;
+    width: 20%;
+    box-sizing: border-box;
+    font-family: "SUPSIFedraMedium", sans-serif;
+    font-size: 0.8em;
+}
+
+.infoColumn p{
+    display: block;
+    width: 80%;
+    font-size: 1.3em;
+    font-family: "SUPSIFedraBook", sans-serif;
+}
+
+.columnPlus{
+    width: 80%;
+}
+
+.lineDivider{
+    border-top: 1px solid white;
+    width: 100%;
+}
+
+.infoRow{
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    padding-top: 1vh;
+    margin-top: 10vh;
+}
+
+.infoRow h3{
+    display: block;
+    width: 10%;
+    box-sizing: border-box;
+    font-family: "SUPSIFedraMedium", sans-serif;
+    font-size: 0.8em;
+}
+
+.infoRow p{
+    display: block;
+    width: 90%;
+    font-size: 1.3em;
+    font-family: "SUPSIFedraBook", sans-serif;
 }
 
 /* -------------------> SETUP <------------------- */
@@ -355,8 +426,33 @@ input:invalid ~ .unit{
         display: inline-block;
     }
 
+    #closingBtn{
+        font-size: 2em;
+    }
+
     .about{
         height: max-content;
+    }
+
+    .aboutParagraph{
+        margin-bottom: 5vh;
+    }
+
+    .infoRow{
+        margin-top: 5vh;
+    }
+
+    .infoBody{
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .infoRow h3{
+        width: 20%;
+    }
+
+    .infoRow p{
+        width: 80%;
     }
 
     header{

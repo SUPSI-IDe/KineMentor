@@ -59,6 +59,17 @@ var maxAnca = 180;
 var minGinocchio = 60;
 var maxGinocchio = 180;
 
+const svgPaths = {
+    piede: "assets/men/piede.svg",
+    tibia: "assets/men/tibia.svg",
+    anca: "assets/men/anca.svg",
+    tronco: "assets/men/tronco.svg",
+    testa: "assets/men/testa.svg",
+    braccio: "assets/men/braccio.svg",
+    avambraccio: "assets/men/avambraccio.svg",
+    manubrio: "assets/men/manubrio.svg",
+};
+
 //Dichiarazione variabili canvas
     const humanFigureCanvas = document.getElementById('canvas');
     const humanFigureCtx = humanFigureCanvas.getContext('2d');
@@ -81,7 +92,7 @@ aggiornamentoFunzioniSchermo();
         animazione = setInterval(function() {
             try {
                 aggiornamentoAngoli(umano, pesoManubrio, posizioneManubrio, minCaviglia, maxCaviglia, minAnca, maxAnca, minGinocchio, maxGinocchio);
-                disegnaOmino(humanFigureCtx, umano);
+                disegnaOmino(humanFigureCtx, umano, svgPaths);
                 
                 const now = Date.now();
                 if (now - lastGraphUpdateTime > 100) {
@@ -483,9 +494,9 @@ aggiornamentoFunzioniSchermo();
 function disegnaOmino(ctx, umano) {
     ctx.clearRect(0, 0, humanFigureCanvas.width, humanFigureCanvas.height);
 
-    const scaleMultiplier = 3;
+    const scaleMultiplier = 2.8;
 
-    const puntoPartenza = [humanFigureCanvas.width / 2, humanFigureCanvas.height - 10];
+    const puntoPartenza = [humanFigureCanvas.width / 2, humanFigureCanvas.height - 8];
     const posCaviglia = [puntoPartenza[0] + (umano.posCaviglia[0] * scaleMultiplier), puntoPartenza[1] - (umano.posCaviglia[1] * scaleMultiplier)];
     const posGinocchio = [puntoPartenza[0] + (umano.posGinocchio[0] * scaleMultiplier), puntoPartenza[1] - (umano.posGinocchio[1] * scaleMultiplier)];
     const posAnca = [puntoPartenza[0] + (umano.posAnca[0] * scaleMultiplier), puntoPartenza[1] - (umano.posAnca[1] * scaleMultiplier)];
@@ -500,7 +511,7 @@ function disegnaOmino(ctx, umano) {
     const baricentroAvambraccio = [puntoPartenza[0] + (umano.baricentroAvambraccio[0] * scaleMultiplier), puntoPartenza[1] - (umano.baricentroAvambraccio[1] * scaleMultiplier)];
     const centroDiMassa = [puntoPartenza[0] + (umano.centroDiMassa * scaleMultiplier), puntoPartenza[1]];
 
-    const lineWidth = 12;
+    const lineWidth = 14;
 
     //Disegno piedi
     ctx.beginPath();
@@ -532,12 +543,6 @@ function disegnaOmino(ctx, umano) {
     ctx.lineWidth = lineWidth;
     ctx.stroke();
 
-    //Disegno punto barciocentro tibia
-    ctx.beginPath();
-    ctx.arc(baricentroTibia[0], baricentroTibia[1], 5, 0, 2 * Math.PI);
-    ctx.fillStyle = "red";
-    ctx.fill();
-
     //Disegno femore
     ctx.beginPath();
     ctx.moveTo(posGinocchio[0], posGinocchio[1]);
@@ -545,12 +550,6 @@ function disegnaOmino(ctx, umano) {
     ctx.strokeStyle = "black";
     ctx.lineWidth = lineWidth;
     ctx.stroke();
-
-    //Disegno punto barciocentro femore
-    ctx.beginPath();
-    ctx.arc(baricentroFemore[0], baricentroFemore[1], 5, 0, 2 * Math.PI);
-    ctx.fillStyle = "red";
-    ctx.fill();
 
     //Disegno torace
     ctx.beginPath();
@@ -560,12 +559,6 @@ function disegnaOmino(ctx, umano) {
     ctx.lineWidth = lineWidth;
     ctx.stroke();
 
-    //Disegno punto barciocentro torace
-    ctx.beginPath();
-    ctx.arc(baricentroToraceTesta[0], baricentroToraceTesta[1], 5, 0, 2 * Math.PI);
-    ctx.fillStyle = "red";
-    ctx.fill();
-
     //Disegno braccio
     ctx.beginPath();
     ctx.moveTo(posSpalla[0], posSpalla[1]);
@@ -574,12 +567,6 @@ function disegnaOmino(ctx, umano) {
     ctx.lineWidth = lineWidth;
     ctx.stroke();
 
-    //Disegno punto barciocentro braccio
-    ctx.beginPath();
-    ctx.arc(baricentroBraccio[0], baricentroBraccio[1], 5, 0, 2 * Math.PI);
-    ctx.fillStyle = "red";
-    ctx.fill();
-
     //Disegno avambraccio
     ctx.beginPath();
     ctx.moveTo(posGomito[0], posGomito[1]);
@@ -587,12 +574,6 @@ function disegnaOmino(ctx, umano) {
     ctx.strokeStyle = "black";
     ctx.lineWidth = lineWidth;
     ctx.stroke();
-
-    //Disegno punto barciocentro avambraccio
-    ctx.beginPath();
-    ctx.arc(baricentroAvambraccio[0], baricentroAvambraccio[1], 5, 0, 2 * Math.PI);
-    ctx.fillStyle = "red";
-    ctx.fill();
 
     //Disegno testa
     ctx.beginPath();
@@ -663,6 +644,194 @@ function disegnaOmino(ctx, umano) {
     ctx.font = "18px sans-serif";
     ctx.textAlign = "center";
     ctx.fillText(`${umano.angoloCaviglia.toFixed(0)}°`, posCaviglia[0], posCaviglia[1] + 5);
+}
+
+const images = {
+    tibia: new Image(),
+    anca: new Image(),
+    tronco: new Image(),
+    testa: new Image(),
+    piede: new Image(),
+    manubrio: new Image(),
+    braccio: new Image(),
+    avambraccio: new Image(),
+};
+
+images.tibia.src = '../tool/assets/men/tibia.svg';
+images.anca.src = '../tool/assets/men/anca.svg';
+images.tronco.src = '../tool/assets/men/tronco.svg';
+images.testa.src = '../tool/assets/men/testa.svg';
+images.piede.src = '../tool/assets/men/piede.svg';
+images.manubrio.src = '../tool/assets/men/manubrio.svg';
+images.braccio.src = '../tool/assets/men/braccio.svg';
+images.avambraccio.src = '../tool/assets/men/avambraccio.svg';
+
+function disegnaOLDOmino(ctx, umano) {
+    ctx.clearRect(0, 0, humanFigureCanvas.width, humanFigureCanvas.height);
+
+    const scaleMultiplier = 1;
+
+    const puntoPartenza = [humanFigureCanvas.width / 2, humanFigureCanvas.height - 40];
+    const posCaviglia = [puntoPartenza[0] + (umano.posCaviglia[0] * scaleMultiplier), puntoPartenza[1] - (umano.posCaviglia[1] * scaleMultiplier)];
+    const posGinocchio = [puntoPartenza[0] + (umano.posGinocchio[0] * scaleMultiplier), puntoPartenza[1] - (umano.posGinocchio[1] * scaleMultiplier)];
+    const posAnca = [puntoPartenza[0] + (umano.posAnca[0] * scaleMultiplier), puntoPartenza[1] - (umano.posAnca[1] * scaleMultiplier)];
+    const posSpalla = [puntoPartenza[0] + (umano.posSpalla[0] * scaleMultiplier), puntoPartenza[1] - (umano.posSpalla[1] * scaleMultiplier)];
+    const posTesta = [puntoPartenza[0] + ((umano.posTesta[0] + 8 * Math.cos((Math.PI / 180) * (umano.angoloCaviglia - umano.angoloGinocchio + umano.angoloAnca))) * scaleMultiplier), puntoPartenza[1] - ((umano.posTesta[1] + 8 * Math.sin((Math.PI / 180) * (umano.angoloCaviglia - umano.angoloGinocchio + umano.angoloAnca))) * scaleMultiplier)];
+    const posGomito = [puntoPartenza[0] + (umano.posGomito[0] * scaleMultiplier), puntoPartenza[1] - (umano.posGomito[1] * scaleMultiplier)];
+    const posImpugnatura = [puntoPartenza[0] + (umano.posImpugnatura[0] * scaleMultiplier), puntoPartenza[1] - (umano.posImpugnatura[1] * scaleMultiplier)];
+
+    // Helper function to draw images
+    function drawImageWithTwoFulcrums(
+        ctx,
+        image,
+        pointA,
+        pointB,
+        topFulcrumOffset = [0, 0],
+        bottomFulcrumOffset = [0, 0],
+        scale = 1,
+        rotationOffset = 0,
+        showFulcrums = false
+    ) {
+        // Calculate the distance and angle between the two points
+        const dx = pointB[0] - pointA[0];
+        const dy = pointB[1] - pointA[1];
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        const angle = Math.atan2(dy, dx);
+    
+        // Calculate the image's scaling factor for its height
+        const imageHeight = image.height;
+        const fulcrumDistance = (imageHeight + bottomFulcrumOffset[1] - topFulcrumOffset[1]) * scale;
+        const scaleFactor = distance / fulcrumDistance;
+    
+        const scaledWidth = image.width * scaleFactor;
+        const scaledHeight = image.height * scaleFactor;
+    
+        // Calculate the actual offsets for the fulcrums in the scaled image
+        const scaledTopFulcrumOffsetX = topFulcrumOffset[0] * scaleFactor;
+        const scaledTopFulcrumOffsetY = topFulcrumOffset[1] * scaleFactor;
+        const scaledBottomFulcrumOffsetX = bottomFulcrumOffset[0] * scaleFactor;
+        const scaledBottomFulcrumOffsetY = bottomFulcrumOffset[1] * scaleFactor;
+    
+        // Save the canvas state
+        ctx.save();
+    
+        // Translate the canvas to the top fulcrum point (pointA)
+        ctx.translate(pointA[0], pointA[1]);
+    
+        // Rotate the canvas to align the image between the two points, plus the rotation offset
+        ctx.rotate(angle + rotationOffset);
+    
+        // Translate to account for the top fulcrum offset
+        ctx.translate(-scaledTopFulcrumOffsetX, -scaledTopFulcrumOffsetY);
+    
+        // Draw the image, scaling it properly
+        ctx.drawImage(
+            image,
+            0, // Top-left corner of the image
+            0, // Top-left corner of the image
+            scaledWidth,
+            scaledHeight
+        );
+    
+        // Optionally draw the fulcrums as red dots
+        if (showFulcrums) {
+            ctx.fillStyle = "red";
+    
+            // Top fulcrum (pointA)
+            ctx.beginPath();
+            ctx.arc(scaledTopFulcrumOffsetX, scaledTopFulcrumOffsetY, 5, 0, 2 * Math.PI);
+            ctx.fill();
+    
+            // Bottom fulcrum (pointB)
+            const bottomFulcrumPositionX = scaledTopFulcrumOffsetX + scaledBottomFulcrumOffsetX;
+            const bottomFulcrumPositionY = scaledTopFulcrumOffsetY + distance;
+            ctx.beginPath();
+            ctx.arc(bottomFulcrumPositionX, bottomFulcrumPositionY, 5, 0, 2 * Math.PI);
+            ctx.fill();
+        }
+    
+        // Restore the canvas state
+        ctx.restore();
+    }
+
+    // Draw each body part with the appropriate image and fulcrum offsets
+    drawImageWithTwoFulcrums(ctx, images.piede, puntoPartenza, posCaviglia, [0, 0], [images.piede.width, images.piede.height], 0.05, 90 * Math.PI / 180, true); // Foot
+    //drawImageWithTwoFulcrums(ctx, images.tibia, posCaviglia, posGinocchio, [0, 0], [images.tibia.width, images.tibia.height], 90 * Math.PI / 180, true); // Tibia
+    // drawImageWithTwoFulcrums(ctx, images.anca, posGinocchio, posAnca, [20, 10], [20, 150]); // Thigh
+    // drawImageWithTwoFulcrums(ctx, images.tronco, posAnca, posSpalla, [25, 10], [25, 150]); // Torso
+    // drawImageWithTwoFulcrums(ctx, images.testa, posSpalla, posTesta, [15, 30], [15, 50]); // Head
+    // drawImageWithTwoFulcrums(ctx, images.braccio, posSpalla, posGomito, [10, 10], [10, 100]); // Upper Arm
+    // drawImageWithTwoFulcrums(ctx, images.avambraccio, posGomito, posImpugnatura, [10, 10], [10, 80]); // Forearm
+    // drawImageWithTwoFulcrums(ctx, images.manubrio, posImpugnatura, posImpugnatura, [0, 0], [0, 0]); // Dumbbell
+}
+
+function disegnaImgOmino(ctx, umano, svgPaths) {
+    ctx.clearRect(0, 0, humanFigureCanvas.width, humanFigureCanvas.height);
+
+    const scaleMultiplier = 3;
+
+    // Define all body part positions
+    const puntoPartenza = [humanFigureCanvas.width / 2, humanFigureCanvas.height - 10];
+    const positions = {
+        piede: [puntoPartenza[0], puntoPartenza[1]],
+        caviglia: [puntoPartenza[0] + (umano.posCaviglia[0] * scaleMultiplier), puntoPartenza[1] - (umano.posCaviglia[1] * scaleMultiplier)],
+        ginocchio: [puntoPartenza[0] + (umano.posGinocchio[0] * scaleMultiplier), puntoPartenza[1] - (umano.posGinocchio[1] * scaleMultiplier)],
+        anca: [puntoPartenza[0] + (umano.posAnca[0] * scaleMultiplier), puntoPartenza[1] - (umano.posAnca[1] * scaleMultiplier)],
+        spalla: [puntoPartenza[0] + (umano.posSpalla[0] * scaleMultiplier), puntoPartenza[1] - (umano.posSpalla[1] * scaleMultiplier)],
+        testa: [puntoPartenza[0] + (umano.posTesta[0] * scaleMultiplier), puntoPartenza[1] - (umano.posTesta[1] * scaleMultiplier)],
+        gomito: [puntoPartenza[0] + (umano.posGomito[0] * scaleMultiplier), puntoPartenza[1] - (umano.posGomito[1] * scaleMultiplier)],
+        impugnatura: [puntoPartenza[0] + (umano.posImpugnatura[0] * scaleMultiplier), puntoPartenza[1] - (umano.posImpugnatura[1] * scaleMultiplier)],
+    };
+
+    // Draw connecting segments with corresponding SVGs
+    const segments = [
+        { from: "piede", to: "caviglia", svg: svgPaths.piede },
+        { from: "caviglia", to: "ginocchio", svg: svgPaths.tibia },
+        { from: "ginocchio", to: "anca", svg: svgPaths.anca },
+        { from: "anca", to: "spalla", svg: svgPaths.tronco },
+        { from: "spalla", to: "gomito", svg: svgPaths.braccio },
+        { from: "gomito", to: "impugnatura", svg: svgPaths.avambraccio },
+    ];
+
+    segments.forEach((segment) => {
+        const start = positions[segment.from];
+        const end = positions[segment.to];
+
+        // Use SVG if provided, else fallback to a line
+        if (segment.svg) {
+            const img = new Image();
+            img.src = segment.svg;
+            const larghezzaImg = img.width;
+            const altezzaImg = img.height;
+            const angle = Math.atan2(end[1] - start[1], end[0] - start[0]); // Angle between points
+            const length = Math.sqrt(Math.pow(end[0] - start[0], 2) + Math.pow(end[1] - start[1], 2)); // Distance
+            ctx.save();
+            ctx.translate(start[0], start[1]);
+            ctx.rotate(angle); // Rotate to align the SVG with the segment
+            ctx.drawImage(img, 0, -10, length, 20); // Stretch SVG along the segment
+            ctx.restore();
+        } else {
+            // Draw a line as a fallback
+            ctx.beginPath();
+            ctx.moveTo(start[0], start[1]);
+            ctx.lineTo(end[0], end[1]);
+            ctx.strokeStyle = "black";
+            ctx.lineWidth = 5;
+            ctx.stroke();
+        }
+    });
+
+    // Draw individual SVGs for joints or static body parts
+    const parts = ["testa", "manubrio"];
+    parts.forEach((part) => {
+        const img = new Image();
+        img.src = svgPaths[part];
+        img.onload = () => {
+            const [x, y] = positions[part === "manubrio" ? "impugnatura" : part];
+            const size = part === "testa" ? 50 : 40; // Adjust size for head and weight
+            ctx.drawImage(img, x - size / 2, y - size / 2, size, size);
+        };
+    });
 }
 // ---------------------------- END DISEGNO OMINO ----------------------------
 
@@ -762,7 +931,7 @@ const myChart = new Chart("graph", {
         display: true,
         position: 'left',
         min: 20,
-        max: 190,
+        max: 220,
         title: {
           display: true,
           text: 'Angle (deg°)',
@@ -782,7 +951,7 @@ const myChart = new Chart("graph", {
           text: 'Torque (Nm)',
         },
         ticks: {
-            stepSize: 30
+            stepSize: 50
         }
       },
       x: {
