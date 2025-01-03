@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 27.9.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 482.4 170.9" style="enable-background:new 0 0 482.4 170.9;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#0600FF;}
+	.st1{font-family:'MyriadPro-Regular';}
+	.st2{font-size:12px;}
+	.st3{fill:none;stroke:#000000;stroke-width:4;stroke-miterlimit:10;}
+</style>
+<circle class="st0" cx="30.5" cy="85.4" r="10.3"/>
+<circle class="st0" cx="452" cy="85.4" r="10.3"/>
+<text transform="matrix(6.123234e-17 1 -1 6.123234e-17 41.4434 36.5686)" class="st1 st2">Caviglia</text>
+<text transform="matrix(6.123234e-17 1 -1 6.123234e-17 422.6348 27.9098)" class="st1 st2">Ginocchio</text>
+<line class="st3" x1="452" y1="85.4" x2="30.5" y2="85.4"/>
+</svg>
