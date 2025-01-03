@@ -71,7 +71,6 @@ header img{
     color: white;
     z-index: 2;
     flex-wrap: wrap;
-    font-size: 14px;
 }
 
 #closingBtn{
@@ -409,7 +408,7 @@ input:invalid ~ .unit{
 
 
 /* -------------------> MOBILE <------------------- */
-@media (max-width: 750px) {
+@media (max-width: 1000px) {
     body{
         font-size: 14px;
     }
@@ -431,6 +430,7 @@ input:invalid ~ .unit{
     }
 
     .about{
+        font-size: 10px;
         height: max-content;
     }
 
@@ -549,7 +549,7 @@ input:invalid ~ .unit{
     }
 }
 
-@media (max-width: 750px) and (orientation: landscape) {
+@media (max-width: 1000px) and (orientation: landscape) {
     body{
         font-size: 10px;
     }

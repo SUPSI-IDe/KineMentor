@@ -54,4 +54,26 @@ export function aggiornamentoFunzioniSchermo () {
         if(localStorage.getItem("bmi") == "Obesity") {
             document.getElementById("O_info").classList.add("bmiSelected");
         }
+    
+    // Bottoni info slider
+    document.getElementById("hipInfo").addEventListener("click", function() {
+        document.getElementById("hipInfoBox").style.display = "flex";
+    });
+    document.getElementById("hipInfoClosingBtn").addEventListener("click", function() {
+        document.getElementById("hipInfoBox").style.display = "none";
+    });
+    
+    document.getElementById("kneeInfo").addEventListener("click", function() {
+        document.getElementById("kneeInfoBox").style.display = "flex";
+    });
+    document.getElementById("kneeInfoClosingBtn").addEventListener("click", function() {
+        document.getElementById("kneeInfoBox").style.display = "none";
+    });
+
+    document.getElementById("ankleInfo").addEventListener("click", function() {
+        document.getElementById("ankleInfoBox").style.display = "flex";
+    });
+    document.getElementById("ankleInfoClosingBtn").addEventListener("click", function() {
+        document.getElementById("ankleInfoBox").style.display = "none";
+    });
 }

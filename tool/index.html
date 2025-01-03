@@ -104,6 +104,10 @@
                         <div class="infoSliderBtn" id="hipInfo">
                             <p>info</p>
                         </div>
+                        <div class="infoBox" id="hipInfoBox">
+                            <button id="hipInfoClosingBtn">x</button>
+                            <p>Hip range of motion can become limited due to chronic overuse, acute traumatic injuries, arthritis, or other conditions that cause inflammation in the hip joint or damage to the surrounding tissues.</p>
+                        </div>
                     </div>
                 </div>
                 <div class="kneeConstraints">
@@ -113,6 +117,10 @@
                         <div class="infoSliderBtn" id="kneeInfo">
                             <p>info</p>
                         </div>
+                        <div class="infoBox" id="kneeInfoBox">
+                            <button id="kneeInfoClosingBtn">x</button>
+                            <p>Knee range of motion can become limited due to chronic overuse, acute traumatic injuries, arthritis, or other conditions that cause inflammation in the knee joint or damage to the surrounding tissues.</p>
+                        </div>
                     </div>
                 </div>
                 <div class="ankleConstraints">
@@ -121,6 +129,10 @@
                         <div class="slider" id="ankleSlider"></div>
                         <div class="infoSliderBtn" id="ankleInfo">
                             <p>info</p>
+                        </div>
+                        <div class="infoBox" id="ankleInfoBox">
+                            <button id="ankleInfoClosingBtn">x</button>
+                            <p>Ankle range of motion can become limited due to chronic overuse, acute traumatic injuries, arthritis, or other conditions that cause inflammation in the hip joint or damage to the surrounding tissues.</p>
                         </div>
                     </div>
                 </div>
@@ -148,7 +160,7 @@
                     </div>
                 </div>
                 <div class="displayGraph">
-                    <canvas id="graph" style="width:100%; height: 100%;"></canvas>
+                    <canvas id="graph" style="width:90%; height: 84%; margin-top: 5px;"></canvas>
                 </div>
             </div>
         </div>
@@ -225,27 +237,18 @@
                     <p class="rowTitle">Hip joint range</p>
                     <div class="controls">
                         <div class="slider sliderMobile" id="hipSliderMobile"></div>
-                        <div class="infoSliderBtn" id="hipInfo">
-                            <p>info</p>
-                        </div>
                     </div>
                 </div>
                 <div class="kneeConstraints">
                     <p class="rowTitle">Knee joint range</p>
                     <div class="controls">
                         <div class="slider sliderMobile" id="kneeSliderMobile"></div>
-                        <div class="infoSliderBtn" id="kneeInfo">
-                            <p>info</p>
-                        </div>
                     </div>
                 </div>
                 <div class="ankleConstraints">
                     <p class="rowTitle">Ankle joint range</p>
                     <div class="controls">
                         <div class="slider sliderMobile" id="ankleSliderMobile"></div>
-                        <div class="infoSliderBtn" id="ankleInfo">
-                            <p>info</p>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -326,6 +329,84 @@
                 <div class="bmiTag" id="nW_info"><p>Normal Weight</p></div>
                 <div class="bmiTag" id="oW_info"><p>Overweight</p></div>
                 <div class="bmiTag" id="O_info"><p>Obesity</p></div>
+            </div>
+            <div class="weightTable">
+                <table>
+                    <tr>
+                        <th>FEMALE</th>
+                        <th>% (kg)</th>
+                    </tr>
+                    <tr>
+                        <td>Head</td>
+                        <td>7</td>
+                    </tr>
+                    <tr>
+                        <td>Trunk</td>
+                        <td>46,5</td>
+                    </tr>
+                    <tr>
+                        <td>Upper Arm</td>
+                        <td>3,5</td>
+                    </tr>
+                    <tr>
+                        <td>Forearm</td>
+                        <td>2,1</td>
+                    </tr>
+                    <tr>
+                        <td>Hand</td>
+                        <td>10,7</td>
+                    </tr>
+                    <tr>
+                        <td>Thigh</td>
+                        <td>4,8</td>
+                    </tr>
+                    <tr>
+                        <td>Shank</td>
+                        <td>1,7</td>
+                    </tr>
+                    <tr>
+                        <td>Foot</td>
+                        <td>17,2</td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <th>MALE</th>
+                        <th>% (kg)</th>
+                    </tr>
+                    <tr>
+                        <td>Head</td>
+                        <td>7</td>
+                    </tr>
+                    <tr>
+                        <td>Trunk</td>
+                        <td>46,5</td>
+                    </tr>
+                    <tr>
+                        <td>Upper Arm</td>
+                        <td>3,5</td>
+                    </tr>
+                    <tr>
+                        <td>Forearm</td>
+                        <td>2,1</td>
+                    </tr>
+                    <tr>
+                        <td>Hand</td>
+                        <td>10,7</td>
+                    </tr>
+                    <tr>
+                        <td>Thigh</td>
+                        <td>4,8</td>
+                    </tr>
+                    <tr>
+                        <td>Shank</td>
+                        <td>1,7</td>
+                    </tr>
+                    <tr>
+                        <td>Foot</td>
+                        <td>17,2</td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>

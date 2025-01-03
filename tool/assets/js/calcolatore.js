@@ -74,6 +74,34 @@ export function setupAngoli(umano, pesoManubrio, posizioneManubrio, minCaviglia,
 export function aggiornamentoAngoli(umano, pesoManubrio, posizioneManubrio, minCaviglia, maxCaviglia, minAnca, maxAnca, minGinocchio, maxGinocchio){
     var minValIdeale = Infinity;
 
+    if (umano.angoloCaviglia < minCaviglia || umano.angoloCaviglia > maxCaviglia){
+        if(umano.angoloCaviglia < minCaviglia){
+            umano.angoloCaviglia = minCaviglia;
+            setupAngoli(umano, pesoManubrio, posizioneManubrio, minCaviglia, maxCaviglia, minAnca, maxAnca, maxGinocchio);
+        } else {
+            umano.angoloCaviglia = maxCaviglia;
+            setupAngoli(umano, pesoManubrio, posizioneManubrio, minCaviglia, maxCaviglia, minAnca, maxAnca, maxGinocchio);
+        }
+    }
+    if (umano.angoloAnca < minAnca || umano.angoloAnca > maxAnca){
+        if(umano.angoloAnca < minAnca){
+            umano.angoloAnca = minAnca;
+            setupAngoli(umano, pesoManubrio, posizioneManubrio, minCaviglia, maxCaviglia, minAnca, maxAnca, maxGinocchio);
+        } else {
+            umano.angoloAnca = maxAnca;
+            setupAngoli(umano, pesoManubrio, posizioneManubrio, minCaviglia, maxCaviglia, minAnca, maxAnca, maxGinocchio);
+        }
+    }
+    if (umano.angoloGinocchio < minGinocchio || umano.angoloGinocchio > maxGinocchio){
+        if(umano.angoloGinocchio < minGinocchio){
+            umano.angoloGinocchio = minGinocchio;
+            setupAngoli(umano, pesoManubrio, posizioneManubrio, minCaviglia, maxCaviglia, minAnca, maxAnca, maxGinocchio);
+        } else {
+            umano.angoloGinocchio = maxGinocchio;
+            setupAngoli(umano, pesoManubrio, posizioneManubrio, minCaviglia, maxCaviglia, minAnca, maxAnca, maxGinocchio);
+        }
+    }
+
     const valoreRestringimentoAngoli = 5;
 
     ((umano.angoloCaviglia - valoreRestringimentoAngoli) > minCaviglia) ? minCaviglia = umano.angoloCaviglia - valoreRestringimentoAngoli : minCaviglia = minCaviglia;
