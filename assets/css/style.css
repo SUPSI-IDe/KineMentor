@@ -374,9 +374,9 @@ input:invalid ~ .unit{
 }
 
 /* -------------------> TABLET <------------------- */
-@media (max-width: 1200px) {
+@media (max-width: 1200px) and (min-width: 700px) {
     body{
-        font-size: 12px;
+        font-size: 14px;
     }
 
     .setTitle{
@@ -384,7 +384,7 @@ input:invalid ~ .unit{
     }
 
     .settings{
-        font-size: 10px;
+        font-size: 18px;
     }
 
     #humanMan{
@@ -396,7 +396,7 @@ input:invalid ~ .unit{
     }
 }
 
-@media (max-width: 1200px) and (orientation: landscape) {
+@media (max-width: 1200px) and (orientation: landscape) and (min-width: 700px) {
     #humanMan{
         right: -2vw;
     }
@@ -432,6 +432,7 @@ input:invalid ~ .unit{
     .about{
         font-size: 10px;
         height: max-content;
+        min-height: 100vh;
     }
 
     .aboutParagraph{
