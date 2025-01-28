@@ -474,7 +474,6 @@ td:last-child, th:last-child{
 
 .jointConstraints{
     width: 100%;
-    overflow: hidden;
     height: calc(calc(100% / 13) * 3);
     border-bottom: 1px solid var(--lightBlue);
 }
@@ -850,7 +849,7 @@ input[type="checkbox"]:checked + label::after {
 }
 
 /* -------------------> MOBILE <------------------- */
-@media (max-width: 1000px) {
+@media (max-width: 950px) {
     body{
         font-size: 10px;
     }
@@ -949,6 +948,10 @@ input[type="checkbox"]:checked + label::after {
         height: fit-content;
     }
 
+    .settings.installed{
+        width: 60%;
+    }
+
     .movement{
         height: fit-content;
         padding: 0.5rem 1.5rem;
@@ -983,9 +986,17 @@ input[type="checkbox"]:checked + label::after {
         height: 56vh;
     }
 
+    .result.installed{
+        width: 40%;
+    }
+
     .result canvas{
         height: 80%;
         width: auto;
+    }
+
+    .result.installed canvas{
+        width: 90%;
     }
 
     .comViz{
