@@ -92,8 +92,3 @@ document.getElementById('closingBtn').addEventListener('click', function() {
 document.getElementById('aboutBtn').addEventListener('click', function() {
     document.getElementsByClassName("about")[0].style.display = "block";
 });
-
-// Apply styles based on the installed parameter
-if (isInstalled) {
-    
-}
