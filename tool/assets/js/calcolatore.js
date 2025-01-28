@@ -59,7 +59,7 @@ export function setupAngoli(umano, pesoManubrio, posizioneManubrio, minCaviglia,
 
                     umano.coppiaAnca = coppiaAnca;
                     umano.angoloAnca = angoloAnca;
-                    umano.coppiaGinocchio = coppiaGinocchio;
+                    umano.coppiaGinocchio = -coppiaGinocchio;
                     umano.angoloGinocchio = maxGinocchio;
                     umano.coppiaCaviglia = coppiaCaviglia;
                     umano.angoloCaviglia = angoloCaviglia;
@@ -181,7 +181,7 @@ export function aggiornamentoAngoli(umano, pesoManubrio, posizioneManubrio, minC
 
                     umano.coppiaAnca = coppiaAnca;
                     umano.angoloAnca = angoloAncaStretto;
-                    umano.coppiaGinocchio = coppiaGinocchio;
+                    umano.coppiaGinocchio = -coppiaGinocchio;
                     umano.angoloGinocchio = angoloGinocchioCorrente;
                     umano.coppiaCaviglia = coppiaCaviglia;
                     umano.angoloCaviglia = angoloCavigliaStretto;
