@@ -55,9 +55,11 @@ function calculateBMI() {
         document.getElementById('bmiName').textContent = "Obesity";
         
         document.getElementById('bmiResult').style.display = "block";
+        document.getElementById('startBtn').style.display = "block";
         localStorage.setItem("bmi", document.getElementById('bmiName').textContent);
     } else {
         document.getElementById('bmiResult').style.display = "none";
+        document.getElementById('startBtn').style.display = "none";
         localStorage.setItem("bmi", "none");
     }
 }

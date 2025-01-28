@@ -183,6 +183,7 @@ header img{
 }
 
 .settings .input h2{
+    width: 35%;
     display: inline-block;
     font-size: 5em;
     font-weight: 100;
@@ -194,7 +195,7 @@ header img{
 }
 
 .settings .input button:first-of-type{
-    margin-left: 12vw;
+    margin-left: 0;
 }
 
 .settings .input button{
@@ -241,7 +242,6 @@ header img{
     color: white;
     text-align: center;
     width: 42vw;
-    margin-left: 5vw;
     opacity: 0.4;
     margin-top: 2.5vh;
 }
@@ -308,7 +308,6 @@ input:invalid ~ .unit{
     font-family: "SUPSIFedraDemi", sans-serif;
     font-size: 1.5em;
     display: none;
-    margin-left: 5vw;
     margin-top: 2vh;
     width: 42vw;
     border-bottom: 2px solid white;
@@ -328,9 +327,10 @@ input:invalid ~ .unit{
 }
 
 #startBtn{
+    display: none;
     font-family: "SUPSIFedraDemi", sans-serif;
-    margin-top: 30vh;
-    display: block;
+    margin-top: 5vh;
+    margin-left: 35%;
     font-size: 2em;
     border: white 4px solid;
     border-radius: 4rem;
@@ -527,7 +527,8 @@ input:invalid ~ .unit{
     }
 
     #startBtn{
-        margin-top: 15vh;
+        margin-left: 0;
+        margin-top: 5vh;
         font-size: 1.4em;
         padding: 0.5rem 1.5rem;
         border-width: 2px;
