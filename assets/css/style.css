@@ -566,7 +566,7 @@ input:invalid ~ .unit{
     }
 
     .settings .input input{
-        width: 45vw;
+        width: 70vw;
     }
 
     input:not(:placeholder-shown) + .additionalPlaceholder {
