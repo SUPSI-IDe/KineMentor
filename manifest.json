@@ -23,7 +23,7 @@
         "sizes": "512x512"
       }
     ],
-    "start_url": "index.html?installed=true",
+    "start_url": "index.html",
     "display": "standalone",
     "orientation": "landscape-primary",
     "background_color": "#0D4BF4",

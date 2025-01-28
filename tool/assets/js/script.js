@@ -3,22 +3,6 @@ import {aggiornamentoFunzioniSchermo} from './screen.js';
 import {setupAngoli} from './calcolatore.js';
 import {aggiornamentoAngoli} from './calcolatore.js';
 
-// Function to get URL parameters
-function getUrlParameter(name) {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(name);
-}
-
-// Check if the app is installed
-const isInstalled = getUrlParameter('installed') === 'true';
-
-// Apply styles based on the installed parameter
-if (isInstalled) {
-    document.getElementById("canvas").classList.add('installed');
-    document.getElementsByClassName("settings")[0].classList.add('installed');
-    document.getElementsByClassName("result")[0].classList.add('installed');
-}
-
 //Dichiarazione variabili globali
 var umano = {
     sesso: localStorage.getItem("sex"),
