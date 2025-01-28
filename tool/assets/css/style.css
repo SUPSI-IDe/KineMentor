@@ -94,13 +94,14 @@ header img{
     position: absolute;
     top: 1.5vh;
     right: 2.8125rem;
-    font-size: 1.5em;
+    font-size: 1em;
     cursor: pointer;
     border: 1.5px solid white;
     border-radius: 50%;
     box-sizing: border-box;
     width: 30px;
     height: 30px;
+    line-height: 30px;
     text-align: center;
     font-family: "SUPSIFedraLight", sans-serif;
 }
