@@ -15,8 +15,8 @@ const isInstalled = getUrlParameter('installed') === 'true';
 // Apply styles based on the installed parameter
 if (isInstalled) {
     document.getElementById("canvas").classList.add('installed');
-    document.getElementsByClassName("settings").classList.add('installed');
-    document.getElementsByClassName("result").classList.add('installed');
+    document.getElementsByClassName("settings")[0].classList.add('installed');
+    document.getElementsByClassName("result")[0].classList.add('installed');
 }
 
 //Dichiarazione variabili globali

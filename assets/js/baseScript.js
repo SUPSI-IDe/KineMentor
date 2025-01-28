@@ -3,6 +3,15 @@ localStorage.setItem("height", "00");
 localStorage.setItem("weight", "00");
 localStorage.setItem("bmi", "none");
 
+// Function to get URL parameters
+function getUrlParameter(name) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
+}
+
+// Check if the app is installed
+const isInstalled = getUrlParameter('installed') === 'true';
+
 function sexSelection(button) {
     if (!button.classList.contains("btnClicked")) {
         button.classList.add("btnClicked");
@@ -81,7 +90,11 @@ document.getElementById('startBtn').addEventListener('click', function() {
     if (localStorage.sex === "none" || localStorage.height === "00" || localStorage.weight === "00") {
         alert("Please fill in all the fields and insert valid values.");
     } else {
-        window.location.href = "tool/index.html";
+        if (isInstalled) {
+            window.location.href = "tool/index.html?installed=true";
+        } else {
+            window.location.href = "tool/index.html";
+        }
     }
 }); 
 
@@ -92,3 +105,8 @@ document.getElementById('closingBtn').addEventListener('click', function() {
 document.getElementById('aboutBtn').addEventListener('click', function() {
     document.getElementsByClassName("about")[0].style.display = "block";
 });
+
+// Apply styles based on the installed parameter
+if (isInstalled) {
+    
+}

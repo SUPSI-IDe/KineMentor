@@ -343,6 +343,10 @@ td:last-child, th:last-child{
     border-right: 2px solid var(--lightBlue);
 }
 
+.settings.installed{
+    width: 60%;
+}
+
 .movement{
     display: flex;
     width: 100%;
@@ -763,11 +767,19 @@ input[type="checkbox"]:checked + label::after {
     height: 100%;
 }
 
+.result.installed{
+    width: 40%;
+}
+
 .result canvas{
     display: flex;
     width: 60%;
     height: auto;
     margin: auto;
+}
+
+.result.installed canvas{
+    width: 90%;
 }
 
 .comViz{
@@ -942,14 +954,10 @@ input[type="checkbox"]:checked + label::after {
         flex-direction: column;
         flex-grow: 0;
     }
-    .settings{
+    .settings, .settings.installed{
         width: 100%;
         border-right: none;
         height: fit-content;
-    }
-
-    .settings.installed{
-        width: 60%;
     }
 
     .movement{
@@ -981,22 +989,14 @@ input[type="checkbox"]:checked + label::after {
         display: none;
     }
 
-    .result{
+    .result, .result.installed{
         width: 100%;
         height: 56vh;
     }
 
-    .result.installed{
-        width: 40%;
-    }
-
-    .result canvas{
+    .result canvas, .result.installed canvas{
         height: 80%;
         width: auto;
-    }
-
-    .result.installed canvas{
-        width: 90%;
     }
 
     .comViz{
