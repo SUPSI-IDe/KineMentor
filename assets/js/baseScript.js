@@ -37,29 +37,42 @@ document.getElementById('weightInput').addEventListener('change', function() {
     }
 });
 
-document.getElementById('weightInput').addEventListener('input', function() {
-    if (this.value.trim() !== "" && document.getElementById('heightInput').value.trim() !== "" && parseInt(document.getElementById('weightInput').value) >= parseInt(document.getElementById('weightInput').min) && parseInt(document.getElementById('weightInput').value) <= parseInt(document.getElementById('weightInput').max) && parseInt(document.getElementById('heightInput').value) >= parseInt(document.getElementById('heightInput').min) && parseInt(document.getElementById('heightInput').value) <= parseInt(document.getElementById('heightInput').max)){
-        let bmi = (parseInt(this.value) / Math.pow((parseInt(document.getElementById('heightInput').value) / 100), 2)).toFixed(1);
+// Function to calculate and display BMI
+function calculateBMI() {
+    const weight = parseInt(document.getElementById('weightInput').value);
+    const height = parseInt(document.getElementById('heightInput').value);
+    
+    if (weight >= parseInt(document.getElementById('weightInput').min) && 
+        weight <= parseInt(document.getElementById('weightInput').max) && 
+        height >= parseInt(document.getElementById('heightInput').min) && 
+        height <= parseInt(document.getElementById('heightInput').max)) {
+        
+        let bmi = (weight / Math.pow((height / 100), 2)).toFixed(1);
         document.getElementById('bmiNr').textContent = bmi;
-        bmi < 18.5 ? document.getElementById('bmiName').textContent = "Underweight" : bmi < 24.9 ? document.getElementById('bmiName').textContent = "Normalweight" : bmi < 29.9 ? document.getElementById('bmiName').textContent = "Overweigth" : document.getElementById('bmiName').textContent = "Obesity";
+        bmi < 18.5 ? document.getElementById('bmiName').textContent = "Underweight" : 
+        bmi < 24.9 ? document.getElementById('bmiName').textContent = "Normal Weight" : 
+        bmi < 29.9 ? document.getElementById('bmiName').textContent = "Overweight" : 
+        document.getElementById('bmiName').textContent = "Obesity";
+        
         document.getElementById('bmiResult').style.display = "block";
         localStorage.setItem("bmi", document.getElementById('bmiName').textContent);
     } else {
         document.getElementById('bmiResult').style.display = "none";
         localStorage.setItem("bmi", "none");
     }
+}
+
+// Update weight input event listener
+document.getElementById('weightInput').addEventListener('input', function() {
+    if (this.value.trim() !== "" && document.getElementById('heightInput').value.trim() !== "") {
+        calculateBMI();
+    }
 });
 
+// Update height input event listener
 document.getElementById('heightInput').addEventListener('input', function() {
-    if (this.value.trim() !== "" && document.getElementById('heightInput').value.trim() !== "" && parseInt(document.getElementById('weightInput').value) >= parseInt(document.getElementById('weightInput').min) && parseInt(document.getElementById('weightInput').value) <= parseInt(document.getElementById('weightInput').max) && parseInt(document.getElementById('heightInput').value) >= parseInt(document.getElementById('heightInput').min) && parseInt(document.getElementById('heightInput').value) <= parseInt(document.getElementById('heightInput').max)){
-        let bmi = (parseInt(this.value) / Math.pow((parseInt(document.getElementById('heightInput').value) / 100), 2)).toFixed(1);
-        document.getElementById('bmiNr').textContent = bmi;
-        bmi < 18.5 ? document.getElementById('bmiName').textContent = "Underweight" : bmi < 24.9 ? document.getElementById('bmiName').textContent = "Normal Weight" : bmi < 29.9 ? document.getElementById('bmiName').textContent = "Overweigth" : document.getElementById('bmiName').textContent = "Obesity";
-        document.getElementById('bmiResult').style.display = "block";
-        localStorage.setItem("bmi", document.getElementById('bmiName').textContent);
-    } else {
-        document.getElementById('bmiResult').style.display = "none";
-        localStorage.setItem("bmi", "none");
+    if (this.value.trim() !== "" && document.getElementById('weightInput').value.trim() !== "") {
+        calculateBMI();
     }
 });
 
