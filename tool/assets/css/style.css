@@ -83,7 +83,7 @@ header img{
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh;
+    min-height: 120vh;
     background-color: var(--blackBlue);
     color: white;
     z-index: 2;
@@ -193,7 +193,7 @@ header img{
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh;
+    min-height: 120vh;
     background-color: var(--lightBlue);
     color: white;
     z-index: 2;
